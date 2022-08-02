@@ -24,20 +24,15 @@ public class HW4 {
          *      6) ("Глаза даны, чтобы видеть") И ("Под третьим этажом находится второй этаж");
          *      7) (6/2 = 3) ИЛИ (7*5 = 20).
          */
-        if ((2 == 2) && (7 == 7)){
-            System.out.println("if ((2 == 2) && (7 == 7))");
-        };
-        if (!(15 < 3)) ;
-        if ("Сосна".contentEquals("Дуб") || "Вишня".contentEquals("Клён"));
-        if (!("Сосна".contentEquals("Дуб")));
-        if (!(15 < 3) && (10 > 20)) ;
-        if ("Глаза даны, чтобы видеть".equals(true)) {
-            if ("Под третьим этажом находится второй этаж".equals(true)) ;
-        }
-        if ("Глаза даны, чтобы видеть".equals(true) && "Под третьим этажом находится второй этаж".equals(true));
-        if ((6 / 2 == 3) || (7 * 5 == 20)) ;
+        printTaskNumber(3);
+        System.out.println("if ((2 == 2) && (7 == 7))");
+        System.out.println(!(15 < 3));
+        System.out.println("Сосна".contentEquals("Дуб") || "Вишня".contentEquals("Клён"));
+        System.out.println(!("Сосна".contentEquals("Дуб")));
+        System.out.println(!(15 < 3) && (10 > 20));
+        System.out.println("Глаза даны, чтобы видеть".equals(true) && "Под третьим этажом находится второй этаж".equals(true));
+        System.out.println((6 / 2 == 3) || (7 * 5 == 20));
         newLine();
-
 
         /** 4. Записать в виде кода:
          * 1) ("В минуте 70 секунд") ИЛИ ("Работающие часы показывают время");
@@ -47,16 +42,13 @@ public class HW4 {
          *      5) (75 < 81) → (88 = 88).
          */
         printTaskNumber(4);
-        if ("В минуте 70 секунд".equals(true) || "Работающие часы показывают время".equals(true));
-        if (!(28 > 7) && !(300 / 5 == 60));
-        if (("Телевизор".equals("электрический прибор")) && ("Стекло".equals("дерево")));
-        if ("Телевизор".contentEquals("электрический прибор") && "Стекло".contentEquals("дерево"));
-        if (!(300 < 100)) {
-            System.out.println("Жажду можно утолить водой");
-        }
-        if (75 < 81) {
-            System.out.println("88 = 88");
-        }
+        System.out.println("В минуте 70 секунд".equals(true) || "Работающие часы показывают время".equals(true));
+        System.out.println(!(28 > 7) && !(300 / 5 == 60));
+        System.out.println(("Телевизор".equals("электрический прибор")) && ("Стекло".equals("дерево")));
+        System.out.println("Телевизор".contentEquals("электрический прибор") && "Стекло".contentEquals("дерево"));
+        System.out.println("if (!(300 < 100)) → (\"Жажду можно утолить водой\")");
+        System.out.println("if (75 < 81) → (88 = 88)");
+        newLine();
 
 
         /** 5. Записать в виде кода следующие выражения:
@@ -64,27 +56,27 @@ public class HW4 {
          *      б) На полке стоят учебники, а на столе лежат справочники.
          *      в) БОльшая часть детей — девочки. Остальные - мальчики.
          */
-        if ("Андрей старше Светы".equals(true)); if("Наташа старше Светы.".equals(true));
-        if ("На полке стоят учебники".equals(true)) {
-            if ("на столе лежат справочники".equals(true)) {
-            }
-        }
-        if ("БОльшая часть детей - девочки".equals(true)){
-            if ("Остальные - мальчики.".equals(true));
-        }
+        printTaskNumber(5);
+        System.out.println("Андрей старше Светы".equals(true) && "Наташа старше Светы.".equals(true));
+        System.out.println("На полке стоят учебники".equals(true) && "на столе лежат справочники".equals(true));
+        System.out.println("БОльшая часть детей - девочки".equals(true) && "Остальные - мальчики.".equals(true));
+        newLine();
 
 
         /** 6. “Водительские права можно получить, только когда исполнится 16 лет.”*/
         printTaskNumber(6);
         int age = 12;
         if (age >= 16) {
-            System.out.println("It is to early");
+            System.out.println("Here your driver licens");
         } else {
             System.out.println("Водительские права можно получить, только когда исполнится 16 лет.");
         }
+        newLine();
+
 
         /** 7. ”Петя не едет в автобусе, но при этом читает книгу или не смотрит в окно”*/
-        if (!"Петя не едет в автобусе".equals(true) && "читает книгу".equals(true) || "не смотрит в окно".equals(true));
+        printTaskNumber(7);
+        System.out.println("!\"Петя не едет в автобусе\".equals(true) && \"читает книгу\".equals(true) || \"не смотрит в окно\".equals(true)");
 
 
         /** 8. “Если с другом ты, это хорошо, а когда наоборот - плохо”*/
