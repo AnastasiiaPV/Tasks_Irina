@@ -2,16 +2,148 @@ package homework;
 
 public class HW4 {
 
-    /**
-     * 2. Написать метод, который будет печатать номер задания перед каждым ответом. Придумайте свой дизайн.
-     */
-    public static void printTaskNumber(int number) {
-        System.out.println("Task #" + number);
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+
+    public static final String ANSI_BLACK_BACKGROUND = "\u001B[40m";
+    public static final String ANSI_RED_BACKGROUND = "\u001B[41m";
+    public static final String ANSI_GREEN_BACKGROUND = "\u001B[42m";
+    public static final String ANSI_YELLOW_BACKGROUND = "\u001B[43m";
+    public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+    public static final String ANSI_PURPLE_BACKGROUND = "\u001B[45m";
+    public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
+    public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+    public static final int AGE = 16;
+
+    public static String printLine() {
+        return ANSI_RED + "_".repeat(15) + ANSI_BLACK;
     }
 
-    public static void newLine() {
-        System.out.println("___________________________________________\n");
+    public static void printTaskNumber(int number) {
+        System.out.println(printLine() + "Task #" + ANSI_BLUE + number + printLine() + "\n");
     }
+
+    public static int getDivisionNum(int a, int b) {
+        return a / b;
+    }
+
+    public static int getQuotientNum(int a, int b) {
+        return a % b;
+    }
+
+    private static int getLastNumber(int a) {
+        return a % 10;
+    }
+
+    private static int getLastTwoNumbers(int a) {
+        return a % 100;
+    }
+
+    private static String getAppleFirstThirdWorld(int num, String name) {
+        if (num == (1)) {
+            return name + "o";
+        } else if (num == (2) || num == (3) || num == (4)) {
+            return name + "a";
+        } else {
+            return name;
+        }
+    }
+
+    private static String getAppleSecondWorld(int num, String name) {
+        if (num == (1)) {
+            return name + "у";
+        } else if (num == (2) || num == (3) || num == (4)) {
+            return name + "a";
+        } else {
+            return name;
+        }
+    }
+
+    private static String getStudentWorld(int num, String name) {
+        if (getLastTwoNumbers(num) == 21 || getLastTwoNumbers(num) == 31 || getLastTwoNumbers(num) == 41
+                || getLastTwoNumbers(num) == 51 || getLastTwoNumbers(num) == 61 || getLastTwoNumbers(num) == 71
+                || getLastTwoNumbers(num) == 81 || getLastTwoNumbers(num) == 91) {
+            return name + "a";
+        }
+
+        num = getLastNumber(num);
+
+        if (num == (1)) {
+            return name;
+        } else if (num == (2) || num == (3) || num == (4)) {
+            return name + "a";
+        } else {
+            return name + "oв";
+        }
+    }
+
+    public static void countApples(int num1, int num2) {
+        int resultDivision = (int) (Math.round(getDivisionNum(num1, num2)));
+        int resultQuotient = getQuotientNum(num1, num2);
+
+        System.out.println("Если " + num1 + " " + getAppleFirstThirdWorld(getLastNumber(num1), "яблок")
+                + " поделить на " + num2 + " " + getStudentWorld(num2, "ученик")
+                + ", то каждый ученик получит по " + resultDivision + " "
+                + getAppleSecondWorld(resultDivision, "яблок") + ", и " + resultQuotient + " "
+                + getAppleFirstThirdWorld(resultQuotient, "яблок") + " останется учителю.");
+    }
+
+    public static void printTemperatureF(int Celsius) {
+        System.out.println(Celsius + " C = " + ((Celsius * 9 / 5) + 32) + " F");
+    }
+
+    private static String printSecondLine() {
+        return "|" + " ".repeat(15) + "|" + " ".repeat(15) + "|\n";
+    }
+
+    private static String printMiddleLine() {
+        return "|" + printLine() + "|" + printLine() + "|\n";
+    }
+
+    private static String printModifiedLine(int i) {
+
+        if (i >= 9 && i <= 100) {
+            return "|" + i + " ^ 2" + " ".repeat(9) + "|" + (int) Math.pow(i, 2) + " ".repeat(11) + "|\n";
+        } else if (i >= 100 && i <= 1000) {
+            return "|" + i + " ^ 2" + " ".repeat(8) + "|" + (int) Math.pow(i, 2) + " ".repeat(9) + "|\n";
+        } else if (i >= 1000 && i <= 10000) {
+            return "|" + i + " ^ 2" + " ".repeat(7) + "|" + (int) Math.pow(i, 2) + " ".repeat(7) + "|\n";
+        } else if (i >= 10000 && i <= 100000) {
+            if ((int) Math.pow(i, 2) >= Integer.MAX_VALUE) {
+                return "|" + i + " ^ 2" + " ".repeat(6) + "|" + "Too big number |\n";
+            } else {
+                return "|" + i + " ^ 2" + " ".repeat(6) + "|" + (int) Math.pow(i, 2) + " ".repeat(5) + "|\n";
+            }
+        } else {
+            return "|" + i + " ^ 2" + " ".repeat(10) + "|" + (int) Math.pow(i, 2) + " ".repeat(13) + "|\n";
+        }
+    }
+
+    public static void printTable(int i) {
+        System.out.println(" " + printLine() + "" + printLine() + "\n" + printSecondLine() + printMiddleLine()
+                + printSecondLine() + printMiddleLine() + printModifiedLine(i) + printMiddleLine());
+    }
+
+    public static void printStringDevision(int number1, int number2, String firstLetter, String secondLetter){
+        System.out.println(firstLetter + " / " + secondLetter + " = " + (getDivisionNum(number1, number2))
+                + ", залишок від ділення = " + (getQuotientNum(number1, number2)));
+    }
+
+    public static void testIntegerResult(int expextedResult, int actualResult) {
+        if (expextedResult == actualResult) {
+            System.out.println("Pass");
+        } else {
+            System.out.println("Fail");
+        }
+    }
+
 
     public static void main(String[] args) {
 
@@ -25,14 +157,14 @@ public class HW4 {
          *      7) (6/2 = 3) ИЛИ (7*5 = 20).
          */
         printTaskNumber(3);
-        System.out.println("if ((2 == 2) && (7 == 7))");
+        System.out.println((2 == 2) && (7 == 7));
         System.out.println(!(15 < 3));
         System.out.println("Сосна".contentEquals("Дуб") || "Вишня".contentEquals("Клён"));
         System.out.println(!("Сосна".contentEquals("Дуб")));
         System.out.println(!(15 < 3) && (10 > 20));
         System.out.println("Глаза даны, чтобы видеть".equals(true) && "Под третьим этажом находится второй этаж".equals(true));
         System.out.println((6 / 2 == 3) || (7 * 5 == 20));
-        newLine();
+        printLine();
 
         /** 4. Записать в виде кода:
          * 1) ("В минуте 70 секунд") ИЛИ ("Работающие часы показывают время");
@@ -42,13 +174,14 @@ public class HW4 {
          *      5) (75 < 81) → (88 = 88).
          */
         printTaskNumber(4);
-        System.out.println("В минуте 70 секунд".equals(true) || "Работающие часы показывают время".equals(true));
+        System.out.println("В минуте 60 секунд".contentEquals("В минуте 60 секунд") || "Работающие часы показывают время"
+                .contentEquals("Работающие часы показывают время"));
         System.out.println(!(28 > 7) && !(300 / 5 == 60));
-        System.out.println(("Телевизор".equals("электрический прибор")) && ("Стекло".equals("дерево")));
-        System.out.println("Телевизор".contentEquals("электрический прибор") && "Стекло".contentEquals("дерево"));
+        System.out.println("Телевизор - электрический прибор".contentEquals("Телевизор - электрический прибор")
+                && "Стекло - дерево".contentEquals("Стекло - дерево"));
         System.out.println("if (!(300 < 100)) → (\"Жажду можно утолить водой\")");
         System.out.println("if (75 < 81) → (88 = 88)");
-        newLine();
+        printLine();
 
 
         /** 5. Записать в виде кода следующие выражения:
@@ -60,95 +193,116 @@ public class HW4 {
         System.out.println("Андрей старше Светы".equals(true) && "Наташа старше Светы.".equals(true));
         System.out.println("На полке стоят учебники".equals(true) && "на столе лежат справочники".equals(true));
         System.out.println("БОльшая часть детей - девочки".equals(true) && "Остальные - мальчики.".equals(true));
-        newLine();
+        printLine();
 
 
         /** 6. “Водительские права можно получить, только когда исполнится 16 лет.”*/
         printTaskNumber(6);
-        int age = 12;
-        if (age >= 16) {
+
+        if (AGE >= 16 && AGE < 100) {
             System.out.println("Here your driver licens");
-        } else {
+        } else if (AGE > 0 && AGE < 16) {
             System.out.println("Водительские права можно получить, только когда исполнится 16 лет.");
+        } else {
+            System.out.println("Wrong data");
         }
-        newLine();
+        printLine();
 
 
         /** 7. ”Петя не едет в автобусе, но при этом читает книгу или не смотрит в окно”*/
         printTaskNumber(7);
-        System.out.println("!\"Петя не едет в автобусе\".equals(true) && \"читает книгу\".equals(true) || \"не смотрит в окно\".equals(true)");
+        System.out.println("Петя не едет в автобусе".equals(false) && ("читает книгу".equals(true) || "не смотрит в окно".equals(false)));
+        printLine();
 
 
         /** 8. “Если с другом ты, это хорошо, а когда наоборот - плохо”*/
         printTaskNumber(8);
-        if ("Если с другом ты".equals(true)){
-            System.out.println("это хорошо");
+        String you = "not с другом";
+        if (you.equals("с другом")) {
+            System.out.println("Если с другом ты, это хорошо");
         } else {
             System.out.println("плохо");
         }
+        printLine();
 
         /**9. Записать выражения в виде условий if-else:*/
         // Если тебе больше 18 лет, то ты взрослый. Иначе, ты - ребенок.
         printTaskNumber(9);
-        if (age > 18) {
+        if (AGE > 18 && AGE < 120) {
             System.out.println("ты взрослый");
         } else {
             System.out.println("ты - ребенок");
         }
-        newLine();
+        printLine();
         // Если земля сухая, значит, нет дождя. Если земля мокрая, то идет дождь.
-        if ("земля сухая".equals(true)) {
+        String earth = "земля сухая";
+        if (earth.equals("земля сухая")) {
             System.out.println("нет дождя");
-        } else if ("земля мокрая".equals(true)){
+        } else if (earth.equals("земля мокрая")) {
             System.out.println("идет дождь");
         }
-        newLine();
+        printLine();
         // Если земля сухая, значит, нет дождя. Если земля мокрая, то идет дождь. Иначе идет снег.
-        if ("земля сухая".equals(true)) {
+        earth = "земля мокрая";
+        if (earth.equals("земля сухая")) {
             System.out.println("нет дождя");
-        } else if ("земля мокрая".equals(true)){
+        } else if (earth.equals("земля мокрая")) {
             System.out.println("идет дождь");
         } else {
             System.out.println("идет снег");
         }
-        newLine();
+        printLine();
         // Если на небе тучи, идет дождь, иначе идет “слепой” дождь.
-        if ("на небе тучи".equals(true)) {
+        String clouds = "на небе тучи";
+        if (clouds.equals("на небе тучи")) {
             System.out.println("идет дождь");
         } else {
             System.out.println("идет “слепой” дождь");
         }
-        newLine();
+        printLine();
         // Если сегодня суббота, значит, завтра воскресенье. Если сегодня пятница, значит, вчера был четверг.
         // Иначе вчера был не четверг, а завтра - не воскресенье
-        if ("сегодня суббота".equals(true)) {
+        String dayOfWeek = "сегодня пятница";
+        if (dayOfWeek.equals("сегодня суббота")) {
             System.out.println("завтра воскресенье");
-        } else if ("сегодня пятница".equals(true)) {
+        } else if (dayOfWeek.equals("сегодня пятница")) {
             System.out.println("вчера был четверг");
         } else {
             System.out.println("вчера был не четверг, а завтра - не воскресенье");
         }
-        newLine();
+        printLine();
         // Если на горе свистнул рак, значит, прошла вечность, иначе ждите дальше.
-        if ("на горе свистнул рак".equals(true)) {
+        String prislivya = "на горе свистнул рак";
+        if (prislivya.equals("на горе свистнул рак")) {
             System.out.println("прошла вечность");
         } else {
             System.out.println("ждите дальше");
         }
-        newLine();
+        printLine();
         //Если тебе 18 или ты закончил школу, то ты можешь не жить с родителями, иначе живи с родителями.
-        if (age == 18 && "ты закончил школу".equals(true)) {
+        String status = "not ты закончил школу";
+        if (AGE == 18 || status.equals("ты закончил школу")) {
             System.out.println("ты можешь не жить с родителями");
         } else {
             System.out.println("живи с родителями");
         }
-        newLine();
+        printLine();
 
 
         /** 10. Проверьте число на четность. Если число четное, удвойте это число, иначе возведите число в квадрат.
          *     Выведите результат работы алгоритма на печать.
          *      Найдите в презентации, какой блок схеме соответствует ваш алгоритм.
          */
+        printTaskNumber(10);
+        double number = 6;
+        if (number % 2 == 0) {
+            number *= 2;
+        } else {
+            //number *= number;
+            number = Math.pow(number, 2);
+        }
+        System.out.println(Math.round(number));
+        printLine();
 
 
         /** 11. Напишите алгоритм проверки возраста на соответствие условиям (if-else):
@@ -159,7 +313,18 @@ public class HW4 {
          *
          *      Найдите в презентации, какой блок схеме соответствует ваш алгоритм.
          */
+        printTaskNumber(11);
 
+        if (AGE >= 5) {
+            System.out.println("В школу можно идти с 5 лет");
+            if (AGE >= 16) {
+                System.out.println("Машину можно водить с 16 лет");
+                if (AGE >= 18) {
+                    System.out.println("Голосовать можно с 18 лет");
+                }
+            }
+        }
+        printLine();
 
         /** 12. Напишите алгоритм программы, которая проверяет оценку ученика и выполняет следующие действия:
          *     5 - выдать похвальную грамоту и перевести в следующий класс
@@ -170,7 +335,20 @@ public class HW4 {
          *
          *      Найдите в презентации, какой блок схеме соответствует ваш алгоритм.
          */
-
+        printTaskNumber(12);
+        int rating = 2;
+        if (rating == 5) {
+            System.out.println("выдать похвальную грамоту и перевести в следующий класс");
+        } else if (rating == 4) {
+            System.out.println("перевести в следующий класс");
+        } else if (rating == 3) {
+            System.out.println("дать задание на лето и перевести в следующий класс");
+        } else if (rating == 2) {
+            System.out.println("вызвать родителей и оставить в текущем классе на второй год");
+        } else {
+            System.out.println("Wrong rating data");
+        }
+        printLine();
 
         /** 13. Напишите алгоритм программы, которая проверяет 2 числа. Программа складывает числа,
          * которые делятся на 3 без остатка, и вычитает числа, которые делятся на 5 без остатка.
@@ -178,6 +356,30 @@ public class HW4 {
          * программа умножает результат предыдущего действия на (-1).
          * Если числа не прошли ни одну проверку, программа выводит на печать ошибку о невозможности произвести действия.
          */
+        printTaskNumber(13);
+        int number1 = 4;
+        int number2 = 2;
+        double result = 0;
+
+        if (number1 % 3 == 0 && number2 % 3 == 0) {
+            result = number1 + number2;
+            System.out.println("number1 + number2 = " + number1 + number2);
+        }
+        if (number1 % 5 == 0 && number2 % 5 == 0) {
+            result = number1 - number2;
+            System.out.println("number1 - number2 = " + result);
+        }
+        if (number1 < 0 || number2 < 0) {
+            result = result * (-1);
+            System.out.println("result = result * (-1) = " + result);
+        } else if (number1 % 2 == 0 && number2 % 2 == 0) {
+            result = number1 * number2;
+            System.out.println("number1 * number2 = " + result);
+        } else {
+            System.out.println("ERROR");
+        }
+        printLine();
+
 
         /** 14. Распечатать следующие выражения, используя метод и параметры:
          *     Результат деления k на l = …, а остаток от деления  = …
@@ -187,12 +389,26 @@ public class HW4 {
          *      И так далее все возможные варианты.
          *      Сравнить код из HW2 с кодом из HW4. Что для вас легче?
          */
+        printTaskNumber(14);
+        printStringDevision(2,3,"k","l");
+        printStringDevision(2,4,"k","m");
+        printStringDevision(3,4,"l","m");
+        printStringDevision(3,2,"l","k");
+        printStringDevision(4,2,"m","k");
+        printStringDevision(4,3,"m","l");
+        printLine();
+
 
         /** 15. Выполнить задание 18 из HW2 с помощью метода и параметров:
          *     а) Создать переменные apple и  student и присвоить им значения 40 и 6 соответственно. Распечатать выражение:
          *      Если … яблок(а) поделить на … учеников, то каждый ученик получит по … яблок(a), и … яблок(а) останется учителю.
          *      Распечатать это же выражение со значениями 100 и 21.
          */
+        printTaskNumber(15);
+        countApples(40, 6);
+        printLine();
+        countApples(100, 21);
+        printLine();
 
 
         /** 16. Выполнить задание 18 из HW2 с помощью метода и параметров:
@@ -202,11 +418,22 @@ public class HW4 {
          *      apple = 42, 55, 1
          *      student = 42, 5, 2
          */
-
+        printTaskNumber(16);
+        countApples(42, 42);
+        printLine();
+        countApples(55, 5);
+        printLine();
+        countApples(1, 2);
+        printLine();
+        countApples(100, 7);
+        printLine();
 
         /** 17. Напишите метод, который примет на вход параметр температуры в Цельсиях,
          * и распечатает результат температуры в Цельсиях и в Фаренгейтах.
          */
+        printTaskNumber(17);
+        printTemperatureF(28);
+        printLine();
 
 
         /** 18. а) Создать метод, который примет на вход параметр i и распечатает таблицу:
@@ -214,16 +441,28 @@ public class HW4 {
          *      значение i ^ 2
          *      b) поменять значение i и распечатать таблицу с новым значением i
          */
+        printTaskNumber(18);
+        printTable(50);
+        printTable(999);
+        printTable(9999);
+        printTable(99999);
+        printLine();
 
 
         /** 19. Напишите тест, который валидирует (проверит правильность работы) ваш код из задания №10.
          *     Тестовые данные - 2, 5, 0.
          */
+        printTaskNumber(19);
+        testIntegerResult(12,12);
+        printLine();
 
 
         /** 20. Напишите тест, который валидирует ваш код из задания №11.
          *     Придумайте тестовые данные. Выведите результат проверки на печать.
          */
+        printTaskNumber(20);
+
+        printLine();
 
 
         /** 21. Напишите алгоритм программы, которая проверяет число типа short на количество разрядов,
@@ -231,5 +470,8 @@ public class HW4 {
          *      ( Например, “It’s a two-digit number.”, “It’s a five-digit number.”, etc)
          *      Выведите результат проверки на печать.
          */
+        printTaskNumber(21);
+
+        printLine();
     }
 }
