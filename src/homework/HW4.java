@@ -21,6 +21,8 @@ public class HW4 {
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
     public static final int AGE = 16;
+    public static double expectedResult10;
+    public static String actualResult11;
 
     public static String printLine() {
         return ANSI_RED + "_".repeat(15) + ANSI_BLACK;
@@ -136,8 +138,16 @@ public class HW4 {
                 + ", залишок від ділення = " + (getQuotientNum(number1, number2)));
     }
 
-    public static void testIntegerResult(int expextedResult, int actualResult) {
-        if (expextedResult == actualResult) {
+    public static void testIntegerResult(double expectedResult, double actualResult) {
+        if (expectedResult == actualResult) {
+            System.out.println("Pass");
+        } else {
+            System.out.println("Fail");
+        }
+    }
+
+    public static void testStringResult(String expectedResult, String actualResult) {
+        if (expectedResult.equals(actualResult)) {
             System.out.println("Pass");
         } else {
             System.out.println("Fail");
@@ -288,6 +298,7 @@ public class HW4 {
         }
         printLine();
 
+        double actualResult10;
 
         /** 10. Проверьте число на четность. Если число четное, удвойте это число, иначе возведите число в квадрат.
          *     Выведите результат работы алгоритма на печать.
@@ -301,7 +312,8 @@ public class HW4 {
             //number *= number;
             number = Math.pow(number, 2);
         }
-        System.out.println(Math.round(number));
+        actualResult10 = Math.round(number);
+        System.out.println(actualResult10);
         printLine();
 
 
@@ -314,13 +326,18 @@ public class HW4 {
          *      Найдите в презентации, какой блок схеме соответствует ваш алгоритм.
          */
         printTaskNumber(11);
-
-        if (AGE >= 5) {
-            System.out.println("В школу можно идти с 5 лет");
+        if(AGE < 0 || AGE > 120) {
+            actualResult11 = "Wrong data ";
+            System.out.println(actualResult11);
+        } else if (AGE >= 5) {
+            actualResult11 = "В школу можно идти с 5 лет ";
+            System.out.println("В школу можно идти с 5 лет ");
             if (AGE >= 16) {
-                System.out.println("Машину можно водить с 16 лет");
+                actualResult11 = actualResult11 + "Машину можно водить с 16 лет ";
+                System.out.println("Машину можно водить с 16 лет ");
                 if (AGE >= 18) {
-                    System.out.println("Голосовать можно с 18 лет");
+                    actualResult11 = actualResult11 + "Голосовать можно с 18 лет ";
+                    System.out.println("Голосовать можно с 18 лет ");
                 }
             }
         }
@@ -453,7 +470,10 @@ public class HW4 {
          *     Тестовые данные - 2, 5, 0.
          */
         printTaskNumber(19);
-        testIntegerResult(12,12);
+        testIntegerResult(12,actualResult10);
+        testIntegerResult(-2,actualResult10);
+        testIntegerResult(5,actualResult10);
+        testIntegerResult(0,actualResult10);
         printLine();
 
 
@@ -461,7 +481,7 @@ public class HW4 {
          *     Придумайте тестовые данные. Выведите результат проверки на печать.
          */
         printTaskNumber(20);
-
+        testStringResult("В школу можно идти с 5 лет Машину можно водить с 16 лет ", actualResult11);
         printLine();
 
 
