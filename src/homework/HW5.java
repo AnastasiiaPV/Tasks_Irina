@@ -1,53 +1,11 @@
 package homework;
 
-public class HW5 {
-
-    private static String printLine() {
-        return Variables.ANSI_PURPLE + "*".repeat(15) + Variables.ANSI_BLACK;
-    }
-
-    private static void printTaskNUmber(int number) {
-        System.out.println(printLine() + "_Task " + Variables.ANSI_BLUE + number + "_" + printLine());
-    }
-
-    private static void printSubparagraphNumber(int number, String letter) {
-        System.out.println(printLine() + "_Task " + Variables.ANSI_BLUE + number + "_" + letter + printLine());
-    }
-
-    private static void printNewRow() {
-        System.out.println("\n");
-    }
+public class HW5 extends Utils{
 
     /**
      * 1. ВСЕ!!! результаты должны быть протестированы, для этого необходимо создать метод с названием
      * verifyEquals(expectedResult, actualResult)
      */
-    public static void verifyEquals(String expectedResult, String actualResult) {
-        if (expectedResult.equals(actualResult)) {
-            System.out.println(Variables.ANSI_GREEN + "Pass");
-        } else {
-            System.out.println(Variables.ANSI_RED + "Fail");
-        }
-        printNewRow();
-    }
-
-    public static void verifyEquals(int expectedResult, int actualResult) {
-        if (expectedResult == actualResult) {
-            System.out.println(Variables.ANSI_GREEN + "Pass");
-        } else {
-            System.out.println(Variables.ANSI_RED + "Fail");
-        }
-        printNewRow();
-    }
-
-    public static void verifyEquals(double expectedResult, double actualResult) {
-        if (expectedResult == actualResult) {
-            System.out.println(Variables.ANSI_GREEN + "Pass");
-        } else {
-            System.out.println(Variables.ANSI_RED + "Fail");
-        }
-        printNewRow();
-    }
 
     /********************************************************************************************
      * 2. Написать метод, который принимает на вход число от 1 до 7  и возвращает день недели.
