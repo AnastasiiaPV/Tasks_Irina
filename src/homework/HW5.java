@@ -155,7 +155,7 @@ public class HW5 {
      * 7. Написать метод, который принимает на вход десятичное число и возвращает строку “10 кг 75 гр”.*/
     public static String getWeight(double num) {
         int firstNum = (int) num;
-        int secondNum = (int) Math.ceil((num - firstNum) * 100);
+        int secondNum = (int) Math.round((num - firstNum) * 100);
 
         return firstNum + " кг " + secondNum + " гр";
     }
@@ -411,6 +411,10 @@ public class HW5 {
         return Math.ceil((Math.sqrt((a * b + c) * Math.pow(a, b))) / Math.PI);
     }
 
+    public static double getResult1(int a, int b, int c) {
+        return Math.ceil((Math.sqrt((Math.fma(a, b, c)) * Math.pow(a, b))) / Math.PI);
+    }
+
 
     /**********************************************************************************************************
      * 17.
@@ -430,7 +434,7 @@ public class HW5 {
      */
     public static double javaStatement2(double score) {
         if (score < 90 && score > 80) {
-            return score * 5;
+            return score + 5;
         } else {
             return score;
         }
@@ -441,7 +445,7 @@ public class HW5 {
      * item = !((i<10) || (v>=50))
      */
     public static String javaStatement3() {
-        return "(i < 10) || (v < 50)";
+        return "(i >= 10) && (v < 50)";
     }
 
     /**
@@ -459,7 +463,7 @@ public class HW5 {
      * 5. Write a java statement that prints true if both x and y are positive number.
      */
     public static String javaStatement5(int x, int y) {
-        if (y > 0 && x > 0) {
+        if (y >= 0 && x >= 0) {
             return "true";
         } else {
             return "false";
@@ -500,8 +504,9 @@ public class HW5 {
     /**********************************************************************************************************
      *  19. Написать метод, который возвращает случайное число в пределах от 1 до 99 включительно.
      */
-    public static double getRandomNum() {
+    public static double getRandomNum() {//not correct
     double case1 = Math.round(Math.random() * 10);
+
     if (case1 == 1) {
         System.out.println(1);
         return Math.round(Math.random() * 10);
@@ -514,6 +519,10 @@ public class HW5 {
         return result;
     }
         return case1;
+    }
+
+    public static double getRandomNum1() {
+        return (int)((Math.random() * 100) + 1);
     }
 
     /***********************************************************************************************************
@@ -648,6 +657,7 @@ public class HW5 {
         printTaskNUmber(16);
         System.out.println(getResult(3, 4, 20));
         verifyEquals(getResult(3, 4, 20), 17);
+        System.out.println(getResult1(3, 4, 20));
 
 
         printTaskNUmber(17);
@@ -675,8 +685,11 @@ public class HW5 {
 
         printTaskNUmber(19);
         System.out.println(getRandomNum());
+        printSubparagraphNumber(19,"b");
+        System.out.println(getRandomNum1());
 
-        printTaskNUmber(20);
+
+            printTaskNUmber(20);
         System.out.println(isLeapYear(2024));
         System.out.println(isLeapYear(1900));
         System.out.println(isLeapYear(2000));
