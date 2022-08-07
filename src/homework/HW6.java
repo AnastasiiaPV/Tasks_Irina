@@ -46,8 +46,8 @@ public class HW6 extends Utils {
     /********************************************************************************************************
      * 5. Распечатать последовательность чисел в промежутке [12, 13] с шагом 0.1*/
     public static void printNumSequence_12_13(int[] arr) {
-        for (double i = arr[0]+0.1; i < arr[1]; i += 0.1) {
-                System.out.print(i + "\t");
+        for (double i = arr[0] + 0.1; i < arr[1]; i += 0.1) {
+            System.out.print(i + "\t");
         }
         printNewRow();
     }
@@ -119,7 +119,7 @@ public class HW6 extends Utils {
      */
     public static void printTenthsNumSequence(double start, double end, double step) {
         for (double i = start; i <= end; i += step) {
-                System.out.print(i + "\t");
+            System.out.print(i + "\t");
         }
         printNewRow();
     }
@@ -129,17 +129,70 @@ public class HW6 extends Utils {
      * 11. Написать метод, который принимает параметр  l и печатает  последовательность четных чисел от нуля.
      * Длина последовательности = L.
      */
+    public static void printPositiveNumSequence_0_L(int l) {
+        for (int i = 0; i <= l; i++) {
+            if (i % 2 == 0) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+
 
     /********************************************************************************************************
      * 12. Напишите метод, который принимает целое число n, и выводит все степени числа 2 от 1 до n включительно*/
+    public static void printNumPowSequence(int n) {
+        for (int i = 1; i <= n; i++) {
+            System.out.print((int) (Math.pow(2, i)) + " ");
+        }
+    }
+
+
     /********************************************************************************************************
      * 13. Вывести последовательность 012345678900112233445566778899000…  до числа 9999 включительно.*/
+    public static void printNumSequenceTill_9999() {
+
+        for (int i = 1; i <= 4; i++) {
+            int count = i;
+            for (int j = 0; j <= 9; j++) {
+                while (count > 0) {
+                    System.out.print(j);
+                    count--;
+                }
+                count = i;
+            }
+        }
+    }
+
+
     /********************************************************************************************************
      * 14.  Распечатайте последовательность чисел:
      0, 1, -1, 2, -2, 3, -3, 4, -4, 5, -5*/
+    public static void printNumSequence() {
+        int count = 1;
+        while (count <= 5) {
+            for (int i = 0; i < 5; i++) {
+                for (int j = i; j <= count; j++) {
+                    if (j == i) {
+                        System.out.print((j * -1) + ", ");
+                    } else {
+                        System.out.print(j + ", ");
+                    }
+                }
+                count++;
+            }
+        }
+        System.out.print(-5);
+    }
+
     /********************************************************************************************************
      * 15. Распечатать последовательность чисел:
      0, 3, 5, 6, 9, 10, 12, 15, 18, 20, 21, 24, 25*/
+    public static void printNumSequence15() {
+        for (int i = 0; i <= 25; i++) {
+
+        }
+    }
+
     /********************************************************************************************************
      * 16. Написать метод, который принимает параметры n, m, , и печатает последовательность нечетных чисел
      * начиная с числа n, с шагом m,  длина последовательности  .
@@ -193,7 +246,21 @@ public class HW6 extends Utils {
         printNumSequence_mine10_34();
 
         printTaskNUmber(10);
-        printTenthsNumSequence(-15.1, 30.9,5.5);
+        printTenthsNumSequence(-15.1, 30.9, 5.5);
+
+        printTaskNUmber(11);
+        printPositiveNumSequence_0_L(25);
+        printNewRow();
+
+        printTaskNUmber(12);
+        printNumPowSequence(10);
+        printNewRow();
+
+        printTaskNUmber(13);
+        printNumSequenceTill_9999();
+
+        printTaskNUmber(14);
+        printNumSequence();
 
     }
 }
