@@ -203,6 +203,16 @@ public class HW6 extends Utils {
      * начиная с числа n, с шагом m,  длина последовательности  l.
      */
     public static void printNumSequence16(int n, int m, int l) {
+        int j = 0;
+        for (int i = n; j < l; i += m) {
+            if (i % 2 != 0) {
+                System.out.print(i + ", ");
+                j++;
+            }
+        }
+    }
+
+    public static void printNumSequence16_2(int n, int m, int l) {
         for (int i = n; i <= l; i += m) {
             if (i % 2 != 0) {
                 System.out.print(i + ", ");
@@ -213,9 +223,13 @@ public class HW6 extends Utils {
     /********************************************************************************************************
      * 17.  Сгенерируйте и распечатайте последовательность по формуле:
      n + 1 = n + 2*/
-    public static void printNumSequence17(int n) {
-
+    public static void printNumSequence17(int n, int l) {
+        for (int i = 0; i < l; i++) {
+            System.out.print(n + " ");
+            n += 2;
+        }
     }
+
 
     /********************************************************************************************************
      * 18. Написать метод, который принимает параметры l, n, и печатает последовательность чисел, начиная с числа n,
@@ -224,8 +238,9 @@ public class HW6 extends Utils {
      *      Длина последовательности  l.
      */
     public static void printNumSequence18(int n, int l) {
-        for (int i = n; i <= l; i = 2*n) {
-
+        for (int i = 0; i < l; i++) {
+            System.out.print(n + " ");
+            n *= 2;
         }
     }
 
@@ -247,8 +262,20 @@ public class HW6 extends Utils {
 
     /********************************************************************************************************
      * 20.  Написать метод, который вычислит значение функции: */
-    public static void printNumSequence20() {
-
+    public static void printNumSequence20(int l, int x) {
+        double y;
+        double sum = 0;
+        for (int i = x; i < l; i++) {
+            if (x > 1.5) {
+                y = 2.5 * Math.pow(x, 3) + 6 * Math.pow(x, 2) - 30;
+            } else if (0 <= x && x <= 1.5) {
+                y = x + 1;
+            } else {
+                y = x;
+            }
+            sum += y;
+        }
+        System.out.println(sum);
     }
 
     public static void main(String[] args) {
@@ -303,11 +330,25 @@ public class HW6 extends Utils {
         printNewRow();
 
         printTaskNUmber(16);
-        printNumSequence16(5, 3, 100);
+        printNumSequence16(5, 3, 20);
         printNewRow();
+
+        printTaskNUmber(17);
+        printNumSequence17(5, 20);
+        printNewRow();
+
+        printTaskNUmber(18);
+        printNumSequence18(3, 20);
+        printNewRow();
+
 
         printTaskNUmber(19);
         printNumSequence19();
+        printNewRow();
+
+        printTaskNUmber(20);
+        printNumSequence20(5, -2);
+
 
     }
 }
