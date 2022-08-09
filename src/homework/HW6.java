@@ -462,8 +462,6 @@ public class HW6 extends Utils {
 
         printTaskNUmber(20);
         printNumSequence20(5, -2);
-
-
     }
 }
 
