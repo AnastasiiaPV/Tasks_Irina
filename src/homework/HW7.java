@@ -179,7 +179,7 @@ public class HW7 extends Utils {
         for (int i = 0; i < getCatsAges().length; i++) {
             avg += getCatsAges()[i];
         }
-        System.out.println(avg/getCatsAges().length-1);
+        System.out.println(avg / getCatsAges().length - 1);
     }
 
 
@@ -188,7 +188,7 @@ public class HW7 extends Utils {
     public static void printYoungestCat() {
         double min = Double.MAX_VALUE;
         for (int i = 0; i < getCatsAges().length; i++) {
-            if (getCatsAges()[i] < min){
+            if (getCatsAges()[i] < min) {
                 min = getCatsAges()[i];
             }
         }
@@ -200,7 +200,7 @@ public class HW7 extends Utils {
     public static void printOldestCat() {
         double max = Double.MIN_VALUE;
         for (int i = 0; i < getCatsAges().length; i++) {
-            if (getCatsAges()[i] > max){
+            if (getCatsAges()[i] > max) {
                 max = getCatsAges()[i];
             }
         }
@@ -212,7 +212,7 @@ public class HW7 extends Utils {
     public static void printNumGrayCats() {
         int count = 0;
         for (int i = 0; i < getCatsColors().length; i++) {
-            if (getCatsColors()[i].equals("Gray")){
+            if (getCatsColors()[i].equals("Gray")) {
                 count++;
             }
         }
@@ -240,9 +240,9 @@ public class HW7 extends Utils {
     public static int[] getPositiveNum() {
         int[] result = {0};
         for (int i = 1; i < 11; i++) {
-            if(i % 2 == 0) {
-                result = Arrays.copyOf(result, result.length+1);
-                result[result.length-1] = i;
+            if (i % 2 == 0) {
+                result = Arrays.copyOf(result, result.length + 1);
+                result[result.length - 1] = i;
             }
         }
         System.out.println(Arrays.toString(result));
@@ -258,7 +258,7 @@ public class HW7 extends Utils {
         for (int j : arr) {
             avg += j;
         }
-        return avg/arr.length;
+        return avg / arr.length;
     }
 
     /**************************************************************************************************************
@@ -266,9 +266,9 @@ public class HW7 extends Utils {
     public static int[] getNegativeNum() {
         int[] result = {};
         for (int i = -1000; i < -900; i++) {
-            if(i % 2 != 0) {
-                result = Arrays.copyOf(result, result.length+1);
-                result[result.length-1] = i;
+            if (i % 2 != 0) {
+                result = Arrays.copyOf(result, result.length + 1);
+                result[result.length - 1] = i;
             }
         }
         System.out.println(Arrays.toString(result));
@@ -281,10 +281,10 @@ public class HW7 extends Utils {
     public static int[] getRandomNumArr() {
         int[] arr = {};
         int i = 0;
-        while(i < 10) {
-            int num = Math.abs((int)Math.round(Math.random() * 10));
+        while (i < 10) {
+            int num = Math.abs((int) Math.round(Math.random() * 90 + 1));
             arr = Arrays.copyOf(arr, arr.length + 1);
-            arr[arr.length-1] = num;
+            arr[arr.length - 1] = num;
             i++;
         }
         System.out.println(Arrays.toString(arr));
@@ -301,15 +301,15 @@ public class HW7 extends Utils {
         int max = Integer.MIN_VALUE;
 
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < min){
+            if (arr[i] < min) {
                 min = arr[i];
             }
-            if (arr[i] > max){
+            if (arr[i] > max) {
                 max = arr[i];
             }
             avg += arr[i];
         }
-        System.out.println("Average: " + avg/arr.length + ";\nMin: " + min + ";\nMax: " + max + ";");
+        System.out.println("Average: " + avg / arr.length + ";\nMin: " + min + ";\nMax: " + max + ";");
     }
 
     /**************************************************************************************************************
@@ -319,7 +319,7 @@ public class HW7 extends Utils {
         int[] even = {};
 
         for (int i = 0; i < arr.length; i++) {
-            if(arr[i] % 2 != 0) {
+            if (arr[i] % 2 != 0) {
                 odd = Arrays.copyOf(odd, odd.length + 1);
                 odd[odd.length - 1] = arr[i];
             } else {
@@ -346,6 +346,61 @@ public class HW7 extends Utils {
         System.out.println(Arrays.toString(even) + "\n" + Arrays.toString(odd));
     }
 
+
+    /**************************************************************************************************************
+     * 23. Создать двумерный массив, который состоит из имен, возрастов, цветов котов:
+     Распечатать все данные котов в коробках с четными индексами, используя двумерный массив.*/
+    public static void printArray_23() {
+        String[][] arrCat = {
+                {"Ruddy", "Black", "Light Ruddy", "Middle Ruddy", "Light Yellow", "Grey", "Yellow", "Dark Gray"},
+                {"1.2", "3", "15.1", "0.9", "10", "6.6", "5", "3.2"},
+                {"Gray", "Black", "Yellow", "Gray", "Red", "Pockmarked", "Red", "Gray"}
+        };
+        for (int i = 0; i < arrCat.length; i++) {
+            for (int j = 0; j < arrCat[i].length; j++) {
+                if(j % 2 == 0) {
+                    System.out.print(arrCat[i][j] + ", ");
+                }
+            }
+        }
+    }
+
+    public static void printArray_23_2() {
+        String[][] arrCat = {getCatsNames_2(), getCatsColors(), turnArrToString(getCatsAges())};
+        for (int i = 0; i < arrCat.length; i++) {
+            for (int j = 0; j < arrCat[i].length; j++) {
+                if(j % 2 == 0) {
+                    System.out.print(arrCat[i][j] + ", ");
+                }
+            }
+        }
+    }
+
+
+    /**************************************************************************************************************
+     * 24. Создать двумерный массив целых случайных чисел от 1 до 10 размерности 4*8.*/
+    public static int[][] getArr_24() {
+        int[][] arrInt = new int[4][8];
+
+        for (int i = 0; i < arrInt.length; i++) {
+            for (int j = 0; j < arrInt[i].length; j++) {
+                arrInt[i][j] = (int)Math.round(Math.random() * 10);
+            }
+        }
+        return arrInt;
+    }
+
+    /**************************************************************************************************************
+     * 25. Вывести сумму всех четных чисел массива из задания 24.*/
+    public static void printPositive(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] % 2 == 0){
+                    System.out.print(arr[i][j] + ", ");
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) {
         printTaskNUmber(1);
@@ -425,15 +480,19 @@ public class HW7 extends Utils {
         getEvenOddNum(getRandomNumArr());
         printNewRow();
 
+        printTaskNUmber(23);
+        printArray_23();
+        printNewRow();
+
+        printSubparagraphNumber(23, "_2");
+        printArray_23_2();
+        printNewRow();
+
+        printTaskNUmber(24);
+        System.out.println(Arrays.deepToString(getArr_24()));
+        printNewRow();
+
+        printTaskNUmber(25);
+        printPositive(getArr_24());
     }
-
-
-    /**************************************************************************************************************
-     * 23. Создать двумерный массив, который состоит из имен, возрастов, цветов котов:
-     Распечатать все данные котов в коробках с четными индексами, используя двумерный массив.*/
-    /**************************************************************************************************************
-     * 24. Создать двумерный массив целых случайных чисел от 1 до 10 размерности 4*8.*/
-    /**************************************************************************************************************
-     * 25. Вывести сумму всех четных чисел массива из задания 24.*/
-
 }

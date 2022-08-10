@@ -1,5 +1,7 @@
 package homework;
 
+import java.util.Arrays;
+
 public class Utils extends Variables {
 
     public static void printNewRow() {
@@ -43,5 +45,20 @@ public class Utils extends Variables {
             System.out.println(Variables.ANSI_RED + "Fail");
         }
         printNewRow();
+    }
+
+    public static String[] turnArrToString(double[] arr) {
+        String ages = Arrays.toString(arr);
+        String[] newArray = ages.split(", ");
+
+        for (int i = 0; i < newArray.length; i++) {
+            if(newArray[i].contains("[")) {
+                newArray[i] = newArray[i].replace("[","");
+            } else if (newArray[i].contains("]")) {
+                newArray[i] = newArray[i].replace("]","");
+            }
+        }
+
+        return newArray;
     }
 }
