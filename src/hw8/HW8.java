@@ -94,6 +94,7 @@ public class HW8 extends Utils {
      */
     public static int getArrayEven(int[] array) {
         int count = 0;
+
         for (int j : array) {
             if (j % 2 == 0) {
                 count++;
@@ -109,8 +110,8 @@ public class HW8 extends Utils {
      * */
     public static int[] getArrayOdd(int[] array) {
         int[] odd = {};
-        for (int j : array) {
 
+        for (int j : array) {
             odd = Arrays.copyOf(odd, odd.length + 1);
             odd[odd.length - 1] = j * -1;
         }
@@ -123,6 +124,7 @@ public class HW8 extends Utils {
     //1, 60, 22, 48, 82, 6, 5
     public static boolean[] getArrayBoolean(int[] array) {
         boolean[] newArray = {};
+
         for (int j : array) {
             newArray = Arrays.copyOf(newArray, newArray.length + 1);
             newArray[newArray.length - 1] = j > 10;
@@ -154,12 +156,7 @@ public class HW8 extends Utils {
             for (int i = array.length / 2 + 1; i < array.length; i++) {
                 sumHalf += array[i];
             }
-            if (array[array.length / 2] % 2 != 0) {
-                sumHalf += array[array.length / 2] / 2;
-                sumHalf += array[array.length / 2] % 2;
-            } else {
-                sumHalf += array[array.length / 2] / 2;
-            }
+            sumHalf += (double) array[array.length / 2] / 2;
         } else {
             for (int i = array.length / 2; i < array.length; i++) {
                 sumHalf += array[i];
@@ -167,6 +164,7 @@ public class HW8 extends Utils {
         }
         return sumHalf;
     }
+
 
     /***************************************************************************************************************
      16. Написать метод, который принимает на вход целое положительные число в пределах от 1 до 10 исключительно,
@@ -243,7 +241,7 @@ public class HW8 extends Utils {
             num *= 10;
         }
         for (int i = 0; i < l; i++) {
-            array[i] = (int) Math.round(Math.random() * num + (num / 10));
+            array[i] = (int) (Math.random() * (num - (num / 10) + 1)) + (num / 10);
         }
         return array;
     }
@@ -253,8 +251,9 @@ public class HW8 extends Utils {
      двузначных чисел. ПРоверить работу метода на массиве из задания 18.*/
     public static int[] getTwoDigitArray(int[] array) {
         int[] newArray = {};
+
         for (int j : array) {
-            if (j < 100 && j > 9 ) {
+            if (j < 100 && j > 9) {
                 newArray = Arrays.copyOf(newArray, newArray.length + 1);
                 newArray[newArray.length - 1] = j;
             }
@@ -341,8 +340,8 @@ public class HW8 extends Utils {
 
 
         printTaskNUmber(15);
-//        System.out.println(getSum_15(new int[]{1, 60, 22, 48, 82, 6, 5}));
-//        System.out.println(getSum_15(new int[]{1, 60, 22, 48, 82, 6}));
+        System.out.println(getSum_15(new int[]{1, 60, 22, 48, 82, 6, 5}));
+        System.out.println(getSum_15(new int[]{1, 60, 22, 48, 82, 6}));
         System.out.println(getSum_15(new int[]{1, 60, 22, 5, 82, 6, 5}));
         printNewRow();
 
