@@ -79,9 +79,9 @@ public class HW8 extends Utils {
     public static int[] getArrayInt_10(int[] array) {
         int[] newArray = {};
 
-        for (int i = 0; i < array.length; i++) {
+        for (int j : array) {
             newArray = Arrays.copyOf(newArray, newArray.length + 1);
-            newArray[newArray.length - 1] = (int) Math.round(array[i] * 2.5);
+            newArray[newArray.length - 1] = (int) Math.round(j * 2.5);
         }
 
         return newArray;
@@ -93,10 +93,10 @@ public class HW8 extends Utils {
      * и возвращает количество четных чисел в этом массиве
      */
     public static int getArrayEven(int[] array) {
-            int count = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] % 2 == 0) {
-                count ++;
+        int count = 0;
+        for (int j : array) {
+            if (j % 2 == 0) {
+                count++;
             }
         }
         return count;
@@ -109,10 +109,10 @@ public class HW8 extends Utils {
      * */
     public static int[] getArrayOdd(int[] array) {
         int[] odd = {};
-        for (int i = 0; i < array.length; i++) {
+        for (int j : array) {
 
-            odd = Arrays.copyOf(odd, odd.length+1);
-            odd[odd.length-1] = array[i] * -1;
+            odd = Arrays.copyOf(odd, odd.length + 1);
+            odd[odd.length - 1] = j * -1;
         }
         return odd;
     }
@@ -120,21 +120,104 @@ public class HW8 extends Utils {
     /***************************************************************************************************************
      13. Написать метод, который принимает на вход массив целых чисел,  и возвращает массив значений true или false,
      если числа больше 10*/
+    //1, 60, 22, 48, 82, 6, 5
+    public static boolean[] getArrayBoolean(int[] array) {
+        boolean[] newArray = {};
+        for (int j : array) {
+            newArray = Arrays.copyOf(newArray, newArray.length + 1);
+            newArray[newArray.length - 1] = j > 10;
+        }
+        return newArray;
+    }
+
 
     /***************************************************************************************************************
      14. Написать метод, который принимает на вход массив слов,  и возвращает строку, состоящую из этих слов*/
+    public static String getArrayString_14(String[] array) {
+        StringBuilder sb = new StringBuilder();
+
+        for (String j : array) {
+            sb.append(j).append(" ");
+        }
+        return sb.toString();
+    }
 
     /***************************************************************************************************************
      15. Написать метод, который принимает массив целых чисел и считает сумму чисел во второй половине массива*/
+    // {1, 60, 22, 48, 82, 6, 5} 117
+    // {1, 60, 22, 48, 82, 6} 136
+    // {1, 60, 22, 5, 82, 6, 5} 95.5
+    public static double getSum_15(int[] array) {
+        double sumHalf = 0;
+
+        if (array.length % 2 != 0) {
+            for (int i = array.length / 2 + 1; i < array.length; i++) {
+                sumHalf += array[i];
+            }
+            if (array[array.length / 2] % 2 != 0) {
+                sumHalf += array[array.length / 2] / 2;
+                sumHalf += array[array.length / 2] % 2;
+            } else {
+                sumHalf += array[array.length / 2] / 2;
+            }
+        } else {
+            for (int i = array.length / 2; i < array.length; i++) {
+                sumHalf += array[i];
+            }
+        }
+        return sumHalf;
+    }
 
     /***************************************************************************************************************
      16. Написать метод, который принимает на вход целое положительные число в пределах от 1 до 10 исключительно,
      и возвращает таблицу умножения на это число в виде массива
      Например, метод(2) -> {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20}*/
+    public static int[] getMultiplicationTable(int a) {
+        int[] array = {};
+
+        if (a < 1 || a > 10) {
+            System.out.println("Wrong number");
+            return null;
+        }
+
+        for (int i = 0; i <= 10; i++) {
+            array = Arrays.copyOf(array, array.length + 1);
+            array[array.length - 1] = a * i;
+        }
+        return array;
+    }
 
     /***************************************************************************************************************
      17. Написать метод, который принимает массив целых чисел и возвращает массив четных чисел, если четных чисел больше,
      или массив нечетных чисел, если нечетных чисел больше.*/
+    // {1, 60, 22, 48, 82, 6, 5}
+
+    public static int[] getEvenOrOdd(int[] array) {
+        int countEven = 0;
+        int countOdd = 0;
+        int[] newArrayEven = {};
+        int[] newArrayOdd = {};
+
+        for(int j : array) {
+            if (j % 2 == 0) {
+                countEven++;
+                newArrayEven = Arrays.copyOf(newArrayEven, newArrayEven.length + 1);
+                newArrayEven[newArrayEven.length-1] = j;
+            } else {
+                countOdd++;
+                newArrayOdd = Arrays.copyOf(newArrayOdd, newArrayOdd.length + 1);
+                newArrayOdd[newArrayOdd.length-1] = j;
+            }
+        }
+        if(countEven > countOdd){
+            return newArrayEven;
+        } else if (countEven < countOdd){
+            return newArrayOdd;
+        } else {
+            System.out.println(Arrays.toString(newArrayEven) + ", " + Arrays.toString(newArrayOdd));
+            return null;
+        }
+    }
 
     /***************************************************************************************************************
      18. Написать метод, который принимает на вход длину массива и генерирует массив случайных положительных чисел
@@ -186,53 +269,73 @@ public class HW8 extends Utils {
         printResult();
         printNewRow();
 
+
         printTaskNUmber(7);
         System.out.println(Arrays.toString(getArrayInt_10(5, 7, 105, 63, 17)));
         printNewRow();
+
 
         printTaskNUmber(8);
         System.out.println(Arrays.toString(getArrayDouble(5.9, 7, 105.04, 0.63, 17)));
         printNewRow();
 
+
         printTaskNUmber(9);
         System.out.println(Arrays.toString(getArrayString("a", "b", "c", "d", "e")));
         printNewRow();
+
 
         printTaskNUmber(10);
         System.out.println(Arrays.toString(getArrayInt_10(getArrayInt_10(5, 7, 105, 63, 17))));
         printNewRow();
 
+
         printTaskNUmber(11);
-        System.out.println(getArrayEven(new int[]{6,10,3,25,16}));
+        System.out.println(getArrayEven(new int[]{6, 10, 3, 25, 16}));
         printNewRow();
 
+
         printTaskNUmber(12);
-        System.out.println(Arrays.toString(getArrayOdd(new int[]{60,22,48,82,6})));;
+        System.out.println(Arrays.toString(getArrayOdd(new int[]{60, 22, 48, 82, 6})));
         printNewRow();
 
 
         printTaskNUmber(13);
+        System.out.println(Arrays.toString(getArrayBoolean(new int[]{1, 60, 22, 48, 82, 6, 5})));
         printNewRow();
+
 
         printTaskNUmber(14);
+        System.out.println(getArrayString_14(new String[]{"Flowers", "blum", "all", "day", "long"}));
         printNewRow();
+
 
         printTaskNUmber(15);
+//        System.out.println(getSum_15(new int[]{1, 60, 22, 48, 82, 6, 5}));
+//        System.out.println(getSum_15(new int[]{1, 60, 22, 48, 82, 6}));
+        System.out.println(getSum_15(new int[]{1, 60, 22, 5, 82, 6, 5}));
         printNewRow();
+
 
         printTaskNUmber(16);
+        System.out.println(Arrays.toString(getMultiplicationTable(5)));
+        System.out.println(Arrays.toString(getMultiplicationTable(-5)));
+        System.out.println(Arrays.toString(getMultiplicationTable(0)));
         printNewRow();
 
+
         printTaskNUmber(17);
+        System.out.println(Arrays.toString(getEvenOrOdd(new int[]{1, 60, 22, 48, 82, 6, 5})));
+        System.out.println(Arrays.toString(getEvenOrOdd(new int[]{1, 3, 22, 5, 81, 6, 5})));
+        System.out.println(Arrays.toString(getEvenOrOdd(new int[]{1, 60, 22, 5, 81, 6})));
         printNewRow();
+
 
         printTaskNUmber(18);
         printNewRow();
 
         printTaskNUmber(19);
         printNewRow();
-
-
 
 
     }
