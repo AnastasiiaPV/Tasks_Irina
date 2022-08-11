@@ -2,6 +2,8 @@ package hw8;
 
 import homework.Utils;
 
+import java.util.Arrays;
+
 public class HW8 extends Utils {
 
     static Integer secondInt = 6;
@@ -33,26 +35,87 @@ public class HW8 extends Utils {
 
     /***************************************************************************************************************
      *  7. Написать метод, который принимает на вход 5 целых чисел,  и возвращает массив из этих же чисел*/
+    public static int[] getArrayInt_10(int a, int b, int c, int d, int e) {
+        int[] arr = new int[5];
+        arr[0] = a;
+        arr[1] = b;
+        arr[2] = c;
+        arr[3] = d;
+        arr[4] = e;
+
+        return arr;
+    }
 
     /***************************************************************************************************************
      * 8. Написать метод, который принимает на вход 5 чисел типа double,  и возвращает массив из этих же чисел*/
+    public static double[] getArrayDouble(double a, double b, double c, double d, double e) {
+        double[] arr = new double[5];
+        arr[0] = a;
+        arr[1] = b;
+        arr[2] = c;
+        arr[3] = d;
+        arr[4] = e;
+
+        return arr;
+    }
 
     /***************************************************************************************************************
      *  9. Написать метод, который принимает на вход 5 слов, и возвращает массив из этих слов*/
+    public static String[] getArrayString(String a, String b, String c, String d, String e) {
+        String[] arr = new String[5];
+        arr[0] = a;
+        arr[1] = b;
+        arr[2] = c;
+        arr[3] = d;
+        arr[4] = e;
+
+        return arr;
+    }
 
     /***************************************************************************************************************
      *  10. Написать метод, который принимает на вход массив целых чисел,  и возвращает массив тех же чисел,
      умноженных на 2.5*/
+    //(5, 7, 105, 63, 17)
+    public static int[] getArrayInt_10(int[] array) {
+        int[] newArray = {};
+
+        for (int i = 0; i < array.length; i++) {
+            newArray = Arrays.copyOf(newArray, newArray.length + 1);
+            newArray[newArray.length - 1] = (int) Math.round(array[i] * 2.5);
+        }
+
+        return newArray;
+    }
+
 
     /***************************************************************************************************************
      *  11. Написать метод, который принимает на вход массив целых положительных чисел,
      * и возвращает количество четных чисел в этом массиве
      */
+    public static int getArrayEven(int[] array) {
+            int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 == 0) {
+                count ++;
+            }
+        }
+        return count;
+    }
+
 
     /***************************************************************************************************************
      * 12. Написать метод, который принимает на вход массив целых положительных чисел,
      * и возвращает массив нечетных чисел
      * */
+    public static int[] getArrayOdd(int[] array) {
+        int[] odd = {};
+        for (int i = 0; i < array.length; i++) {
+
+            odd = Arrays.copyOf(odd, odd.length+1);
+            odd[odd.length-1] = array[i] * -1;
+        }
+        return odd;
+    }
 
     /***************************************************************************************************************
      13. Написать метод, который принимает на вход массив целых чисел,  и возвращает массив значений true или false,
@@ -118,7 +181,59 @@ public class HW8 extends Utils {
 
 
     public static void main(String[] args) {
+
+        printTaskNUmber(6);
         printResult();
+        printNewRow();
+
+        printTaskNUmber(7);
+        System.out.println(Arrays.toString(getArrayInt_10(5, 7, 105, 63, 17)));
+        printNewRow();
+
+        printTaskNUmber(8);
+        System.out.println(Arrays.toString(getArrayDouble(5.9, 7, 105.04, 0.63, 17)));
+        printNewRow();
+
+        printTaskNUmber(9);
+        System.out.println(Arrays.toString(getArrayString("a", "b", "c", "d", "e")));
+        printNewRow();
+
+        printTaskNUmber(10);
+        System.out.println(Arrays.toString(getArrayInt_10(getArrayInt_10(5, 7, 105, 63, 17))));
+        printNewRow();
+
+        printTaskNUmber(11);
+        System.out.println(getArrayEven(new int[]{6,10,3,25,16}));
+        printNewRow();
+
+        printTaskNUmber(12);
+        System.out.println(Arrays.toString(getArrayOdd(new int[]{60,22,48,82,6})));;
+        printNewRow();
+
+
+        printTaskNUmber(13);
+        printNewRow();
+
+        printTaskNUmber(14);
+        printNewRow();
+
+        printTaskNUmber(15);
+        printNewRow();
+
+        printTaskNUmber(16);
+        printNewRow();
+
+        printTaskNUmber(17);
+        printNewRow();
+
+        printTaskNUmber(18);
+        printNewRow();
+
+        printTaskNUmber(19);
+        printNewRow();
+
+
+
 
     }
 }
