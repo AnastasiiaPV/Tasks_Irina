@@ -191,27 +191,26 @@ public class HW8 extends Utils {
      17. Написать метод, который принимает массив целых чисел и возвращает массив четных чисел, если четных чисел больше,
      или массив нечетных чисел, если нечетных чисел больше.*/
     // {1, 60, 22, 48, 82, 6, 5}
-
     public static int[] getEvenOrOdd(int[] array) {
         int countEven = 0;
         int countOdd = 0;
         int[] newArrayEven = {};
         int[] newArrayOdd = {};
 
-        for(int j : array) {
+        for (int j : array) {
             if (j % 2 == 0) {
                 countEven++;
                 newArrayEven = Arrays.copyOf(newArrayEven, newArrayEven.length + 1);
-                newArrayEven[newArrayEven.length-1] = j;
+                newArrayEven[newArrayEven.length - 1] = j;
             } else {
                 countOdd++;
                 newArrayOdd = Arrays.copyOf(newArrayOdd, newArrayOdd.length + 1);
-                newArrayOdd[newArrayOdd.length-1] = j;
+                newArrayOdd[newArrayOdd.length - 1] = j;
             }
         }
-        if(countEven > countOdd){
+        if (countEven > countOdd) {
             return newArrayEven;
-        } else if (countEven < countOdd){
+        } else if (countEven < countOdd) {
             return newArrayOdd;
         } else {
             System.out.println(Arrays.toString(newArrayEven) + ", " + Arrays.toString(newArrayOdd));
@@ -222,15 +221,46 @@ public class HW8 extends Utils {
     /***************************************************************************************************************
      18. Написать метод, который принимает на вход длину массива и генерирует массив случайных положительных чисел
      от 0 до 100 исключительно.*/
+    public static int[] getRandomNum(int l) {
+        int[] array = new int[l];
+
+        for (int i = 0; i < l; i++) {
+            array[i] = (int) Math.round(Math.random() * 100 + 0);
+        }
+        return array;
+    }
+
 
     /***************************************************************************************************************
      19.  Написать метод, который принимает на вход длину массива l и количество знаков d
      (однозначные, двузначные, трехзначные и тд числа), и генерирует массив случайных целых положительных чисел длины l,
      в котором все числа имеют количество знаков d*/
+    public static int[] getRandomNum_19(int l, int d) {
+        int[] array = new int[l];
+        int num = 1;
+
+        for (int i = 0; i < d; i++) {
+            num *= 10;
+        }
+        for (int i = 0; i < l; i++) {
+            array[i] = (int) Math.round(Math.random() * num + (num / 10));
+        }
+        return array;
+    }
 
     /***************************************************************************************************************
      20. Написать метод, который принимает на вход массив целых положительных чисел, и возвращает массив только
      двузначных чисел. ПРоверить работу метода на массиве из задания 18.*/
+    public static int[] getTwoDigitArray(int[] array) {
+        int[] newArray = {};
+        for (int j : array) {
+            if (j < 100 && j > 9 ) {
+                newArray = Arrays.copyOf(newArray, newArray.length + 1);
+                newArray[newArray.length - 1] = j;
+            }
+        }
+        return newArray;
+    }
 
     /***************************************************************************************************************
      21. Написать метод, который принимает на вход массив целых положительных двузначных чисел,
@@ -332,10 +362,17 @@ public class HW8 extends Utils {
 
 
         printTaskNUmber(18);
+        System.out.println(Arrays.toString(getRandomNum(15)));
         printNewRow();
 
         printTaskNUmber(19);
-        printNewRow();
+        System.out.println(Arrays.toString(getRandomNum_19(5, 2)));
+        System.out.println(Arrays.toString(getRandomNum_19(5, 5)));
+        System.out.println(Arrays.toString(getRandomNum_19(5, 1)));
+
+
+        printTaskNUmber(20);
+        System.out.println(Arrays.toString(getTwoDigitArray(getRandomNum(15))));
 
 
     }
