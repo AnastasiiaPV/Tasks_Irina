@@ -32,6 +32,12 @@ public class HW7 extends Utils {
         return new String[]{"Gray", "Black", "Yellow", "Gray", "Red", "Pockmarked", "Red", "Gray"};
     }
 
+    public static void getCatsColors_2() {
+        String[] arr = new String[]{"Gray", "Black", "Yellow", "Gray", "Red", "Pockmarked", "Red", "Gray"};
+        for (String s : arr) {
+            System.out.print(s + ", ");
+        }
+    }
 
     /**************************************************************************************************************
      * 4. Создать массив catsAges и заполнить его любыми значениями.*/
@@ -48,6 +54,7 @@ public class HW7 extends Utils {
      * 5. Создать массив isCatRed и заполнить его соответствующими значениями*/
     public static boolean isCatRed(String color) {
         boolean[] isCatRed = {true, false};
+
         if (color.equals("Red") || color.equals("Рыжик")) {
             System.out.println(isCatRed[0]);
             return true;
@@ -119,8 +126,12 @@ public class HW7 extends Utils {
         StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < getCatsAges().length; i++) {
-            if (getCatsAges()[i] < 2) {
-                result.append(getCatsAges()[i]).append(" - Отнеси кота на прививку!").append("\n");
+            if (getCatsAges()[i] < 0 || getCatsAges()[i] > 30){
+                result.append("Wrong age\n");
+            } else if (getCatsAges()[i] < 2) {
+                result.append(getCatsAges()[i]).append(" - Отнеси кота на прививку!\n");
+            } else {
+                result.append(getCatsAges()[i]).append(" - Cat stays home\n");
             }
         }
         System.out.println(result);
@@ -133,9 +144,11 @@ public class HW7 extends Utils {
     //[Gray, Black, Yellow, Gray, Red, Pockmarked, Red, Gray]
     //[1.2, 3.0, 15.1, 0.9, 10.0, 6.6, 5.0, 3.2]
     public static void printLastCat() {
-        System.out.println(new StringBuilder().append("Name: ").append(getCatsNames_2()[getCatsNames_2().length - 1])
-                .append("\nColor: ").append(getCatsColors()[getCatsColors().length - 1])
-                .append("\nAge: ").append(getCatsAges()[getCatsAges().length - 1]));
+        if (getCatsAges().length != 0 || getCatsColors().length != 0 || getCatsNames_2().length != 0) {
+            System.out.println(new StringBuilder().append("Name: ").append(getCatsNames_2()[getCatsNames_2().length - 1])
+                    .append("\nColor: ").append(getCatsColors()[getCatsColors().length - 1])
+                    .append("\nAge: ").append(getCatsAges()[getCatsAges().length - 1]));
+        }
     }
 
 
@@ -146,9 +159,11 @@ public class HW7 extends Utils {
     public static void printCatsNames_10() {
         StringBuilder result = new StringBuilder("Bозраст больше 2 лет:\n");
 
-        for (int i = 0; i < getCatsAges().length; i++) {
-            if (getCatsAges()[i] > 2) {
-                result.append(getCatsNames_2()[i]).append("\n");
+        if (getCatsAges().length == getCatsColors().length && getCatsColors().length == getCatsNames_2().length) {
+            for (int i = 0; i < getCatsAges().length; i++) {
+                if (getCatsAges()[i] > 2) {
+                    result.append(getCatsNames_2()[i]).append("\n");
+                }
             }
         }
         System.out.println(result);
@@ -164,8 +179,10 @@ public class HW7 extends Utils {
         String feedTheCat = "Накорми кота!";
 
         for (int i = 0; i < getCatsNames_2().length; i++) {
-            if (getCatsNames_2()[i].equals("Рыжик") && isCatRed(getCatsColors()[i])) {
-                result.append(i).append(". ").append(getCatsColors()[i]).append(" ").append(feedTheCat).append("\n");
+            if (getCatsNames_2().length != 0) {
+                if (getCatsNames_2()[i].equals("Рыжик") && isCatRed(getCatsColors()[i])) {
+                    result.append(i).append(". ").append(getCatsColors()[i]).append(" ").append(feedTheCat).append("\n");
+                }
             }
         }
         System.out.println(result);
@@ -176,10 +193,11 @@ public class HW7 extends Utils {
      * 12. Распечатать средний возраст котов из массива catsAges*/
     public static void printAvgAge() {
         double avg = 0;
+
         for (int i = 0; i < getCatsAges().length; i++) {
             avg += getCatsAges()[i];
         }
-        System.out.println(avg / getCatsAges().length - 1);
+        System.out.println(avg / getCatsAges().length);
     }
 
 
@@ -187,6 +205,7 @@ public class HW7 extends Utils {
      * 13. Распечатать возраст самого молодого кота*/
     public static void printYoungestCat() {
         double min = Double.MAX_VALUE;
+
         for (int i = 0; i < getCatsAges().length; i++) {
             if (getCatsAges()[i] < min) {
                 min = getCatsAges()[i];
@@ -199,6 +218,7 @@ public class HW7 extends Utils {
      * 14. Распечатать возраст самого старого кота*/
     public static void printOldestCat() {
         double max = Double.MIN_VALUE;
+
         for (int i = 0; i < getCatsAges().length; i++) {
             if (getCatsAges()[i] > max) {
                 max = getCatsAges()[i];
@@ -211,6 +231,7 @@ public class HW7 extends Utils {
      * 15. Распечатать количество серых котов*/
     public static void printNumGrayCats() {
         int count = 0;
+
         for (int i = 0; i < getCatsColors().length; i++) {
             if (getCatsColors()[i].equals("Gray")) {
                 count++;
@@ -226,9 +247,11 @@ public class HW7 extends Utils {
     //[Ruddy,  Черныш, Light Ruddy, Middle Ruddy, Рыжик,  Grey,  Yellow, Dark Gray]
     //[1.2,    3.0,    15.1,        0.9,          10.0,   6.6,   5.0,    3.2]
     public static void printCat_16() {
-        for (int i = 0; i < getCatsNames_2().length; i++) {
-            if (i % 2 == 0 && getCatsAges()[i] <= 3) {
-                System.out.println(getCatsNames_2()[i]);
+        if(getCatsNames_2().length == getCatsAges().length && getCatsNames_2().length != 0) {
+            for (int i = 0; i < getCatsNames_2().length; i++) {
+                if (i % 2 == 0 && getCatsAges()[i] <= 3) {
+                    System.out.println(getCatsNames_2()[i]);
+                }
             }
         }
     }
@@ -238,15 +261,23 @@ public class HW7 extends Utils {
      * 17. Создать массив четных положительных чисел, значения которых не больше 10.
      (заполняем значения с помощью цикла for)*/
     public static int[] getPositiveNum() {
-        int[] result = {0};
-        for (int i = 1; i < 11; i++) {
+        int count = 0;
+        int number = 0;
+
+        for (int i = 0; i <= 10; i++) {
             if (i % 2 == 0) {
-                result = Arrays.copyOf(result, result.length + 1);
-                result[result.length - 1] = i;
+                count++;
             }
         }
-        System.out.println(Arrays.toString(result));
-        return result;
+
+        int[] array = new int[count];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = number;
+            number += 2;
+        }
+
+        System.out.println(Arrays.toString(array));
+        return array;
     }
 
 
@@ -255,6 +286,7 @@ public class HW7 extends Utils {
      Проверить работу метода тестом, если параметр - массив catsAges*/
     public static double getAverage(int[] arr) {
         double avg = 0;
+
         for (int j : arr) {
             avg += j;
         }
@@ -265,6 +297,7 @@ public class HW7 extends Utils {
      * 19. Создать массив нечетных отрицательных чисел в промежутке от -1000 до -900*/
     public static int[] getNegativeNum() {
         int[] result = {};
+
         for (int i = -1000; i < -900; i++) {
             if (i % 2 != 0) {
                 result = Arrays.copyOf(result, result.length + 1);
@@ -281,8 +314,9 @@ public class HW7 extends Utils {
     public static int[] getRandomNumArr() {
         int[] arr = {};
         int i = 0;
+
         while (i < 10) {
-            int num = Math.abs((int) Math.round(Math.random() * 90 + 1));
+            int num = (int)(Math.random() * 90 + 1);
             arr = Arrays.copyOf(arr, arr.length + 1);
             arr[arr.length - 1] = num;
             i++;
@@ -295,21 +329,22 @@ public class HW7 extends Utils {
     /**************************************************************************************************************
      * 21. Создать метод, который принимает на вход массив int,  и возвращает минимальное значение,
      максимальное значение и среднее значение всех чисел массива. Проверить работу метода на массиве из задания 20.*/
-    public static void getMinMaxAvg(int[] arr) {
+    public static double[] getMinMaxAvg(int[] arr) {
         double avg = 0;
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
+        double min = Integer.MAX_VALUE;
+        double max = Integer.MIN_VALUE;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < min) {
-                min = arr[i];
+        for (int j : arr) {
+            if (j < min) {
+                min = j;
             }
-            if (arr[i] > max) {
-                max = arr[i];
+            if (j > max) {
+                max = j;
             }
-            avg += arr[i];
+            avg += j;
         }
         System.out.println("Average: " + avg / arr.length + ";\nMin: " + min + ";\nMax: " + max + ";");
+        return new double[]{min, max, avg / arr.length};
     }
 
     /**************************************************************************************************************
@@ -384,7 +419,7 @@ public class HW7 extends Utils {
 
         for (int i = 0; i < arrInt.length; i++) {
             for (int j = 0; j < arrInt[i].length; j++) {
-                arrInt[i][j] = (int)Math.round(Math.random() * 10);
+                arrInt[i][j] = (int)(Math.random() * 10) + 1;
             }
         }
         return arrInt;
@@ -393,13 +428,16 @@ public class HW7 extends Utils {
     /**************************************************************************************************************
      * 25. Вывести сумму всех четных чисел массива из задания 24.*/
     public static void printPositive(int[][] arr) {
+        int sum = 0;
+
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
                 if (arr[i][j] % 2 == 0){
-                    System.out.print(arr[i][j] + ", ");
+                    sum =sum + arr[i][j];
                 }
             }
         }
+        System.out.print(sum);
     }
 
     public static void main(String[] args) {
@@ -413,6 +451,10 @@ public class HW7 extends Utils {
 
         printTaskNUmber(3);
         System.out.println(Arrays.toString(getCatsColors()));
+        printNewRow();
+
+        printSubparagraphNumber(3, "2");
+        getCatsColors_2();
         printNewRow();
 
         printTaskNUmber(4);
@@ -473,7 +515,7 @@ public class HW7 extends Utils {
         printNewRow();
 
         printTaskNUmber(21);
-        getMinMaxAvg(getRandomNumArr());
+        System.out.println(Arrays.toString(getMinMaxAvg(getRandomNumArr())));
         printNewRow();
 
         printTaskNUmber(22);
