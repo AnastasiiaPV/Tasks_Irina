@@ -6,9 +6,9 @@ import java.util.Arrays;
 
 public class HW8 extends Utils {
 
-    static Integer secondInt = 6;
-    static Double secondDouble = 3.5;
-    static String secondString = "String1";
+    static Integer secondInt = new Integer(6);
+    static Double secondDouble = new Double(3.5);
+    static String secondString = new String("String1");
 
     public static boolean compareDouble(Double a, Double b) {
         return a.equals(b);
@@ -35,13 +35,20 @@ public class HW8 extends Utils {
 
     /***************************************************************************************************************
      *  7. Написать метод, который принимает на вход 5 целых чисел,  и возвращает массив из этих же чисел*/
-    public static int[] getArrayInt_10(int a, int b, int c, int d, int e) {
+    public static int[] getArrayInt_7(int a, int b, int c, int d, int e) {
         int[] arr = new int[5];
         arr[0] = a;
         arr[1] = b;
+
         arr[2] = c;
         arr[3] = d;
         arr[4] = e;
+
+        return arr;
+    }
+
+    public static int[] getArrayInt_7_2(int a, int b, int c, int d, int e) {
+        int[] arr = new int[]{a, b, c, d, e};
 
         return arr;
     }
@@ -59,6 +66,10 @@ public class HW8 extends Utils {
         return arr;
     }
 
+    public static double[] getArrayDouble_2(int a, int b, int c, int d, int e) {
+        return new double[]{a, b, c, d, e};
+    }
+
     /***************************************************************************************************************
      *  9. Написать метод, который принимает на вход 5 слов, и возвращает массив из этих слов*/
     public static String[] getArrayString(String a, String b, String c, String d, String e) {
@@ -72,18 +83,33 @@ public class HW8 extends Utils {
         return arr;
     }
 
+    public static String[] getArrayString_2(String a, String b, String c, String d, String e) {
+        return new String[]{a, b, c, d, e};
+    }
+
     /***************************************************************************************************************
      *  10. Написать метод, который принимает на вход массив целых чисел,  и возвращает массив тех же чисел,
      умноженных на 2.5*/
     //(5, 7, 105, 63, 17)
-    public static int[] getArrayInt_10(int[] array) {
-        int[] newArray = {};
+    public static double[] getArrayInt_10(int[] array) {
+        double[] newArray = {};
 
-        for (int j : array) {
-            newArray = Arrays.copyOf(newArray, newArray.length + 1);
-            newArray[newArray.length - 1] = (int) Math.round(j * 2.5);
+        if (array.length > 0) {
+            for (int j : array) {
+                newArray = Arrays.copyOf(newArray, newArray.length + 1);
+                newArray[newArray.length - 1] = j * 2.5;
+            }
+            return newArray;
         }
+        return new double[]{};
+    }
 
+    public static double[] getArrayInt_10_b(int[] array, double a) {
+        double[] newArray = new double[array.length];
+
+        for (int i = 0; i < array.length; i++) {
+            newArray[i] = array[i] * a;
+        }
         return newArray;
     }
 
@@ -117,6 +143,29 @@ public class HW8 extends Utils {
         }
         return odd;
     }
+
+    public static int getSumOdd_12(int[] array) {
+        if (!containsNegativeNumbers(array) && array.length != 0) {
+            int count = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] % 2 == 0) {
+                    count++;
+                }
+            }
+            return count;
+        }
+        return Integer.MIN_VALUE;
+    }
+
+    public static boolean containsNegativeNumbers(int[] array) {
+        for (int j : array) {
+            if (j <= 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /***************************************************************************************************************
      13. Написать метод, который принимает на вход массив целых чисел,  и возвращает массив значений true или false,
@@ -175,7 +224,7 @@ public class HW8 extends Utils {
 
         if (a < 1 || a > 10) {
             System.out.println("Wrong number");
-            return null;
+            return new int[]{};
         }
 
         for (int i = 0; i <= 10; i++) {
@@ -216,10 +265,14 @@ public class HW8 extends Utils {
         }
     }
 
-    /***************************************************************************************************************
-     18. Написать метод, который принимает на вход длину массива и генерирует массив случайных положительных чисел
-     от 0 до 100 исключительно.*/
+
+        /***************************************************************************************************************
+         18. Написать метод, который принимает на вход длину массива и генерирует массив случайных положительных чисел
+         от 0 до 100 исключительно.*/
     public static int[] getRandomNum(int l) {
+        if (l <= 0) {
+            return null;
+        }
         int[] array = new int[l];
 
         for (int i = 0; i < l; i++) {
@@ -268,7 +321,7 @@ public class HW8 extends Utils {
     public static int[] getDifference(int[] array) {
         int[] newArray = {};
 
-        for(int j : array) {
+        for (int j : array) {
             newArray = Arrays.copyOf(newArray, newArray.length + 1);
             newArray[newArray.length - 1] = (j / 10) - (j % 10);
             //newArray[newArray.length - 1] = j  - (j % 10);
@@ -276,12 +329,20 @@ public class HW8 extends Utils {
         return newArray;
     }
 
+    public static int[] getDifference_21(int[] array) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = Math.abs(array[i] / 10 - array[i] % 10);
+        }
+        return array;
+    }
 
-    /***************************************************************************************************************
-     22. Написать метод, который принимает массив из 11 целых положительных чисел от 0 до 9, и возвращает массив,
-     который содержит номер телефона, состоящий из этих чисел,  и название страны, которой номер принадлежит.
-     Например:
-     method({1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}) -> {“1(800)123-45-67”, “USA”}*/
+
+
+        /***************************************************************************************************************
+         22. Написать метод, который принимает массив из 11 целых положительных чисел от 0 до 9, и возвращает массив,
+         который содержит номер телефона, состоящий из этих чисел,  и название страны, которой номер принадлежит.
+         Например:
+         method({1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}) -> {“1(800)123-45-67”, “USA”}*/
 //    public static String[] getPhoneNum(int[] array) {
 //        String[] newArray = {};
 //        if (array.length > 11) {
@@ -302,30 +363,30 @@ public class HW8 extends Utils {
 //    }
 
 
-        /***************************************************************************************************************
-         23. Написать метод, который принимает массив целых положительных чисел больше 0, и возвращает массив
-         уникальных чисел.*/
-        //{1,5,1,7,7,2,8})
-        public static int[] getUniqueNum(int[] arr) {
-            int[] newArray = {};
+    /***************************************************************************************************************
+     23. Написать метод, который принимает массив целых положительных чисел больше 0, и возвращает массив
+     уникальных чисел.*/
+    //{1,5,1,7,7,2,8})
+    public static int[] getUniqueNum(int[] arr) {
+        int[] newArray = {};
 
-            for (int j = 0; j < arr.length; j++) {
-                boolean equalityFlag = false;
+        for (int j = 0; j < arr.length; j++) {
+            boolean equalityFlag = false;
 
-                for (int i = 0; i < arr.length; i++) {
-                    if (arr[i] == arr[j] && i != j) {
-                        equalityFlag = true;
-                        break;
-                    }
-                }
-                if(!equalityFlag) {
-                    newArray = Arrays.copyOf(newArray, newArray.length + 1);
-                    newArray[newArray.length - 1] = arr[j];
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] == arr[j] && i != j) {
+                    equalityFlag = true;
+                    break;
                 }
             }
-
-            return newArray;
+            if (!equalityFlag) {
+                newArray = Arrays.copyOf(newArray, newArray.length + 1);
+                newArray[newArray.length - 1] = arr[j];
+            }
         }
+
+        return newArray;
+    }
 
     /***************************************************************************************************************
      24. Написать метод, который принимает на вход массив целых положительных чисел, и возвращает
@@ -335,12 +396,12 @@ public class HW8 extends Utils {
 //     }
 
 
-     /***************************************************************************************************************
-      25. Написать метод, который принимает на вход массив целых положительных чисел, и 2 целых положительных числа
-         (значения индексов). Метод возвращает массив, который содержит только числа из первого массива в
-         промежутке между индексами.
-         Например:
-         method({1, 2, 3, 4, 5}, 1, 3) -> {2, 3, 4}*/
+    /***************************************************************************************************************
+     25. Написать метод, который принимает на вход массив целых положительных чисел, и 2 целых положительных числа
+     (значения индексов). Метод возвращает массив, который содержит только числа из первого массива в
+     промежутке между индексами.
+     Например:
+     method({1, 2, 3, 4, 5}, 1, 3) -> {2, 3, 4}*/
 
     /***************************************************************************************************************
      26. Написать метод, который принимает на вход 2 массива int[] и возвращает объединенный массив уникальных
@@ -355,7 +416,7 @@ public class HW8 extends Utils {
 
 
         printTaskNUmber(7);
-        System.out.println(Arrays.toString(getArrayInt_10(5, 7, 105, 63, 17)));
+        System.out.println(Arrays.toString(getArrayInt_7(5, 7, 105, 63, 17)));
         printNewRow();
 
 
@@ -370,7 +431,10 @@ public class HW8 extends Utils {
 
 
         printTaskNUmber(10);
-        System.out.println(Arrays.toString(getArrayInt_10(getArrayInt_10(5, 7, 105, 63, 17))));
+        System.out.println(Arrays.toString(getArrayInt_10(getArrayInt_7(5, 7, 105, 63, 17))));
+        printNewRow();
+        printSubparagraphNumber(10, "b");
+        System.out.println(Arrays.toString(getArrayInt_10_b(getArrayInt_7_2(5, 7, 105, 63, 17), 10)));
         printNewRow();
 
 
@@ -383,6 +447,9 @@ public class HW8 extends Utils {
         System.out.println(Arrays.toString(getArrayOdd(new int[]{60, 22, 48, 82, 6})));
         printNewRow();
 
+        printSubparagraphNumber(12, "2");
+        System.out.println(getSumOdd_12(new int[]{60, 22, 48, 82, 6}));
+        printNewRow();
 
         printTaskNUmber(13);
         System.out.println(Arrays.toString(getArrayBoolean(new int[]{1, 60, 22, 48, 82, 6, 5})));
@@ -433,6 +500,7 @@ public class HW8 extends Utils {
         printNewRow();
 
         printTaskNUmber(23);
-        System.out.println(Arrays.toString(getUniqueNum(new int[]{1,5,1,7,7,2,8})));;
+        System.out.println(Arrays.toString(getUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8})));
+        ;
     }
 }
