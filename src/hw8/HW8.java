@@ -355,37 +355,41 @@ public class HW8 extends Utils {
         String[] newArray = new String[15];
         StringBuilder sb = new StringBuilder();
 
-        if (array.length > 11) {
-            System.out.println("Wrong array");
+        if (array[0] <= 0 || array[0] > 9999 || array.length != 11) {
+            System.out.println("Wrong data");
+            return null;
         }
 
-        for (int i = 0; i < newArray.length; i++) {
-            newArray[0] = String.valueOf(array[0]);
+            for (int i = 0; i < newArray.length; i++) {
+                if (array[0] > 999) {
+                    newArray[0] = (array[0] / 1000) + "-" + array[0] % 1000;
+                } else {
+                    newArray[0] = String.valueOf(array[0]);
+                }
 
-            if (i == 1) {
-                newArray[i] = "(";
-            } else if (i == 5) {
-                newArray[i] = ")";
-            } else if (i == 9 || i == 12) {
-                newArray[i] = "-";
-            } else if (i > 1 && i < 5) {
-                newArray[i] = String.valueOf(array[i - 1]);
-            } else if (i > 5 && i < 9) {
-                newArray[i] = String.valueOf(array[i - 2]);
-            } else if (i == 10 || i == 11) {
-                newArray[i] = String.valueOf(array[i - 3]);
-            } else if (i == 13 || i == 14) {
-                newArray[i] = String.valueOf(array[i - 4]);
+                if (i == 1) {
+                    newArray[i] = "(";
+                } else if (i == 5) {
+                    newArray[i] = ")";
+                } else if (i == 9 || i == 12) {
+                    newArray[i] = "-";
+                } else if (i > 1 && i < 5) {
+                    newArray[i] = String.valueOf(array[i - 1]);
+                } else if (i > 5 && i < 9) {
+                    newArray[i] = String.valueOf(array[i - 2]);
+                } else if (i == 10 || i == 11) {
+                    newArray[i] = String.valueOf(array[i - 3]);
+                } else if (i == 13 || i == 14) {
+                    newArray[i] = String.valueOf(array[i - 4]);
+                }
             }
-        }
 
-        for (String s : newArray) {
-            sb.append(s);
-        }
-
+            for (String s : newArray) {
+                sb.append(s);
+            }
         return sb.toString();
-    }
 
+    }
 
     /***************************************************************************************************************
      23. Написать метод, который принимает массив целых положительных чисел больше 0, и возвращает массив
@@ -420,7 +424,7 @@ public class HW8 extends Utils {
         return new int[]{uniqueNum, nonUniqueNum};
     }
 
-    public static int countNonUniqueNum(int[] arr) {
+    public static int countNonUniqueNum(int[] arr) {//не працює при всіх однакових значеннях
         int countNonUnique = 0;
 
         for (int j = 0; j < arr.length; j++) {
@@ -436,14 +440,34 @@ public class HW8 extends Utils {
     public static int countUniqueNum(int[] arr) {
         return getArrayUniqueNum(arr).length;
     }
+//1, 5, 1, 7, 7, 2, 8
+    public static int[] countUniqueNonUnique(int[] arr) {
+        int count = 0;
+        int countUnique = 0;
 
+        if(arr.length > 0) {
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] >= 0){
+                    countUnique++;
+                    for (int j = i + 1; j < arr.length; j++) {
+                        if (arr[i] == arr[j]) {
+                            arr[j] = -1;
+                            count++;
+                        }
+                    }
+                }
+            }
+            return new int[]{arr.length - (countUnique - count), (countUnique - count) };
+        }
+        return new int[]{0,0};
+    }
 
-    /***************************************************************************************************************
-     25. Написать метод, который принимает на вход массив целых положительных чисел, и 2 целых положительных числа
-     (значения индексов). Метод возвращает массив, который содержит только числа из первого массива в
-     промежутке между индексами.
-     Например:
-     method({1, 2, 3, 4, 5}, 1, 3) -> {2, 3, 4}*/
+        /***************************************************************************************************************
+         25. Написать метод, который принимает на вход массив целых положительных чисел, и 2 целых положительных числа
+         (значения индексов). Метод возвращает массив, который содержит только числа из первого массива в
+         промежутке между индексами.
+         Например:
+         method({1, 2, 3, 4, 5}, 1, 3) -> {2, 3, 4}*/
     public static int[] getArrayInRange(int[] arr, int a, int b) {
         int[] newArray = {};
 
@@ -567,19 +591,36 @@ public class HW8 extends Utils {
             printNewRow();
 
             printTaskNUmber(22);
-            System.out.println(getStrForPhoneNum(new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}));
+            System.out.println(Arrays.toString(getPhoneNumArr(
+                    getStrForPhoneNum(new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}))));
             printNewRow();
-            System.out.println(Arrays.toString(getPhoneNumArr(getStrForPhoneNum(new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}))));
+            System.out.println(Arrays.toString(getPhoneNumArr(
+                    getStrForPhoneNum(new int[]{1268, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}))));
             printNewRow();
+            System.out.println(Arrays.toString(getPhoneNumArr(
+                    getStrForPhoneNum(new int[]{355, 8, 0, 0, 1, 2, 3, 4, 5, 6, 8}))));
+            printNewRow();
+            System.out.println(Arrays.toString(getPhoneNumArr(
+                    getStrForPhoneNum(new int[]{0, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}))));
+            printNewRow();
+
 
             printTaskNUmber(23);
             System.out.println(Arrays.toString(getArrayUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8})));
             printNewRow();
 
+
+
             printTaskNUmber(24);
-            System.out.println(Arrays.toString(getCountUniqueNonUnique(countNonUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8})
-                    , countUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8}))));
+            System.out.println(Arrays.toString(countUniqueNonUnique(new int[]{1, 5, 1, 7, 7, 2, 8})));
             printNewRow();
+//            System.out.println(Arrays.toString(getCountUniqueNonUnique(countNonUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8})
+//                    , countUniqueNum(new int[]{1, 1, 1, 1, 1, 1, 1}))));
+//            printNewRow();
+//            System.out.println(Arrays.toString(getCountUniqueNonUnique(countNonUniqueNum(new int[]{1, 1, 1, 1, 1, 1, 1})
+//                    , countUniqueNum(new int[]{0, 0, 0, 0, 0, 0, 0}))));
+//            printNewRow();
+
 
 
             printTaskNUmber(25);
