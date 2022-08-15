@@ -266,9 +266,9 @@ public class HW8 extends Utils {
     }
 
 
-        /***************************************************************************************************************
-         18. Написать метод, который принимает на вход длину массива и генерирует массив случайных положительных чисел
-         от 0 до 100 исключительно.*/
+    /***************************************************************************************************************
+     18. Написать метод, который принимает на вход длину массива и генерирует массив случайных положительных чисел
+     от 0 до 100 исключительно.*/
     public static int[] getRandomNum(int l) {
         if (l <= 0) {
             return null;
@@ -337,30 +337,54 @@ public class HW8 extends Utils {
     }
 
 
+    /***************************************************************************************************************
+     22. Написать метод, который принимает массив из 11 целых положительных чисел от 0 до 9, и возвращает массив,
+     который содержит номер телефона, состоящий из этих чисел,  и название страны, которой номер принадлежит.
+     Например:
+     method({1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}) -> {“1(800)123-45-67”, “USA”}*/
+    public static String[] getPhoneNumArr(String str) {
+        String[] newArray = new String[2];
 
-        /***************************************************************************************************************
-         22. Написать метод, который принимает массив из 11 целых положительных чисел от 0 до 9, и возвращает массив,
-         который содержит номер телефона, состоящий из этих чисел,  и название страны, которой номер принадлежит.
-         Например:
-         method({1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}) -> {“1(800)123-45-67”, “USA”}*/
-//    public static String[] getPhoneNum(int[] array) {
-//        String[] newArray = {};
-//        if (array.length > 11) {
-//            System.out.println("Wrong array");
-//        }
-//
-//        for (int i = 1; i < array.length; i++) {
-//            newArray = Arrays.copyOf(newArray, newArray.length + 1);
-//            StringBuilder sb = new StringBuilder();
-//
-//            sb.append(array[0]).append("(");
-//            if(i < 4) {
-//                sb.append(array[i]);
-//            } else if()
-//            newArray[newArray.length - 1] = ;
-//
-//        }
-//    }
+        newArray[0] = str;
+        newArray[1] = "USA";
+
+        return newArray;
+    }
+
+    public static String getStrForPhoneNum(int[] array) {
+        String[] newArray = new String[15];
+        StringBuilder sb = new StringBuilder();
+
+        if (array.length > 11) {
+            System.out.println("Wrong array");
+        }
+
+        for (int i = 0; i < newArray.length; i++) {
+            newArray[0] = String.valueOf(array[0]);
+
+            if (i == 1) {
+                newArray[i] = "(";
+            } else if (i == 5) {
+                newArray[i] = ")";
+            } else if (i == 9 || i == 12) {
+                newArray[i] = "-";
+            } else if (i > 1 && i < 5) {
+                newArray[i] = String.valueOf(array[i - 1]);
+            } else if (i > 5 && i < 9) {
+                newArray[i] = String.valueOf(array[i - 2]);
+            } else if (i == 10 || i == 11) {
+                newArray[i] = String.valueOf(array[i - 3]);
+            } else if (i == 13 || i == 14) {
+                newArray[i] = String.valueOf(array[i - 4]);
+            }
+        }
+
+        for (String s : newArray) {
+            sb.append(s);
+        }
+
+        return sb.toString();
+    }
 
 
     /***************************************************************************************************************
@@ -497,6 +521,12 @@ public class HW8 extends Utils {
 
         printTaskNUmber(21);
         System.out.println(Arrays.toString(getDifference(new int[]{60, 22, 48, 82})));
+        printNewRow();
+
+        printTaskNUmber(22);
+        System.out.println(getStrForPhoneNum(new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}));
+        printNewRow();
+        System.out.println(Arrays.toString(getPhoneNumArr(getStrForPhoneNum(new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}))));
         printNewRow();
 
         printTaskNUmber(23);

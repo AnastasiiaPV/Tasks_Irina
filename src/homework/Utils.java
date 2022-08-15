@@ -61,4 +61,14 @@ public class Utils extends Variables {
 
         return newArray;
     }
+
+    public static String getStringFromArray(int[] arr) {
+        StringBuilder str = new StringBuilder();
+
+        for (int i = 1; i < arr.length; i++) {
+            str.append(arr[i]);
+        }
+
+        return str.toString();
+    }
 }
