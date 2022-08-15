@@ -7,13 +7,19 @@ public class HW3_2 extends Utils {
      Задача №2
      Необходимо вывести все положительные степени числа 5 которые меньше 10000, вывести результат возведения в степень.*/
     public static void getAllPositivePow(int n, int range) {
-        double num = 0;
-        for (int i = 1; num < range; i++) {
-            num = Math.pow(n, i);
+        int num = 0;
+        for (int i = 0; num < range; i++) {
+            num = (int)Math.pow(n, i);
             if (num > range) {
                 break;
             }
             System.out.print(num + ", ");
+        }
+    }
+
+    public static void getAllPositivePow_2(int n, int range) {
+        for (int i = 1; i < range; i *= n) {
+            System.out.print(i + ", ");
         }
     }
 
@@ -44,6 +50,9 @@ public class HW3_2 extends Utils {
         printTaskNUmber(2);
         getAllPositivePow(5, 10000);
         printNewRow();
+        getAllPositivePow_2(5, 10000);
+        printNewRow();
+
 
         printSubparagraphNumber(3, "1");
         getAllNumDivideOnFour(40, 60);
