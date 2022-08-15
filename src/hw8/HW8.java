@@ -440,15 +440,13 @@ public class HW8 extends Utils {
     public static int countUniqueNum(int[] arr) {
         return getArrayUniqueNum(arr).length;
     }
-//1, 5, 1, 7, 7, 2, 8
-    public static int[] countUniqueNonUnique(int[] arr) {
+//1, 1, 7, 5, 1, 7, 7, 2, 8 (6, 3)
+    public static int[] countUniqueNonUnique(int[] arr) {//Шось не то
         int count = 0;
-        int countUnique = 0;
 
         if(arr.length > 0) {
             for (int i = 0; i < arr.length; i++) {
                 if (arr[i] >= 0){
-                    countUnique++;
                     for (int j = i + 1; j < arr.length; j++) {
                         if (arr[i] == arr[j]) {
                             arr[j] = -1;
@@ -457,7 +455,7 @@ public class HW8 extends Utils {
                     }
                 }
             }
-            return new int[]{arr.length - (countUnique - count), (countUnique - count) };
+            return new int[]{arr.length - count, count };
         }
         return new int[]{0,0};
     }
@@ -612,7 +610,7 @@ public class HW8 extends Utils {
 
 
             printTaskNUmber(24);
-            System.out.println(Arrays.toString(countUniqueNonUnique(new int[]{1, 5, 1, 7, 7, 2, 8})));
+            System.out.println(Arrays.toString(countUniqueNonUnique(new int[]{1, 1, 7, 5, 1, 7, 7, 2, 8})));
             printNewRow();
 //            System.out.println(Arrays.toString(getCountUniqueNonUnique(countNonUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8})
 //                    , countUniqueNum(new int[]{1, 1, 1, 1, 1, 1, 1}))));
