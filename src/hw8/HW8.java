@@ -415,9 +415,27 @@ public class HW8 extends Utils {
     /***************************************************************************************************************
      24. Написать метод, который принимает на вход массив целых положительных чисел, и возвращает
      количество уникальных и неуникальных элементов в этом массиве*/
-//     public static int[] getSumUniqueNonUnique(int[] arr) {
-//
-//     }
+    //{1, 5, 1, 7, 7, 2, 8}
+    public static int[] getCountUniqueNonUnique(int nonUniqueNum, int uniqueNum) {
+        return new int[]{uniqueNum, nonUniqueNum};
+    }
+
+    public static int countNonUniqueNum(int[] arr) {
+        int countNonUnique = 0;
+
+        for (int j = 0; j < arr.length; j++) {
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] == arr[j] && i != j) {
+                    countNonUnique++;
+                }
+            }
+        }
+        return countNonUnique;
+    }
+
+    public static int countUniqueNum(int[] arr) {
+        return getUniqueNum(arr).length;
+    }
 
 
     /***************************************************************************************************************
@@ -531,6 +549,13 @@ public class HW8 extends Utils {
 
         printTaskNUmber(23);
         System.out.println(Arrays.toString(getUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8})));
-        ;
+        printNewRow();
+
+        printTaskNUmber(24);
+        System.out.println(Arrays.toString(getCountUniqueNonUnique(countNonUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8})
+                ,countUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8}))));
+        printNewRow();
+
+
     }
 }
