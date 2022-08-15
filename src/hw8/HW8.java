@@ -391,7 +391,7 @@ public class HW8 extends Utils {
      23. Написать метод, который принимает массив целых положительных чисел больше 0, и возвращает массив
      уникальных чисел.*/
     //{1,5,1,7,7,2,8})
-    public static int[] getUniqueNum(int[] arr) {
+    public static int[] getArrayUniqueNum(int[] arr) {
         int[] newArray = {};
 
         for (int j = 0; j < arr.length; j++) {
@@ -434,7 +434,7 @@ public class HW8 extends Utils {
     }
 
     public static int countUniqueNum(int[] arr) {
-        return getUniqueNum(arr).length;
+        return getArrayUniqueNum(arr).length;
     }
 
 
@@ -444,118 +444,151 @@ public class HW8 extends Utils {
      промежутке между индексами.
      Например:
      method({1, 2, 3, 4, 5}, 1, 3) -> {2, 3, 4}*/
+    public static int[] getArrayInRange(int[] arr, int a, int b) {
+        int[] newArray = {};
+
+        for (int i = a; i <= b; i++) {
+            newArray = Arrays.copyOf(newArray, newArray.length + 1);
+            newArray[newArray.length - 1] = arr[i];
+        }
+        return newArray;
+    }
 
     /***************************************************************************************************************
      26. Написать метод, который принимает на вход 2 массива int[] и возвращает объединенный массив уникальных
      неповторяющихся элементов*/
+    public static int[] getArrayInRange(int[] arrA, int[] arrB) {
+        int[] newArray = {};
 
+        for (int i : arrA) {
+            newArray = Arrays.copyOf(newArray, newArray.length + 1);
+            newArray[newArray.length - 1] = i;
+        }
 
-    public static void main(String[] args) {
+        for (int j : arrB) {
+            newArray = Arrays.copyOf(newArray, newArray.length + 1);
+            newArray[newArray.length - 1] = j;
+        }
 
-        printTaskNUmber(6);
-        printResult();
-        printNewRow();
-
-
-        printTaskNUmber(7);
-        System.out.println(Arrays.toString(getArrayInt_7(5, 7, 105, 63, 17)));
-        printNewRow();
-
-
-        printTaskNUmber(8);
-        System.out.println(Arrays.toString(getArrayDouble(5.9, 7, 105.04, 0.63, 17)));
-        printNewRow();
-
-
-        printTaskNUmber(9);
-        System.out.println(Arrays.toString(getArrayString("a", "b", "c", "d", "e")));
-        printNewRow();
-
-
-        printTaskNUmber(10);
-        System.out.println(Arrays.toString(getArrayInt_10(getArrayInt_7(5, 7, 105, 63, 17))));
-        printNewRow();
-        printSubparagraphNumber(10, "b");
-        System.out.println(Arrays.toString(getArrayInt_10_b(getArrayInt_7_2(5, 7, 105, 63, 17), 10)));
-        printNewRow();
-
-
-        printTaskNUmber(11);
-        System.out.println(getArrayEven(new int[]{6, 10, 3, 25, 16}));
-        printNewRow();
-
-
-        printTaskNUmber(12);
-        System.out.println(Arrays.toString(getArrayOdd(new int[]{60, 22, 48, 82, 6})));
-        printNewRow();
-
-        printSubparagraphNumber(12, "2");
-        System.out.println(getSumOdd_12(new int[]{60, 22, 48, 82, 6}));
-        printNewRow();
-
-        printTaskNUmber(13);
-        System.out.println(Arrays.toString(getArrayBoolean(new int[]{1, 60, 22, 48, 82, 6, 5})));
-        printNewRow();
-
-
-        printTaskNUmber(14);
-        System.out.println(getArrayString_14(new String[]{"Flowers", "blum", "all", "day", "long"}));
-        printNewRow();
-
-
-        printTaskNUmber(15);
-        System.out.println(getSum_15(new int[]{1, 60, 22, 48, 82, 6, 5}));
-        System.out.println(getSum_15(new int[]{1, 60, 22, 48, 82, 6}));
-        System.out.println(getSum_15(new int[]{1, 60, 22, 5, 82, 6, 5}));
-        printNewRow();
-
-
-        printTaskNUmber(16);
-        System.out.println(Arrays.toString(getMultiplicationTable(5)));
-        System.out.println(Arrays.toString(getMultiplicationTable(-5)));
-        System.out.println(Arrays.toString(getMultiplicationTable(0)));
-        printNewRow();
-
-
-        printTaskNUmber(17);
-        System.out.println(Arrays.toString(getEvenOrOdd(new int[]{1, 60, 22, 48, 82, 6, 5})));
-        System.out.println(Arrays.toString(getEvenOrOdd(new int[]{1, 3, 22, 5, 81, 6, 5})));
-        System.out.println(Arrays.toString(getEvenOrOdd(new int[]{1, 60, 22, 5, 81, 6})));
-        printNewRow();
-
-
-        printTaskNUmber(18);
-        System.out.println(Arrays.toString(getRandomNum(15)));
-        printNewRow();
-
-        printTaskNUmber(19);
-        System.out.println(Arrays.toString(getRandomNum_19(5, 2)));
-        System.out.println(Arrays.toString(getRandomNum_19(5, 5)));
-        System.out.println(Arrays.toString(getRandomNum_19(5, 1)));
-
-
-        printTaskNUmber(20);
-        System.out.println(Arrays.toString(getTwoDigitArray(getRandomNum(15))));
-
-        printTaskNUmber(21);
-        System.out.println(Arrays.toString(getDifference(new int[]{60, 22, 48, 82})));
-        printNewRow();
-
-        printTaskNUmber(22);
-        System.out.println(getStrForPhoneNum(new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}));
-        printNewRow();
-        System.out.println(Arrays.toString(getPhoneNumArr(getStrForPhoneNum(new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}))));
-        printNewRow();
-
-        printTaskNUmber(23);
-        System.out.println(Arrays.toString(getUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8})));
-        printNewRow();
-
-        printTaskNUmber(24);
-        System.out.println(Arrays.toString(getCountUniqueNonUnique(countNonUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8})
-                ,countUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8}))));
-        printNewRow();
-
-
+        return getArrayUniqueNum(newArray);
     }
-}
+
+
+
+        public static void main (String[]args){
+
+            printTaskNUmber(6);
+            printResult();
+            printNewRow();
+
+
+            printTaskNUmber(7);
+            System.out.println(Arrays.toString(getArrayInt_7(5, 7, 105, 63, 17)));
+            printNewRow();
+
+
+            printTaskNUmber(8);
+            System.out.println(Arrays.toString(getArrayDouble(5.9, 7, 105.04, 0.63, 17)));
+            printNewRow();
+
+
+            printTaskNUmber(9);
+            System.out.println(Arrays.toString(getArrayString("a", "b", "c", "d", "e")));
+            printNewRow();
+
+
+            printTaskNUmber(10);
+            System.out.println(Arrays.toString(getArrayInt_10(getArrayInt_7(5, 7, 105, 63, 17))));
+            printNewRow();
+            printSubparagraphNumber(10, "b");
+            System.out.println(Arrays.toString(getArrayInt_10_b(getArrayInt_7_2(5, 7, 105, 63, 17), 10)));
+            printNewRow();
+
+
+            printTaskNUmber(11);
+            System.out.println(getArrayEven(new int[]{6, 10, 3, 25, 16}));
+            printNewRow();
+
+
+            printTaskNUmber(12);
+            System.out.println(Arrays.toString(getArrayOdd(new int[]{60, 22, 48, 82, 6})));
+            printNewRow();
+
+            printSubparagraphNumber(12, "2");
+            System.out.println(getSumOdd_12(new int[]{60, 22, 48, 82, 6}));
+            printNewRow();
+
+            printTaskNUmber(13);
+            System.out.println(Arrays.toString(getArrayBoolean(new int[]{1, 60, 22, 48, 82, 6, 5})));
+            printNewRow();
+
+
+            printTaskNUmber(14);
+            System.out.println(getArrayString_14(new String[]{"Flowers", "blum", "all", "day", "long"}));
+            printNewRow();
+
+
+            printTaskNUmber(15);
+            System.out.println(getSum_15(new int[]{1, 60, 22, 48, 82, 6, 5}));
+            System.out.println(getSum_15(new int[]{1, 60, 22, 48, 82, 6}));
+            System.out.println(getSum_15(new int[]{1, 60, 22, 5, 82, 6, 5}));
+            printNewRow();
+
+
+            printTaskNUmber(16);
+            System.out.println(Arrays.toString(getMultiplicationTable(5)));
+            System.out.println(Arrays.toString(getMultiplicationTable(-5)));
+            System.out.println(Arrays.toString(getMultiplicationTable(0)));
+            printNewRow();
+
+
+            printTaskNUmber(17);
+            System.out.println(Arrays.toString(getEvenOrOdd(new int[]{1, 60, 22, 48, 82, 6, 5})));
+            System.out.println(Arrays.toString(getEvenOrOdd(new int[]{1, 3, 22, 5, 81, 6, 5})));
+            System.out.println(Arrays.toString(getEvenOrOdd(new int[]{1, 60, 22, 5, 81, 6})));
+            printNewRow();
+
+
+            printTaskNUmber(18);
+            System.out.println(Arrays.toString(getRandomNum(15)));
+            printNewRow();
+
+            printTaskNUmber(19);
+            System.out.println(Arrays.toString(getRandomNum_19(5, 2)));
+            System.out.println(Arrays.toString(getRandomNum_19(5, 5)));
+            System.out.println(Arrays.toString(getRandomNum_19(5, 1)));
+
+
+            printTaskNUmber(20);
+            System.out.println(Arrays.toString(getTwoDigitArray(getRandomNum(15))));
+
+            printTaskNUmber(21);
+            System.out.println(Arrays.toString(getDifference(new int[]{60, 22, 48, 82})));
+            printNewRow();
+
+            printTaskNUmber(22);
+            System.out.println(getStrForPhoneNum(new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}));
+            printNewRow();
+            System.out.println(Arrays.toString(getPhoneNumArr(getStrForPhoneNum(new int[]{1, 8, 0, 0, 1, 2, 3, 4, 5, 6, 7}))));
+            printNewRow();
+
+            printTaskNUmber(23);
+            System.out.println(Arrays.toString(getArrayUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8})));
+            printNewRow();
+
+            printTaskNUmber(24);
+            System.out.println(Arrays.toString(getCountUniqueNonUnique(countNonUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8})
+                    , countUniqueNum(new int[]{1, 5, 1, 7, 7, 2, 8}))));
+            printNewRow();
+
+
+            printTaskNUmber(25);
+            System.out.println(Arrays.toString(getArrayInRange(new int[]{1, 2, 3, 4, 5}, 1, 3)));
+            printNewRow();
+
+            printTaskNUmber(26);
+            System.out.println(Arrays.toString(getArrayInRange(new int[]{5, 10, 2, 17, 2}, new int[]{1, 5, 1, 7, 7, 2, 8})));
+
+
+        }
+    }
