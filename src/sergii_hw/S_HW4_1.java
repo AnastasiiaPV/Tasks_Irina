@@ -83,18 +83,36 @@ public class S_HW4_1 extends Utils {
      Дан массив:
      int[][] array = {{1, 2, 3, 4, 5}, {6, 7, 8, 9}, {-1, -2, -3, -4}, {-5, -6}};
      необходимо вывести сумму элементов массива.*/
-    public static double getAvg(int[][] arr) {
+    public static double getSumElementsFromMultiArray(int[][] arr) {
+            int sum = 0;
+            for (int[] ints : arr) {
+                for (int j = 0; j < ints.length; j++) {
+                    sum += ints[j];
+                }
+            }
+            System.out.println(sum);
+            return sum;
+        }
 
+
+    /***********************************************************************************
+     Задача №6
+
+     Дан массив:
+     int[][] array = {{1, 2, 3, 4, 5}, {6, 7, 8, 9}, {-1, -2, -3, -4}, {-5, -6}};
+     необходимо вывести максимальное значение массива.*/
+    public static int getMaxNumInMultipleArray(int[][] arr) {
+        int max = Integer.MIN_VALUE;
+        for (int[] ints : arr) {
+            for (int j = 0; j < ints.length; j++) {
+                if (ints[j] > max) {
+                    max = ints[j];
+                }
+            }
+        }
+        System.out.println(max);
+        return max;
     }
-
-
-
-        /***********************************************************************************
-         Задача №6
-
-         Дан массив:
-         int[][] array = {{1, 2, 3, 4, 5}, {6, 7, 8, 9}, {-1, -2, -3, -4}, {-5, -6}};
-         необходимо вывести максимальное значение массива.*/
 
     /***********************************************************************************
      Задача №7
@@ -102,6 +120,17 @@ public class S_HW4_1 extends Utils {
      Дан массив:
      int[][] array = {{1, 2, 3, 4, 5}, {6, 7, 8, 9}, {-1, -2, -3, -4}, {-5, -6}};
      необходимо вывести количество элементов в массиве.*/
+    public static double countElementsFromMultiArray(int[][] arr) {
+        int count = 0;
+        for (int[] ints : arr) {
+            for (int j = 0; j < ints.length; j++) {
+                count++;
+            }
+        }
+        System.out.println(count);
+        return count;
+    }
+
 
     public static void main(String[] args) {
         printTaskNUmber(1);
@@ -122,11 +151,15 @@ public class S_HW4_1 extends Utils {
         printNewRow();
 
         printTaskNUmber(5);
+        getSumElementsFromMultiArray(new int[][]{{1, 2, 3, 4, 5}, {6, 7, 8, 9}, {-1, -2, -3, -4}, {-5, -6}});
         printNewRow();
 
         printTaskNUmber(6);
+        getMaxNumInMultipleArray(new int[][]{{1, 2, 3, 4, 5}, {6, 7, 8, 9}, {-1, -2, -3, -4}, {-5, -6}});
         printNewRow();
 
-
+        printTaskNUmber(7);
+        countElementsFromMultiArray(new int[][]{{1, 2, 3, 4, 5}, {6, 7, 8, 9}, {-1, -2, -3, -4}, {-5, -6}});
+        printNewRow();
     }
 }
