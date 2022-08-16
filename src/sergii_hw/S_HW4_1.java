@@ -131,6 +131,15 @@ public class S_HW4_1 extends Utils {
         return count;
     }
 
+    public static double countElementsFromMultiArray_2(int[][] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            count += arr[i].length;
+        }
+        System.out.println(count);
+        return count;
+    }
+
 
     public static void main(String[] args) {
         printTaskNUmber(1);
@@ -147,7 +156,7 @@ public class S_HW4_1 extends Utils {
 
 
         printTaskNUmber(4);
-        getAvg(new int[]{9, 2, 6, 4, 5, 12, 7, 8, 6});
+        getAvg(new int[]{1,2,3,4,5,6,7,8,9});
         printNewRow();
 
         printTaskNUmber(5);
@@ -161,5 +170,8 @@ public class S_HW4_1 extends Utils {
         printTaskNUmber(7);
         countElementsFromMultiArray(new int[][]{{1, 2, 3, 4, 5}, {6, 7, 8, 9}, {-1, -2, -3, -4}, {-5, -6}});
         printNewRow();
+
+        printSubparagraphNumber(7,"2");
+        countElementsFromMultiArray_2(new int[][]{{1, 2, 3, 4, 5}, {6, 7, 8, 9}, {-1, -2, -3, -4}, {-5, -6}});
     }
 }
