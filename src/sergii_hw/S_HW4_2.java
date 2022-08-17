@@ -47,6 +47,7 @@ public class S_HW4_2 extends Utils {
         int count = 0;
         char[] array = str.toCharArray();
 
+
         for (int i = 0; i < str.length(); i++) {
             if (array[i] == letter) {
                 count++;
