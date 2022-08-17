@@ -86,20 +86,19 @@ public class S_HW4_2 extends Utils {
      Дан массив:
      String[][] array = {{“Привет”, “всем”, “кто”}, {“изучает”, “язык”, “программирования”}, {“java”}};
      необходимо подсчитать количество строк в массиве, которые не содержат буквы “е”.     */
-    public static int countStringWithoutLetter(String[][] str,  char letter) {
-        int count = 0;
-        CharSequence charSequence = (CharSequence)letter;
-
-        for (int i = 0; i < str.length; i++) {
-            for (int j = 0; j < str[i].length; j++) {
-                if (str[i][j].contains(letter)) {
-                    count++;
-                }
-            }
-        }
-        System.out.println(count);
-        return count;
-    }
+//    public static int countStringWithoutLetter(String[][] str,  char letter) {
+//        int count = 0;
+//
+//        for (int i = 0; i < str.length; i++) {
+//            for (int j = 0; j < str[i].length; j++) {
+//                if (str[i][j].charAt([i][j]).equals(letter)) {
+//                    count++;
+//                }
+//            }
+//        }
+//        System.out.println(count);
+//        return count;
+//    }
 
         public static void main(String[] args) {
         printTaskNUmber(1);
