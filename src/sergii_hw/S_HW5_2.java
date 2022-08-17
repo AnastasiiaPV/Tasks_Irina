@@ -20,10 +20,10 @@ public class S_HW5_2 extends Utils {
      0  1
      0
      */
-    public static void getTriangle_1 () {
+    public static void getTriangle_1() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10 - i; j++) {
-                System.out.print(j+" ");
+                System.out.print(j + " ");
             }
             System.out.print("\n");
         }
@@ -33,23 +33,23 @@ public class S_HW5_2 extends Utils {
     /***********************************************************************************************************
      * Задача №2
 
-    0  1  2  3  4  5  6  7  8  9
-       0  1  2  3  4  5  6  7  8
-          0  1  2  3  4  5  6  7
-             0  1  2  3  4  5  6
-                0  1  2  3  4  5
-                   0  1  2  3  4
-                      0  1  2  3
-                         0  1  2
-                            0  1
-                               0
+     0  1  2  3  4  5  6  7  8  9
+     ...0  1  2  3  4  5  6  7  8
+     ......0  1  2  3  4  5  6  7
+     .........0  1  2  3  4  5  6
+     ............0  1  2  3  4  5
+     ...............0  1  2  3  4
+     ..................0  1  2  3
+     .....................0  1  2
+     ........................0  1
+     ...........................0
      */
-    public static void getTriangle_2 () {
+    public static void getTriangle_2() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10 - i; j++) {
                 System.out.print(j + " ");
             }
-            System.out.print("\n" + " ".repeat((i+1)*2));
+            System.out.print("\n" + " ".repeat((i + 1) * 2));
         }
     }
 
@@ -67,10 +67,10 @@ public class S_HW5_2 extends Utils {
      2 1 0 1 2
      1 0 1
      0*/
-    public static void getTriangle_3 () {
+    public static void getTriangle_3() {
         for (int i = 0; i < 10; i++) {
-            for (int j = 9-i; j > 0; j--) {
-                System.out.print(j+" ");
+            for (int j = 9 - i; j > 0; j--) {
+                System.out.print(j + " ");
             }
             for (int k = 0; k < 10 - i; k++) {
                 System.out.print(k + " ");
@@ -78,20 +78,21 @@ public class S_HW5_2 extends Utils {
             System.out.print("\n");
         }
     }
+
     /*********************************************************************************************************
      * Задача №4
 
      9 8 7 6 5 4 3 2 1 0 1 2 3 4 5 6 7 8 9
-       8 7 6 5 4 3 2 1 0 1 2 3 4 5 6 7 8
-         7 6 5 4 3 2 1 0 1 2 3 4 5 6 7
-           6 5 4 3 2 1 0 1 2 3 4 5 6
-             5 4 3 2 1 0 1 2 3 4 5
-               4 3 2 1 0 1 2 3 4
-                 3 2 1 0 1 2 3
-                   2 1 0 1 2
-                     1 0 1
-                       0*/
-    public static void getTriangle_4 () {
+     ..8 7 6 5 4 3 2 1 0 1 2 3 4 5 6 7 8
+     ....7 6 5 4 3 2 1 0 1 2 3 4 5 6 7
+     ......6 5 4 3 2 1 0 1 2 3 4 5 6
+     ........5 4 3 2 1 0 1 2 3 4 5
+     ..........4 3 2 1 0 1 2 3 4
+     ............3 2 1 0 1 2 3
+     ..............2 1 0 1 2
+     ................1 0 1
+     ..................0*/
+    public static void getTriangle_4() {
         for (int i = 0; i < 10; i++) {
             for (int j = 9 - i; j > 0; j--) {
                 System.out.print(j + " ");
@@ -99,20 +100,42 @@ public class S_HW5_2 extends Utils {
             for (int j = 0; j < 10 - i; j++) {
                 System.out.print(j + " ");
             }
-            System.out.print("\n" + " ".repeat((i+1) * 2));
+            System.out.print("\n" + " ".repeat((i + 1) * 2));
         }
     }
 
+    /*********************************************************************************************************
+     * Задача №5
+
+     ..................0
+     ................1 0 1
+     ..............2 1 0 1 2
+     ............3 2 1 0 1 2 3
+     ..........4 3 2 1 0 1 2 3 4
+     ........5 4 3 2 1 0 1 2 3 4 5
+     ......6 5 4 3 2 1 0 1 2 3 4 5 6
+     ....7 6 5 4 3 2 1 0 1 2 3 4 5 6 7
+     ..8 7 6 5 4 3 2 1 0 1 2 3 4 5 6 7 8
+     9 8 7 6 5 4 3 2 1 0 1 2 3 4 5 6 7 8 9
+     */
 
 
-        public static void main(String[] args) {
+
+    public static void main(String[] args) {
+        printTaskNUmber(1);
         getTriangle_1();
+
+        printTaskNUmber(2);
         getTriangle_2();
         printNewRow();
+
+        printTaskNUmber(3);
         getTriangle_3();
         printNewRow();
+
+        printTaskNUmber(4);
         getTriangle_4();
 
 
-        }
+    }
 }
