@@ -120,9 +120,9 @@ public class HW9 extends Utils {
     public static String checkGoodBadPoorNum(int m) {
         if (m % 3 == 0 && m % 5 == 0) {
             return "Good Number";
-        } else if (m % 3 == 0 && m % 5 != 0) {
+        } else if (m % 3 == 0) {
             return "Bad Number";
-        } else if (m % 3 != 0 && m % 5 == 0) {
+        } else if (m % 5 == 0) {
             return "Poor Number";
         } else {
             return "-1";
@@ -138,14 +138,61 @@ public class HW9 extends Utils {
      ({1, 2, 3, 4, 5, 6, 7, 8}, 2, 6) →  {3, 7, 5}
      */
 
-    /******************************************************************************************************************
-     9. 	Написать алгоритм Intersection, который принимает на вход 2 массива целых чисел и
-     возвращает массив общих элементов.
-     Test Data:
-     {1, 2, 4, 5, 89}, {8, 9, 4, 2} → {2, 4}
-     {1, 2, 4, 5, 8, 9}, {8, 9, -4, -2} → {8, 9}
-     {1, 2, 4, 5, 89}, {8, 9, 45} → {}
-     */
+    public static int[] getMinMaxAve(int[] n, int index1, int index2) {
+        int min = getMin(n,index1,index2);
+        int max = getMax(n,index1,index2);
+        int avg = getAvg(n,index1,index2);
+
+        return new int[]{min, max, avg};
+    }
+
+    private static int getMin(int[] n, int index1, int index2){
+        int min = Integer.MAX_VALUE;
+
+        for (int i = index1; i <= index2; i++) {
+            if (n[i] < min) {
+                min = n[i];
+            }
+        }
+        return min;
+    }
+
+    private static int getMax(int[] n, int index1, int index2){
+        int max = Integer.MIN_VALUE;
+
+        for (int i = index1; i <= index2; i++) {
+            if (n[i] > max) {
+                max = n[i];
+            }
+        }
+        return max;
+    }
+
+    private static int getAvg(int[] n, int index1, int index2) {
+        int avg = 0;
+
+        for (int i = index1; i < index2; i++) {
+            for (int j = i + 1; j < index2-1; j++) {
+                if(n[i] > avg && n[i] < n[j]) {
+                    avg = n[i];
+                } else if(n[i] > avg && n[i] > n[j]) {
+                    avg = n[j];
+                }
+            }
+        }
+        return avg;
+    }
+
+//                if (n[i] < n[j] && n[i] < n[j + 1]) {
+//                    avg = n[i];
+        /******************************************************************************************************************
+         9. 	Написать алгоритм Intersection, который принимает на вход 2 массива целых чисел и
+         возвращает массив общих элементов.
+         Test Data:
+         {1, 2, 4, 5, 89}, {8, 9, 4, 2} → {2, 4}
+         {1, 2, 4, 5, 8, 9}, {8, 9, -4, -2} → {8, 9}
+         {1, 2, 4, 5, 89}, {8, 9, 45} → {}
+         */
 
     /******************************************************************************************************************
 
@@ -269,6 +316,14 @@ public class HW9 extends Utils {
         System.out.println(checkGoodBadPoorNum(25));
         System.out.println(checkGoodBadPoorNum(0));
         System.out.println(checkGoodBadPoorNum(22));
+
+//        Test Data:
+//        ({1, 2, 3, 4, 5, 6, 7, 8}, 2, 6) →  {3, 7, 5}
+//     */
+        printTaskNUmber(8);                                           //3, 4, 5, 6, 7, -> min=3, max =7 avg = 5
+        System.out.println(Arrays.toString(getMinMaxAve(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 2, 6)));
+        System.out.println(Arrays.toString(getMinMaxAve(new int[]{5, 1, 6, 2, 4, 8, 7, 3}, 2, 6)));
+                                                                      //6, 2, 4, 8, 7,-> min=2, max =8 avg = 6
 
 
 
