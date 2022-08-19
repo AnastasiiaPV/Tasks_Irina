@@ -1,5 +1,7 @@
 package homework;
 
+import java.util.Arrays;
+
 public class HW9 extends Utils {
 
     /******************************************************************************************************************
@@ -29,13 +31,14 @@ public class HW9 extends Utils {
      Expected Result =  {590, 985, 68}
      */
     public static int[] getOddIndices(int[] n) {
-        if (n % 2 == 0 || n == 0) {
-            return "Even";
-        } else if (n % 2 != 0) {
-            return "Odd";
-        } else {
-            return "Undefined";
+        int[] newArray = {};
+        for (int i = 0; i < n.length; i++) {
+            if (i % 2 != 0) {
+                newArray = Arrays.copyOf(newArray, newArray.length + 1);
+                newArray[newArray.length - 1] = n[i];
+            }
         }
+        return newArray;
     }
 
     /******************************************************************************************************************
@@ -44,6 +47,13 @@ public class HW9 extends Utils {
      {0, 1, 2, 3, 4, 5} → 15
      {-7, -3} → -10
      */
+    public static int getSumArray(int[] n) {
+        int sum = 0;
+        for (int arg : n) {
+            sum += arg;
+        }
+        return sum;
+    }
 
     /******************************************************************************************************************
      4. Напишите алгоритм BiggerValue, который из двух параметров типа int возвращает бОльшее значение.
@@ -51,11 +61,25 @@ public class HW9 extends Utils {
      3333, 9999
      Expected Result = 9999
      */
+    public static int getBiggerValue(int a, int b) {
+        if (a > b) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+
+    public static int getBiggerValue_2(int a, int b) {
+        return Math.max(a, b);
+    }
 
     /******************************************************************************************************************
      5. Напишите алгоритм IsPositiveNumber, который возвращает true, если численный  параметр больше или равен нулю,
      и возвращает false, если параметр меньше 0.
      Проверьте работу метода на числах 555, 0 и -555.*/
+    public static boolean isPositiveNumber(int a) {
+        return a >= 0;
+    }
 
     /******************************************************************************************************************
      6. Напишите алгоритм AreNumbersEqual, который принимает на вход 2 любых int числа, и возвращает
@@ -72,6 +96,20 @@ public class HW9 extends Utils {
      Expected result: 1
      */
 
+    public static int checkAreNumbersEqual(int a, int b) {
+        if (a == b) {
+            return 0;
+        } else if (a < b) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+
+    public static int checkAreNumbersEqual_2(int a, int b) {
+        return Integer.compare(a, b);
+    }
+
     /******************************************************************************************************************
      7. Given an integer M perform the following conditional actions:
      If M is multiple of 3 and 5 then return "Good Number".
@@ -79,6 +117,17 @@ public class HW9 extends Utils {
      If M is only multiple of 5 and not of 3 then return "Poor Number"
      If M doesn't satisfy any of the above conditions then return "-1"
      */
+    public static String checkGoodBadPoorNum(int m) {
+        if (m % 3 == 0 && m % 5 == 0) {
+            return "Good Number";
+        } else if (m % 3 == 0 && m % 5 != 0) {
+            return "Bad Number";
+        } else if (m % 3 != 0 && m % 5 == 0) {
+            return "Poor Number";
+        } else {
+            return "-1";
+        }
+    }
 
     /******************************************************************************************************************
      8. Написать алгоритм MinMaxAve, который принимает массив чисел int[]  и 2 значения индексов.
@@ -165,6 +214,65 @@ public class HW9 extends Utils {
         System.out.println(getOddEven(0));
         System.out.println(getOddEven(222222));
         System.out.println(getOddEven(2147483647 + 1));
+
+
+//        Input = {-45, 590, 234, 985, 12, 68}
+//        Expected Result =  {590, 985, 68}
+        printTaskNUmber(2);
+        System.out.println(Arrays.toString(getOddIndices(new int[]{-45, 590, 234, 985, 12, 68})));
+
+
+//     Test Data:
+//     {0, 1, 2, 3, 4, 5} → 15
+//     {-7, -3} → -10
+        printTaskNUmber(3);
+        System.out.println(getSumArray(new int[]{0, 1, 2, 3, 4, 5}));
+        System.out.println(getSumArray(new int[]{-7, -3}));
+
+//        Test Data:
+//        3333, 9999
+//        Expected Result = 9999
+        printTaskNUmber(4);
+        System.out.println(getBiggerValue(3333, 9999));
+        System.out.println(getBiggerValue_2(3333, 9999));
+
+//        555, 0 и -555.
+        printTaskNUmber(5);
+        System.out.println(isPositiveNumber(555));
+        System.out.println(isPositiveNumber(0));
+        System.out.println(isPositiveNumber(-555));
+
+
+//        Test Data:
+//        89, 89
+//        Expected result: 0
+//                -89, 89
+//        Expected result: -1
+//        89, -89
+//        Expected result: 1
+        printTaskNUmber(6);
+        System.out.println(checkAreNumbersEqual(89,89));
+        System.out.println(checkAreNumbersEqual(-89,89));
+        System.out.println(checkAreNumbersEqual(89,-89));
+        System.out.println(checkAreNumbersEqual_2(89,89));
+        System.out.println(checkAreNumbersEqual_2(-89,89));
+        System.out.println(checkAreNumbersEqual_2(89,-89));
+
+
+//        If M is multiple of 3 and 5 then return "Good Number".
+//        If M is only multiple of 3 and not of 5 then return "Bad Number"
+//        If M is only multiple of 5 and not of 3 then return "Poor Number"
+//        If M doesn't satisfy any of the above conditions then return "-1"
+        printTaskNUmber(7);
+        System.out.println(checkGoodBadPoorNum(15));
+        System.out.println(checkGoodBadPoorNum(9));
+        System.out.println(checkGoodBadPoorNum(25));
+        System.out.println(checkGoodBadPoorNum(0));
+        System.out.println(checkGoodBadPoorNum(22));
+
+
+
+
 
     }
 }

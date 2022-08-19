@@ -402,6 +402,7 @@ public class HW7 extends Utils {
 
     public static void printArray_23_2() {
         String[][] arrCat = {getCatsNames_2(), getCatsColors(), turnArrToString(getCatsAges())};
+
         for (int i = 0; i < arrCat.length; i++) {
             for (int j = 0; j < arrCat[i].length; j++) {
                 if(j % 2 == 0) {
