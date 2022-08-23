@@ -264,10 +264,10 @@ public class HW9 extends Utils {
         int[] newArr = new int[a.length];
         int count = 0;
 
-        for (int i = a.length-1; i >= 0; i--) {
-                newArr[count] = a[i];
-                count++;
-            }
+        for (int i = a.length - 1; i >= 0; i--) {
+            newArr[count] = a[i];
+            count++;
+        }
 
         return newArr;
     }
@@ -279,6 +279,35 @@ public class HW9 extends Utils {
      Test Data:
      {4, 3, 7, 12, 5, 2, 9, 4, 12} → {2, 3, 4, 4, 5, 7, 9, 12, 12}
      */
+    private static int[] sortArrayDesc(int[] a) {
+        int temp;
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                if (a[i] > a[j]) {
+                    temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                }
+            }
+        }
+        return a;
+    }
+
+    private static int[] sortArrayAsc(int[] a) {
+        int temp;
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                if (a[i] < a[j]) {
+                    temp = a[j];
+                    a[j] = a[i];
+                    a[i] = temp;
+                }
+            }
+        }
+        return a;
+    }
 
 
     /******************************************************************************************************************
@@ -407,6 +436,12 @@ public class HW9 extends Utils {
         printTaskNUmber(11);
         System.out.println(Arrays.toString(getReverseArray(new int[]{2, 7, 3, 10})));
 
+//        Test Data:
+//        {4, 3, 7, 12, 5, 2, 9, 4, 12} → {2, 3, 4, 4, 5, 7, 9, 12, 12}
+        printTaskNUmber(12);
+        System.out.println(Arrays.toString(sortArrayDesc(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12})));
+        printTaskNUmber(12);
+        System.out.println(Arrays.toString(sortArrayAsc(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12})));
 
     }
 }
