@@ -130,6 +130,7 @@ public class HW9 extends Utils {
     }
 
     /******************************************************************************************************************
+     ?????????????????????????????????????????????????????????????????????????????
      8. Написать алгоритм MinMaxAve, который принимает массив чисел int[]  и 2 значения индексов.
      Алгоритм возвращает массив, который содержит минимальное значение, максимальное значение,
      и среднее среди всех значений между 2-мя индексами.
@@ -193,6 +194,31 @@ public class HW9 extends Utils {
          {1, 2, 4, 5, 8, 9}, {8, 9, -4, -2} → {8, 9}
          {1, 2, 4, 5, 89}, {8, 9, 45} → {}
          */
+        private static int[] getIntersection(int[] a, int[] b) {
+            int[] newArr = {};
+            for (int i = 0; i < a.length; i++) {
+                for (int j = 0; j < b.length; j++) {
+                    if (a[i] == b[j]) {
+                        newArr = Arrays.copyOf(newArr, newArr.length + 1);
+                        newArr[newArr.length-1] = a[i];
+                    }
+                }
+            }
+            return newArr;
+        }
+
+    private static int[] getIntersection_2(int[] a, int[] b) {
+        int[] newArr = {};
+        for (int k : a) {
+            for (int i : b) {
+                if (k == i) {
+                    newArr = Arrays.copyOf(newArr, newArr.length + 1);
+                    newArr[newArr.length - 1] = k;
+                }
+            }
+        }
+        return newArr;
+    }
 
     /******************************************************************************************************************
 
@@ -325,6 +351,14 @@ public class HW9 extends Utils {
         System.out.println(Arrays.toString(getMinMaxAve(new int[]{5, 1, 6, 2, 4, 8, 7, 3}, 2, 6)));
                                                                       //6, 2, 4, 8, 7,-> min=2, max =8 avg = 6
 
+//        Test Data:
+//        {1, 2, 4, 5, 89}, {8, 9, 4, 2} → {2, 4}
+//        {1, 2, 4, 5, 8, 9}, {8, 9, -4, -2} → {8, 9}
+//        {1, 2, 4, 5, 89}, {8, 9, 45} → {}
+        printTaskNUmber(8);
+        System.out.println(Arrays.toString(getIntersection(new int[]{1, 2, 4, 5, 89}, new int[]{8, 9, 4, 2})));
+        System.out.println(Arrays.toString(getIntersection(new int[]{1, 2, 4, 5, 8, 9}, new int[]{8, 9, -4, -2})));
+        System.out.println(Arrays.toString(getIntersection(new int[]{1, 2, 4, 5, 89}, new int[]{8, 9, 45})));
 
 
 
