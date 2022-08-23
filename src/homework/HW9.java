@@ -140,14 +140,14 @@ public class HW9 extends Utils {
      */
 
     public static int[] getMinMaxAve(int[] n, int index1, int index2) {
-        int min = getMin(n,index1,index2);
-        int max = getMax(n,index1,index2);
-        int avg = getAvg(n,index1,index2);
+        int min = getMin(n, index1, index2);
+        int max = getMax(n, index1, index2);
+        int avg = getAvg(n, index1, index2);
 
         return new int[]{min, max, avg};
     }
 
-    private static int getMin(int[] n, int index1, int index2){
+    private static int getMin(int[] n, int index1, int index2) {
         int min = Integer.MAX_VALUE;
 
         for (int i = index1; i <= index2; i++) {
@@ -158,7 +158,7 @@ public class HW9 extends Utils {
         return min;
     }
 
-    private static int getMax(int[] n, int index1, int index2){
+    private static int getMax(int[] n, int index1, int index2) {
         int max = Integer.MIN_VALUE;
 
         for (int i = index1; i <= index2; i++) {
@@ -173,10 +173,10 @@ public class HW9 extends Utils {
         int avg = 0;
 
         for (int i = index1; i < index2; i++) {
-            for (int j = i + 1; j < index2-1; j++) {
-                if(n[i] > avg && n[i] < n[j]) {
+            for (int j = i + 1; j < index2 - 1; j++) {
+                if (n[i] > avg && n[i] < n[j]) {
                     avg = n[i];
-                } else if(n[i] > avg && n[i] > n[j]) {
+                } else if (n[i] > avg && n[i] > n[j]) {
                     avg = n[j];
                 }
             }
@@ -186,26 +186,27 @@ public class HW9 extends Utils {
 
 //                if (n[i] < n[j] && n[i] < n[j + 1]) {
 //                    avg = n[i];
-        /******************************************************************************************************************
-         9. 	Написать алгоритм Intersection, который принимает на вход 2 массива целых чисел и
-         возвращает массив общих элементов.
-         Test Data:
-         {1, 2, 4, 5, 89}, {8, 9, 4, 2} → {2, 4}
-         {1, 2, 4, 5, 8, 9}, {8, 9, -4, -2} → {8, 9}
-         {1, 2, 4, 5, 89}, {8, 9, 45} → {}
-         */
-        private static int[] getIntersection(int[] a, int[] b) {
-            int[] newArr = {};
-            for (int i = 0; i < a.length; i++) {
-                for (int j = 0; j < b.length; j++) {
-                    if (a[i] == b[j]) {
-                        newArr = Arrays.copyOf(newArr, newArr.length + 1);
-                        newArr[newArr.length-1] = a[i];
-                    }
+
+    /******************************************************************************************************************
+     9. 	Написать алгоритм Intersection, который принимает на вход 2 массива целых чисел и
+     возвращает массив общих элементов.
+     Test Data:
+     {1, 2, 4, 5, 89}, {8, 9, 4, 2} → {2, 4}
+     {1, 2, 4, 5, 8, 9}, {8, 9, -4, -2} → {8, 9}
+     {1, 2, 4, 5, 89}, {8, 9, 45} → {}
+     */
+    private static int[] getIntersection(int[] a, int[] b) {
+        int[] newArr = {};
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < b.length; j++) {
+                if (a[i] == b[j]) {
+                    newArr = Arrays.copyOf(newArr, newArr.length + 1);
+                    newArr[newArr.length - 1] = a[i];
                 }
             }
-            return newArr;
         }
+        return newArr;
+    }
 
     private static int[] getIntersection_2(int[] a, int[] b) {
         int[] newArr = {};
@@ -227,6 +228,29 @@ public class HW9 extends Utils {
      Test Data:
      {3, 2, 7, 5, 1, 9, 23, 1} → {3, 7, 23}
      */
+    private static int[] getPeakElement(int[] a) {
+        int[] newArr = {};
+
+        if (a[0] > a[1]) {
+            newArr = Arrays.copyOf(newArr, newArr.length + 1);
+            newArr[newArr.length - 1] = a[0];
+        }
+
+        for (int i = 1; i < a.length - 1; i++) {
+            if (a[i - 1] < a[i] && a[i] > a[i + 1]) {
+                newArr = Arrays.copyOf(newArr, newArr.length + 1);
+                newArr[newArr.length - 1] = a[i];
+                ;
+            }
+        }
+
+        if (a[a.length - 1] > a[a.length - 2]) {
+            newArr = Arrays.copyOf(newArr, newArr.length + 1);
+            newArr[newArr.length - 1] = a[a.length - 2];
+        }
+
+        return newArr;
+    }
 
 
     /******************************************************************************************************************
@@ -236,6 +260,9 @@ public class HW9 extends Utils {
      Test Data:
      {2, 7, 3, 10} → {10, 3, 7, 2}
      */
+    private static int[] getReverseArray(int[] a) {
+
+    }
 
 
     /******************************************************************************************************************
@@ -324,12 +351,12 @@ public class HW9 extends Utils {
 //        89, -89
 //        Expected result: 1
         printTaskNUmber(6);
-        System.out.println(checkAreNumbersEqual(89,89));
-        System.out.println(checkAreNumbersEqual(-89,89));
-        System.out.println(checkAreNumbersEqual(89,-89));
-        System.out.println(checkAreNumbersEqual_2(89,89));
-        System.out.println(checkAreNumbersEqual_2(-89,89));
-        System.out.println(checkAreNumbersEqual_2(89,-89));
+        System.out.println(checkAreNumbersEqual(89, 89));
+        System.out.println(checkAreNumbersEqual(-89, 89));
+        System.out.println(checkAreNumbersEqual(89, -89));
+        System.out.println(checkAreNumbersEqual_2(89, 89));
+        System.out.println(checkAreNumbersEqual_2(-89, 89));
+        System.out.println(checkAreNumbersEqual_2(89, -89));
 
 
 //        If M is multiple of 3 and 5 then return "Good Number".
@@ -349,18 +376,22 @@ public class HW9 extends Utils {
         printTaskNUmber(8);                                           //3, 4, 5, 6, 7, -> min=3, max =7 avg = 5
         System.out.println(Arrays.toString(getMinMaxAve(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 2, 6)));
         System.out.println(Arrays.toString(getMinMaxAve(new int[]{5, 1, 6, 2, 4, 8, 7, 3}, 2, 6)));
-                                                                      //6, 2, 4, 8, 7,-> min=2, max =8 avg = 6
+        //6, 2, 4, 8, 7,-> min=2, max =8 avg = 6
 
 //        Test Data:
 //        {1, 2, 4, 5, 89}, {8, 9, 4, 2} → {2, 4}
 //        {1, 2, 4, 5, 8, 9}, {8, 9, -4, -2} → {8, 9}
 //        {1, 2, 4, 5, 89}, {8, 9, 45} → {}
-        printTaskNUmber(8);
+        printTaskNUmber(9);
         System.out.println(Arrays.toString(getIntersection(new int[]{1, 2, 4, 5, 89}, new int[]{8, 9, 4, 2})));
         System.out.println(Arrays.toString(getIntersection(new int[]{1, 2, 4, 5, 8, 9}, new int[]{8, 9, -4, -2})));
         System.out.println(Arrays.toString(getIntersection(new int[]{1, 2, 4, 5, 89}, new int[]{8, 9, 45})));
 
 
+//        Test Data:
+//        {3, 2, 7, 5, 1, 9, 23, 1} → {3, 7, 23}
+        printTaskNUmber(10);
+        System.out.println(Arrays.toString(getPeakElement(new int[]{3, 2, 7, 5, 1, 9, 23, 1})));
 
 
     }
