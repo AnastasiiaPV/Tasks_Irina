@@ -261,7 +261,15 @@ public class HW9 extends Utils {
      {2, 7, 3, 10} → {10, 3, 7, 2}
      */
     private static int[] getReverseArray(int[] a) {
+        int[] newArr = new int[a.length];
+        int count = 0;
 
+        for (int i = a.length-1; i >= 0; i--) {
+                newArr[count] = a[i];
+                count++;
+            }
+
+        return newArr;
     }
 
 
@@ -392,6 +400,12 @@ public class HW9 extends Utils {
 //        {3, 2, 7, 5, 1, 9, 23, 1} → {3, 7, 23}
         printTaskNUmber(10);
         System.out.println(Arrays.toString(getPeakElement(new int[]{3, 2, 7, 5, 1, 9, 23, 1})));
+
+
+//        Test Data:
+//        {2, 7, 3, 10} → {10, 3, 7, 2}
+        printTaskNUmber(11);
+        System.out.println(Arrays.toString(getReverseArray(new int[]{2, 7, 3, 10})));
 
 
     }
