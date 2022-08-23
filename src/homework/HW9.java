@@ -314,9 +314,44 @@ public class HW9 extends Utils {
      13. Написать алгоритм KthLargest, который принимает на вход массив целых чисел и число k,
      и возвращает k-тый максимальный элемент.
      Test Data:
-     ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 3) → 9
-     (12 и 12 - первый и второй самые большие элементы)
+     ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 3) → 9*/
 
+    private static int getKthLargest(int[] a, int k) {
+        int max = 0;
+
+            for (int i = 0; k > 0; i++) {
+                if (a[i] < a[i+1]) {
+                    max = a[i + 1];
+                    k--;
+            }
+        }
+        return max;
+    }
+     /**(12 и 12 - первый и второй самые большие элементы)*/
+    private static int[] getKthLargest_2(int[] a) {
+        int max1 = a[0];
+        int max2 = a[0];
+        int positionMax1 = 0;
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] > max1) {
+                max1 = a[i];
+                positionMax1 = i;
+            }
+        }
+        a[positionMax1] = 0;
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] > max2) {
+                max2 = a[i];
+            }
+        }
+
+        return new int[]{max1, max2};
+    }
+
+
+     /******************************************************************************************************************
      13. Написать алгоритм NegativeOnTheRight, который принимает на вход массив целых чисел, и возвращает массив,
      в котором все негативные числа находятся во второй половине массива
      Test Data:
@@ -442,6 +477,20 @@ public class HW9 extends Utils {
         System.out.println(Arrays.toString(sortArrayDesc(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12})));
         printTaskNUmber(12);
         System.out.println(Arrays.toString(sortArrayAsc(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12})));
+
+
+
+//        Test Data:
+//        ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 3) → 9
+        printTaskNUmber(13);
+        System.out.println(getKthLargest(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12}, 3));
+        System.out.println(getKthLargest(new int[]{2, 3, 5, 0, 1}, 2));
+        //        (12 и 12 - первый и второй самые большие элементы)*/
+        printSubparagraphNumber(13,"2");
+        System.out.println(Arrays.toString(getKthLargest_2(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12})));
+        System.out.println(Arrays.toString(getKthLargest_2(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 13})));
+
+
 
     }
 }
