@@ -130,6 +130,7 @@ public class HW9 extends Utils {
     }
 
     /******************************************************************************************************************
+     ?????????????????????????????????????????????????????????????????????????????
      8. Написать алгоритм MinMaxAve, который принимает массив чисел int[]  и 2 значения индексов.
      Алгоритм возвращает массив, который содержит минимальное значение, максимальное значение,
      и среднее среди всех значений между 2-мя индексами.
@@ -139,14 +140,14 @@ public class HW9 extends Utils {
      */
 
     public static int[] getMinMaxAve(int[] n, int index1, int index2) {
-        int min = getMin(n,index1,index2);
-        int max = getMax(n,index1,index2);
-        int avg = getAvg(n,index1,index2);
+        int min = getMin(n, index1, index2);
+        int max = getMax(n, index1, index2);
+        int avg = getAvg(n, index1, index2);
 
         return new int[]{min, max, avg};
     }
 
-    private static int getMin(int[] n, int index1, int index2){
+    private static int getMin(int[] n, int index1, int index2) {
         int min = Integer.MAX_VALUE;
 
         for (int i = index1; i <= index2; i++) {
@@ -157,7 +158,7 @@ public class HW9 extends Utils {
         return min;
     }
 
-    private static int getMax(int[] n, int index1, int index2){
+    private static int getMax(int[] n, int index1, int index2) {
         int max = Integer.MIN_VALUE;
 
         for (int i = index1; i <= index2; i++) {
@@ -172,10 +173,10 @@ public class HW9 extends Utils {
         int avg = 0;
 
         for (int i = index1; i < index2; i++) {
-            for (int j = i + 1; j < index2-1; j++) {
-                if(n[i] > avg && n[i] < n[j]) {
+            for (int j = i + 1; j < index2 - 1; j++) {
+                if (n[i] > avg && n[i] < n[j]) {
                     avg = n[i];
-                } else if(n[i] > avg && n[i] > n[j]) {
+                } else if (n[i] > avg && n[i] > n[j]) {
                     avg = n[j];
                 }
             }
@@ -185,14 +186,40 @@ public class HW9 extends Utils {
 
 //                if (n[i] < n[j] && n[i] < n[j + 1]) {
 //                    avg = n[i];
-        /******************************************************************************************************************
-         9. 	Написать алгоритм Intersection, который принимает на вход 2 массива целых чисел и
-         возвращает массив общих элементов.
-         Test Data:
-         {1, 2, 4, 5, 89}, {8, 9, 4, 2} → {2, 4}
-         {1, 2, 4, 5, 8, 9}, {8, 9, -4, -2} → {8, 9}
-         {1, 2, 4, 5, 89}, {8, 9, 45} → {}
-         */
+
+    /******************************************************************************************************************
+     9. 	Написать алгоритм Intersection, который принимает на вход 2 массива целых чисел и
+     возвращает массив общих элементов.
+     Test Data:
+     {1, 2, 4, 5, 89}, {8, 9, 4, 2} → {2, 4}
+     {1, 2, 4, 5, 8, 9}, {8, 9, -4, -2} → {8, 9}
+     {1, 2, 4, 5, 89}, {8, 9, 45} → {}
+     */
+    private static int[] getIntersection(int[] a, int[] b) {
+        int[] newArr = {};
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < b.length; j++) {
+                if (a[i] == b[j]) {
+                    newArr = Arrays.copyOf(newArr, newArr.length + 1);
+                    newArr[newArr.length - 1] = a[i];
+                }
+            }
+        }
+        return newArr;
+    }
+
+    private static int[] getIntersection_2(int[] a, int[] b) {
+        int[] newArr = {};
+        for (int k : a) {
+            for (int i : b) {
+                if (k == i) {
+                    newArr = Arrays.copyOf(newArr, newArr.length + 1);
+                    newArr[newArr.length - 1] = k;
+                }
+            }
+        }
+        return newArr;
+    }
 
     /******************************************************************************************************************
 
@@ -201,6 +228,29 @@ public class HW9 extends Utils {
      Test Data:
      {3, 2, 7, 5, 1, 9, 23, 1} → {3, 7, 23}
      */
+    private static int[] getPeakElement(int[] a) {
+        int[] newArr = {};
+
+        if (a[0] > a[1]) {
+            newArr = Arrays.copyOf(newArr, newArr.length + 1);
+            newArr[newArr.length - 1] = a[0];
+        }
+
+        for (int i = 1; i < a.length - 1; i++) {
+            if (a[i - 1] < a[i] && a[i] > a[i + 1]) {
+                newArr = Arrays.copyOf(newArr, newArr.length + 1);
+                newArr[newArr.length - 1] = a[i];
+                ;
+            }
+        }
+
+        if (a[a.length - 1] > a[a.length - 2]) {
+            newArr = Arrays.copyOf(newArr, newArr.length + 1);
+            newArr[newArr.length - 1] = a[a.length - 2];
+        }
+
+        return newArr;
+    }
 
 
     /******************************************************************************************************************
@@ -210,6 +260,17 @@ public class HW9 extends Utils {
      Test Data:
      {2, 7, 3, 10} → {10, 3, 7, 2}
      */
+    private static int[] getReverseArray(int[] a) {
+        int[] newArr = new int[a.length];
+        int count = 0;
+
+        for (int i = a.length - 1; i >= 0; i--) {
+            newArr[count] = a[i];
+            count++;
+        }
+
+        return newArr;
+    }
 
 
     /******************************************************************************************************************
@@ -218,20 +279,99 @@ public class HW9 extends Utils {
      Test Data:
      {4, 3, 7, 12, 5, 2, 9, 4, 12} → {2, 3, 4, 4, 5, 7, 9, 12, 12}
      */
+    private static int[] sortArrayDesc(int[] a) {
+        int temp;
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                if (a[i] > a[j]) {
+                    temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                }
+            }
+        }
+        return a;
+    }
+
+    private static int[] sortArrayAsc(int[] a) {
+        int temp;
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                if (a[i] < a[j]) {
+                    temp = a[j];
+                    a[j] = a[i];
+                    a[i] = temp;
+                }
+            }
+        }
+        return a;
+    }
 
 
     /******************************************************************************************************************
      13. Написать алгоритм KthLargest, который принимает на вход массив целых чисел и число k,
      и возвращает k-тый максимальный элемент.
      Test Data:
-     ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 3) → 9
-     (12 и 12 - первый и второй самые большие элементы)
+     ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 3) → 9*/
 
+    private static int getKthLargest(int[] a, int k) {
+        int max = 0;
+
+            for (int i = 0; k > 0; i++) {
+                if (a[i] < a[i+1]) {
+                    max = a[i + 1];
+                    k--;
+            }
+        }
+        return max;
+    }
+     /**(12 и 12 - первый и второй самые большие элементы)*/
+    private static int[] getKthLargest_2(int[] a) {
+        int max1 = a[0];
+        int max2 = a[0];
+        int positionMax1 = 0;
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] > max1) {
+                max1 = a[i];
+                positionMax1 = i;
+            }
+        }
+        a[positionMax1] = 0;
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] > max2) {
+                max2 = a[i];
+            }
+        }
+
+        return new int[]{max1, max2};
+    }
+
+
+     /******************************************************************************************************************
      13. Написать алгоритм NegativeOnTheRight, который принимает на вход массив целых чисел, и возвращает массив,
      в котором все негативные числа находятся во второй половине массива
      Test Data:
      {4, -3, 7, -12, 5, -2, 9, 4, 12} → {4, 7, 5, 9, 4, 12, -3, -12, -2}
+      //мій результат                   [4, 7, 5, 9, 4, 12, -2, -12, -3]
      */
+     private static int[] getNegativeOnTheRight(int[] arr) {
+         int temp;
+
+         for (int i = 0; i < arr.length; i++) {
+             for (int j = 0; j < arr.length; j++) {
+                 if (arr[j] < 0) {
+                     temp = arr[j];
+                     arr[j] = arr[i];
+                     arr[i] = temp;
+                 }
+             }
+         }
+         return arr;
+     }
 
 
     /******************************************************************************************************************
@@ -240,7 +380,23 @@ public class HW9 extends Utils {
      Test Data:
      ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 12)  → {{3, 9}, {7, 5}}
      */
+    private static int[][] getSumOfTwo(int[] arr, int n) {
+        int[][] result = {};
 
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                int[] pair = new int[2];
+
+                if(arr[i] + arr[j] == n){
+                    pair[0] = arr[i];
+                    pair[1] = arr[j];
+                    result = Arrays.copyOf(result, result.length+1);
+                    result[result.length-1] = pair;
+                }
+            }
+        }
+        return result;
+    }
 
     /******************************************************************************************************************
      15.	Написать алгоритм NumberOccurrences,  который принимает на вход массив целых чисел,  и возвращает массив пар
@@ -249,7 +405,50 @@ public class HW9 extends Utils {
      {3, 2, 5, 3, 1, 5, 4, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1} →
      {{1, 4}, {2, 4}, {3, 4}, {4, 3}, {5, 4}}
      */
+    private static int[][] getNumberOccurrences(int[] arr) {
+        int[][] result = {};
+        int count = 0;
 
+
+        for (int i = 0; i < arr.length; i++) {
+            int[] pair = new int[2];
+            if(arr[i] != 0) {
+                for (int j = i + 1; j < arr.length; j++) {
+
+                    if (arr[i] == arr[j]) {
+                        arr[j] = 0;
+                        count++;
+                    }
+                }
+                pair[0] = arr[i];
+                pair[1] = count+1;
+                count = 0;
+                result = Arrays.copyOf(result, result.length + 1);
+                result[result.length - 1] = pair;
+            }
+        }
+
+        return result;
+    }
+    private static int[][] sortArr(int[][] arr) {
+        //int[] result = {};
+        int temp;
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if(arr[i][j] > arr[i+1][j]){
+                    temp = arr[i][j];
+                    arr[i][j] = arr[i+1][j];
+                    arr[i+1][j] = temp;
+                }
+            }
+        }
+
+        return arr;
+    }
+
+
+    //**********************************************************************************************************
     public static void main(String[] args) {
 //           Test Data:
 //           -345 →  “Odd”
@@ -298,12 +497,12 @@ public class HW9 extends Utils {
 //        89, -89
 //        Expected result: 1
         printTaskNUmber(6);
-        System.out.println(checkAreNumbersEqual(89,89));
-        System.out.println(checkAreNumbersEqual(-89,89));
-        System.out.println(checkAreNumbersEqual(89,-89));
-        System.out.println(checkAreNumbersEqual_2(89,89));
-        System.out.println(checkAreNumbersEqual_2(-89,89));
-        System.out.println(checkAreNumbersEqual_2(89,-89));
+        System.out.println(checkAreNumbersEqual(89, 89));
+        System.out.println(checkAreNumbersEqual(-89, 89));
+        System.out.println(checkAreNumbersEqual(89, -89));
+        System.out.println(checkAreNumbersEqual_2(89, 89));
+        System.out.println(checkAreNumbersEqual_2(-89, 89));
+        System.out.println(checkAreNumbersEqual_2(89, -89));
 
 
 //        If M is multiple of 3 and 5 then return "Good Number".
@@ -323,11 +522,69 @@ public class HW9 extends Utils {
         printTaskNUmber(8);                                           //3, 4, 5, 6, 7, -> min=3, max =7 avg = 5
         System.out.println(Arrays.toString(getMinMaxAve(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 2, 6)));
         System.out.println(Arrays.toString(getMinMaxAve(new int[]{5, 1, 6, 2, 4, 8, 7, 3}, 2, 6)));
-                                                                      //6, 2, 4, 8, 7,-> min=2, max =8 avg = 6
+        //6, 2, 4, 8, 7,-> min=2, max =8 avg = 6
+
+//        Test Data:
+//        {1, 2, 4, 5, 89}, {8, 9, 4, 2} → {2, 4}
+//        {1, 2, 4, 5, 8, 9}, {8, 9, -4, -2} → {8, 9}
+//        {1, 2, 4, 5, 89}, {8, 9, 45} → {}
+        printTaskNUmber(9);
+        System.out.println(Arrays.toString(getIntersection(new int[]{1, 2, 4, 5, 89}, new int[]{8, 9, 4, 2})));
+        System.out.println(Arrays.toString(getIntersection(new int[]{1, 2, 4, 5, 8, 9}, new int[]{8, 9, -4, -2})));
+        System.out.println(Arrays.toString(getIntersection(new int[]{1, 2, 4, 5, 89}, new int[]{8, 9, 45})));
+
+
+//        Test Data:
+//        {3, 2, 7, 5, 1, 9, 23, 1} → {3, 7, 23}
+        printTaskNUmber(10);
+        System.out.println(Arrays.toString(getPeakElement(new int[]{3, 2, 7, 5, 1, 9, 23, 1})));
+
+
+//        Test Data:
+//        {2, 7, 3, 10} → {10, 3, 7, 2}
+        printTaskNUmber(11);
+        System.out.println(Arrays.toString(getReverseArray(new int[]{2, 7, 3, 10})));
+
+//        Test Data:
+//        {4, 3, 7, 12, 5, 2, 9, 4, 12} → {2, 3, 4, 4, 5, 7, 9, 12, 12}
+        printTaskNUmber(12);
+        System.out.println(Arrays.toString(sortArrayDesc(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12})));
+        printTaskNUmber(12);
+        System.out.println(Arrays.toString(sortArrayAsc(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12})));
 
 
 
+//        Test Data:
+//        ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 3) → 9
+        printTaskNUmber(13);
+        System.out.println(getKthLargest(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12}, 3));
+        System.out.println(getKthLargest(new int[]{2, 3, 5, 0, 1}, 2));
+        //        (12 и 12 - первый и второй самые большие элементы)*/
+        printSubparagraphNumber(13,"2");
+        System.out.println(Arrays.toString(getKthLargest_2(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12})));
+        System.out.println(Arrays.toString(getKthLargest_2(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 13})));
 
 
+
+//        Test Data:
+//        {4, -3, 7, -12, 5, -2, 9, 4, 12} → {4, 7, 5, 9, 4, 12, -3, -12, -2}
+        printTaskNUmber(13);
+        System.out.println(Arrays.toString(getNegativeOnTheRight(new int[]{4, -3, 7, -12, 5, -2, 9, 4, 12})));
+
+
+//        Test Data:
+//        ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 12)  → {{3, 9}, {7, 5}}
+        printTaskNUmber(14);
+        System.out.println(Arrays.deepToString(getSumOfTwo(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12}, 12)));
+
+
+
+//        Test Data:
+//        {3, 2, 5, 3, 1, 5, 4, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1} →
+//        {{1, 4}, {2, 4}, {3, 4}, {4, 3}, {5, 4}}
+        printTaskNUmber(15);
+        System.out.println(Arrays.deepToString(getNumberOccurrences(new int[]{3, 2, 5, 3, 1, 5, 4, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1})));
+        printTaskNUmber(15);
+      //  System.out.println(Arrays.deepToString(sortArr(new int[][]{{3, 4}, {2, 4}, {5, 4}, {1, 4}, {4, 3}})));
     }
 }
