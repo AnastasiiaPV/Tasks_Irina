@@ -405,7 +405,50 @@ public class HW9 extends Utils {
      {3, 2, 5, 3, 1, 5, 4, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1} →
      {{1, 4}, {2, 4}, {3, 4}, {4, 3}, {5, 4}}
      */
+    private static int[][] getNumberOccurrences(int[] arr) {
+        int[][] result = {};
+        int count = 0;
 
+
+        for (int i = 0; i < arr.length; i++) {
+            int[] pair = new int[2];
+            if(arr[i] != 0) {
+                for (int j = i + 1; j < arr.length; j++) {
+
+                    if (arr[i] == arr[j]) {
+                        arr[j] = 0;
+                        count++;
+                    }
+                }
+                pair[0] = arr[i];
+                pair[1] = count+1;
+                count = 0;
+                result = Arrays.copyOf(result, result.length + 1);
+                result[result.length - 1] = pair;
+            }
+        }
+
+        return result;
+    }
+    private static int[][] sortArr(int[][] arr) {
+        //int[] result = {};
+        int temp;
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if(arr[i][j] > arr[i+1][j]){
+                    temp = arr[i][j];
+                    arr[i][j] = arr[i+1][j];
+                    arr[i+1][j] = temp;
+                }
+            }
+        }
+
+        return arr;
+    }
+
+
+    //**********************************************************************************************************
     public static void main(String[] args) {
 //           Test Data:
 //           -345 →  “Odd”
@@ -533,5 +576,15 @@ public class HW9 extends Utils {
 //        ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 12)  → {{3, 9}, {7, 5}}
         printTaskNUmber(14);
         System.out.println(Arrays.deepToString(getSumOfTwo(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12}, 12)));
+
+
+
+//        Test Data:
+//        {3, 2, 5, 3, 1, 5, 4, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1} →
+//        {{1, 4}, {2, 4}, {3, 4}, {4, 3}, {5, 4}}
+        printTaskNUmber(15);
+        System.out.println(Arrays.deepToString(getNumberOccurrences(new int[]{3, 2, 5, 3, 1, 5, 4, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1})));
+        printTaskNUmber(15);
+      //  System.out.println(Arrays.deepToString(sortArr(new int[][]{{3, 4}, {2, 4}, {5, 4}, {1, 4}, {4, 3}})));
     }
 }
