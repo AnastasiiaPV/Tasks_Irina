@@ -356,7 +356,22 @@ public class HW9 extends Utils {
      в котором все негативные числа находятся во второй половине массива
      Test Data:
      {4, -3, 7, -12, 5, -2, 9, 4, 12} → {4, 7, 5, 9, 4, 12, -3, -12, -2}
+      //мій результат                   [4, 7, 5, 9, 4, 12, -2, -12, -3]
      */
+     private static int[] getNegativeOnTheRight(int[] arr) {
+         int temp;
+
+         for (int i = 0; i < arr.length; i++) {
+             for (int j = 0; j < arr.length; j++) {
+                 if (arr[j] < 0) {
+                     temp = arr[j];
+                     arr[j] = arr[i];
+                     arr[i] = temp;
+                 }
+             }
+         }
+         return arr;
+     }
 
 
     /******************************************************************************************************************
@@ -365,7 +380,23 @@ public class HW9 extends Utils {
      Test Data:
      ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 12)  → {{3, 9}, {7, 5}}
      */
+    private static int[][] getSumOfTwo(int[] arr, int n) {
+        int[][] result = {};
 
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                int[] pair = new int[2];
+
+                if(arr[i] + arr[j] == n){
+                    pair[0] = arr[i];
+                    pair[1] = arr[j];
+                    result = Arrays.copyOf(result, result.length+1);
+                    result[result.length-1] = pair;
+                }
+            }
+        }
+        return result;
+    }
 
     /******************************************************************************************************************
      15.	Написать алгоритм NumberOccurrences,  который принимает на вход массив целых чисел,  и возвращает массив пар
@@ -492,5 +523,15 @@ public class HW9 extends Utils {
 
 
 
+//        Test Data:
+//        {4, -3, 7, -12, 5, -2, 9, 4, 12} → {4, 7, 5, 9, 4, 12, -3, -12, -2}
+        printTaskNUmber(13);
+        System.out.println(Arrays.toString(getNegativeOnTheRight(new int[]{4, -3, 7, -12, 5, -2, 9, 4, 12})));
+
+
+//        Test Data:
+//        ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 12)  → {{3, 9}, {7, 5}}
+        printTaskNUmber(14);
+        System.out.println(Arrays.deepToString(getSumOfTwo(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12}, 12)));
     }
 }
