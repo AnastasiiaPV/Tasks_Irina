@@ -319,15 +319,18 @@ public class HW9 extends Utils {
     private static int getKthLargest(int[] a, int k) {
         int max = 0;
 
-            for (int i = 0; k > 0; i++) {
-                if (a[i] < a[i+1]) {
-                    max = a[i + 1];
-                    k--;
+        for (int i = 0; k > 0; i++) {
+            if (a[i] < a[i + 1]) {
+                max = a[i + 1];
+                k--;
             }
         }
         return max;
     }
-     /**(12 и 12 - первый и второй самые большие элементы)*/
+
+    /**
+     * (12 и 12 - первый и второй самые большие элементы)
+     */
     private static int[] getKthLargest_2(int[] a) {
         int max1 = a[0];
         int max2 = a[0];
@@ -351,27 +354,27 @@ public class HW9 extends Utils {
     }
 
 
-     /******************************************************************************************************************
+    /******************************************************************************************************************
      13. Написать алгоритм NegativeOnTheRight, который принимает на вход массив целых чисел, и возвращает массив,
      в котором все негативные числа находятся во второй половине массива
      Test Data:
      {4, -3, 7, -12, 5, -2, 9, 4, 12} → {4, 7, 5, 9, 4, 12, -3, -12, -2}
-      //мій результат                   [4, 7, 5, 9, 4, 12, -2, -12, -3]
+     //мій результат                   [4, 7, 5, 9, 4, 12, -2, -12, -3]
      */
-     private static int[] getNegativeOnTheRight(int[] arr) {
-         int temp;
+    private static int[] getNegativeOnTheRight(int[] arr) {
+        int temp;
 
-         for (int i = 0; i < arr.length; i++) {
-             for (int j = 0; j < arr.length; j++) {
-                 if (arr[j] < 0) {
-                     temp = arr[j];
-                     arr[j] = arr[i];
-                     arr[i] = temp;
-                 }
-             }
-         }
-         return arr;
-     }
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[j] < 0) {
+                    temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+        }
+        return arr;
+    }
 
 
     /******************************************************************************************************************
@@ -387,11 +390,11 @@ public class HW9 extends Utils {
             for (int j = i + 1; j < arr.length; j++) {
                 int[] pair = new int[2];
 
-                if(arr[i] + arr[j] == n){
+                if (arr[i] + arr[j] == n) {
                     pair[0] = arr[i];
                     pair[1] = arr[j];
-                    result = Arrays.copyOf(result, result.length+1);
-                    result[result.length-1] = pair;
+                    result = Arrays.copyOf(result, result.length + 1);
+                    result[result.length - 1] = pair;
                 }
             }
         }
@@ -409,44 +412,44 @@ public class HW9 extends Utils {
         int[][] result = {};
         int count = 0;
 
-
         for (int i = 0; i < arr.length; i++) {
             int[] pair = new int[2];
-            if(arr[i] != 0) {
-                for (int j = i + 1; j < arr.length; j++) {
 
+            if (arr[i] != 0) {
+                for (int j = i + 1; j < arr.length; j++) {
                     if (arr[i] == arr[j]) {
                         arr[j] = 0;
                         count++;
                     }
                 }
+
                 pair[0] = arr[i];
-                pair[1] = count+1;
+                pair[1] = count + 1;
                 count = 0;
+
                 result = Arrays.copyOf(result, result.length + 1);
                 result[result.length - 1] = pair;
             }
         }
 
-        return result;
+        return sortDoubleArr(result);
     }
-    private static int[][] sortArr(int[][] arr) {
-        //int[] result = {};
-        int temp;
+
+    private static int[][] sortDoubleArr(int[][] arr) {
+        int[] temp;
 
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
-                if(arr[i][j] > arr[i+1][j]){
-                    temp = arr[i][j];
-                    arr[i][j] = arr[i+1][j];
-                    arr[i+1][j] = temp;
+                if (arr[i][0] < arr[j][0]) {
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
                 }
             }
         }
 
         return arr;
     }
-
 
     //**********************************************************************************************************
     public static void main(String[] args) {
@@ -553,17 +556,15 @@ public class HW9 extends Utils {
         System.out.println(Arrays.toString(sortArrayAsc(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12})));
 
 
-
 //        Test Data:
 //        ({4, 3, 7, 12, 5, 2, 9, 4, 12}, 3) → 9
         printTaskNUmber(13);
         System.out.println(getKthLargest(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12}, 3));
         System.out.println(getKthLargest(new int[]{2, 3, 5, 0, 1}, 2));
         //        (12 и 12 - первый и второй самые большие элементы)*/
-        printSubparagraphNumber(13,"2");
+        printSubparagraphNumber(13, "2");
         System.out.println(Arrays.toString(getKthLargest_2(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12})));
         System.out.println(Arrays.toString(getKthLargest_2(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 13})));
-
 
 
 //        Test Data:
@@ -578,13 +579,12 @@ public class HW9 extends Utils {
         System.out.println(Arrays.deepToString(getSumOfTwo(new int[]{4, 3, 7, 12, 5, 2, 9, 4, 12}, 12)));
 
 
-
 //        Test Data:
 //        {3, 2, 5, 3, 1, 5, 4, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1} →
 //        {{1, 4}, {2, 4}, {3, 4}, {4, 3}, {5, 4}}
         printTaskNUmber(15);
         System.out.println(Arrays.deepToString(getNumberOccurrences(new int[]{3, 2, 5, 3, 1, 5, 4, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1})));
         printTaskNUmber(15);
-      //  System.out.println(Arrays.deepToString(sortArr(new int[][]{{3, 4}, {2, 4}, {5, 4}, {1, 4}, {4, 3}})));
+        System.out.println(Arrays.deepToString(sortDoubleArr(new int[][]{{3, 4}, {2, 4}, {5, 4}, {1, 4}, {4, 3}})));
     }
 }
