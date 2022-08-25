@@ -1,11 +1,13 @@
 package homework;
 
+import java.util.Arrays;
+
 public class HW10 extends Utils {
     private static Object Integer;
 
     /**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      * Видео1: https://youtu.be/78ZAzmNbUYQ?t=173
-     *      Методы isEmpty(), length(), trim(), replace()*/
+     *                      Методы isEmpty(), length(), trim(), replace()*/
 
     /****************************************************************************************************************
      *      1. Написать метод, который принимает на вход строку.
@@ -206,8 +208,8 @@ public class HW10 extends Utils {
      “Abracadabra”, “b” → “bracadab”
      “Whippersnapper”, “p” → “ppersnapp”
      */
-    public static String getAllLettersBetween(String cityName, String letter) {
-        return cityName.substring(cityName.indexOf(letter), cityName.lastIndexOf(letter) + 1);
+    public static String getAllLettersBetween(String str, String letter) {
+        return str.substring(str.indexOf(letter), str.lastIndexOf(letter) + 1);
     }
 
     /****************************************************************************************************************
@@ -217,10 +219,32 @@ public class HW10 extends Utils {
      “Abracadabra” → true
      “Whippersnapper” → false
      */
-    public static boolean isSameFirstLastLetter(String cityName) {
-        cityName = cityName.toLowerCase();
+    //???????????????як тут використати indexOF??????????????????????????????
+    public static boolean isSameFirstLastLetter(String str) {
+        str = str.toLowerCase();
 
-        return cityName.charAt(0) ==  cityName.charAt(cityName.length()-1);
+        return str.charAt(0) == str.charAt(str.length() - 1);
+    }
+
+
+    /**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     Видео4: https://youtu.be/SBByYcrsXu0?t=42
+     split()*/
+
+    /****************************************************************************************************************
+     11. Напишите метод, который принимает на вход предложение и возвращает слова из этого предложения
+     в виде массива слов
+     Test Data:
+     “QA for Everyone” → {“QA”, “for”, “Everyone”}
+     “Александр Сергеевич Пушкин” → {“Александр”, “Сергеевич”, “Пушкин”}
+     */
+    public static String[] strToArr(String str) {
+        String[] arr = str.split(" ");
+        return arr;
+    }
+
+    public static String[] strToArr_1(String str) {
+        return str.split(" ");
     }
 
 
@@ -320,22 +344,15 @@ public class HW10 extends Utils {
         printSubparagraphNumber(10, "2");
         System.out.println(isSameFirstLastLetter("Whippersnapper"));
         printNewRow();
+
+        printTaskNUmber(11);
+        System.out.println(Arrays.toString(strToArr("QA for Everyone")));
+        printSubparagraphNumber(11, "2");
+        System.out.println(Arrays.toString(strToArr("River on the age of the New York city")));
+        printNewRow();
     }
 }
 
-
-/****************************************************************************************************************
- Видео4: https://youtu.be/SBByYcrsXu0?t=42*/
-/****************************************************************************************************************
- split()*/
-/****************************************************************************************************************
-
- 11. Напишите метод, который принимает на вход предложение и возвращает слова из этого предложения
- в виде массива слов
- Test Data:
- “QA for Everyone” → {“QA”, “for”, “Everyone”}
- “Александр Сергеевич Пушкин” → {“Александр”, “Сергеевич”, “Пушкин”}
- */
 
 /****************************************************************************************************************
  12. Написать метод, который принимает на вход предложение, которое состоит из имени, фамилии,
