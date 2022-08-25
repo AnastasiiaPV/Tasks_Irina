@@ -38,6 +38,22 @@ public class HW10 extends Utils {
         }
     }
 
+    /****************************************************************************************************************
+     2. Написать алгоритм RemoveAlla.
+     С помощью методов из видео1,  написать алгоритм, который принимает на вход строку. Если строка валидная,
+     то метод удаляет все буквы a из строки, если таковые имеются. Метод возвращает обработанную строку.
+     Test Data:
+     “    QA4Everyone   “ →  “QA4Everyone“
+     “panda   “ → “pnd”
+     */
+    public static String removeAlla (String str) {
+        if (!str.isEmpty()) {
+            str = str.trim().replace("a","");
+            return str;
+        }
+        return "Empty string";
+    }
+
     public static void main(String[] args) {
         printTaskNUmber(1);
         System.out.println(checkSpaces("    QA4Everyone   "));
@@ -46,19 +62,14 @@ public class HW10 extends Utils {
         printSubparagraphNumber(1,"3");
         System.out.println(checkSpaces(""));
 
+        printTaskNUmber(2);
+        System.out.println(removeAlla("    QA4Everyone   "));
+        printSubparagraphNumber(2,"2");
+        System.out.println(removeAlla("panda   "));
+        printSubparagraphNumber(2,"3");
+        System.out.println(removeAlla(""));
+
     }
-
-
-
-
-    /****************************************************************************************************************
-     2. Написать алгоритм RemoveAlla.
-     С помощью методов из видео1,  написать алгоритм, который принимает на вход строку. Если строка валидная,
-     то метод удаляет все буквы a из строки, если таковые имеются. Метод возвращает обработанную строку.
-     Test Data:
-     “    QA4Everyone   “ →  “QA4Everyone“
-     “panda   “ → “pnd”
-    */
 
     /****************************************************************************************************************
      3. Написать алгоритм RemoveAllZeros.
