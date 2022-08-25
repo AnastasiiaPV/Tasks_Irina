@@ -169,6 +169,44 @@ public class HW10 extends Utils {
         return newStr.concat("\"").concat(str).concat(".\"");
     }
 
+    /****************************************************************************************************************
+     8. Напишите метод, кторый принимает на вход название города и исправляет написание:
+     Test Data:
+     “ташкент” → “Ташкент”
+     “ЧикаГО” → “Чикаго”
+     */
+
+    public static String fixCityName(String cityName) {
+        if (cityName.isEmpty()) {
+            return "String is empty";
+        }
+        cityName = cityName.toLowerCase();
+
+        return cityName.replace(String.valueOf(cityName.charAt(0)), String.valueOf(cityName.charAt(0)).toUpperCase());
+    }
+
+    public static String fixCityName_2(String cityName) {
+        if (cityName.isEmpty()) {
+            return "String is empty";
+        }
+        String result = "";
+
+        return result.concat(cityName.substring(0,1).toUpperCase()).concat(cityName.substring(1).toLowerCase());
+    }
+
+
+    /**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     Видео3: https://www.youtube.com/watch?v=6_RDHZfygGo
+     indexOf(), lastIndexOf()*/
+
+     /*****************************************************************************************************************
+     9. Напишите метод, который принимает на вход строку и букву-параметр, и возвращает все, что находится между
+     первой и последней буквой-параметром:
+     Test Data:
+     “Abracadabra”, “b” → “bracadab”
+     “Whippersnapper”, “p” → “ppersnapp”
+     */
+
     public static void main(String[] args) {
         printTaskNUmber(1);
         System.out.println(checkSpaces("    QA4Everyone   "));
@@ -242,33 +280,21 @@ public class HW10 extends Utils {
         printSubparagraphNumber(7, "3");
         System.out.println(addQuotes(""));
         printNewRow();
+
+        printTaskNUmber(8);
+        System.out.println(fixCityName("myKolaiv"));
+        printSubparagraphNumber(8, "2");
+        System.out.println(fixCityName("bostoN"));
+        printSubparagraphNumber(8, "3");
+        System.out.println(fixCityName(""));
+        printSubparagraphNumber(8, "2.1");
+        System.out.println(fixCityName_2("myKolaiv"));
+        printNewRow();
     }
 }
 
 
 
-
-
-
-
-
-
-    /****************************************************************************************************************
-     8. Напишите метод, кторый принимает на вход название города и исправляет написание:
-     Test Data:
-     “ташкент” → “Ташкент”
-     “ЧикаГО” → “Чикаго”
-     */
-
-    /****************************************************************************************************************
-     9. Видео3: https://www.youtube.com/watch?v=6_RDHZfygGo
-     indexOf(), lastIndexOf()
-     Напишите метод, который принимает на вход строку и букву-параметр, и возвращает все, что находится между
-     первой и последней буквой-параметром:
-     Test Data:
-     “Abracadabra”, “b” → “bracadab”
-     “Whippersnapper”, “p” → “ppersnapp”
-     */
 
     /****************************************************************************************************************
      10. Напишите метод, который принимает на вход слово, и возвращает true, если слово начинается
