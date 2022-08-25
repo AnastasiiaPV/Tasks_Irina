@@ -1,6 +1,7 @@
 package homework;
 
 public class HW10 extends Utils {
+    private static Object Integer;
 
     /**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      * Видео1: https://youtu.be/78ZAzmNbUYQ?t=173
@@ -46,10 +47,31 @@ public class HW10 extends Utils {
      “    QA4Everyone   “ →  “QA4Everyone“
      “panda   “ → “pnd”
      */
-    public static String removeAlla (String str) {
+    public static String removeAlla(String str) {
         if (!str.isEmpty()) {
             str = str.trim().replace("a","");
             return str;
+        }
+        return "Empty string";
+    }
+
+
+    /****************************************************************************************************************
+     3. Написать алгоритм RemoveAllZeros.
+     С помощью методов из видео1,  написать алгоритм, который принимает на вход строку, состоящую из цифр.
+     Если строка валидная, то метод удаляет все пробелы из строки, если таковые имеются.
+     Метод возвращает обработанную строку, в которой нет нулей.
+     Test Data:
+     “   3 5 0 4 2 0 9 7 0 6 0 4 0       0 0 0 “ →  “35429764“
+     “ 0000000111“ → “111”
+     */
+    public static String removeAllZeros(String str) {
+
+        if (!str.isEmpty()) {
+            if (str.contains(" ")) {
+                str = str.trim().replace(" ", "");
+            }
+            return str.replace("0", "");
         }
         return "Empty string";
     }
@@ -61,6 +83,7 @@ public class HW10 extends Utils {
         System.out.println(checkSpaces("QA4Everyone"));
         printSubparagraphNumber(1,"3");
         System.out.println(checkSpaces(""));
+        printNewRow();
 
         printTaskNUmber(2);
         System.out.println(removeAlla("    QA4Everyone   "));
@@ -68,18 +91,22 @@ public class HW10 extends Utils {
         System.out.println(removeAlla("panda   "));
         printSubparagraphNumber(2,"3");
         System.out.println(removeAlla(""));
+        printNewRow();
+
+        printTaskNUmber(3);
+        System.out.println(removeAllZeros("   3 5 0 4 2 0 9 7 0 6 0 4 0       0 0 0 "));
+        printSubparagraphNumber(3,"2");
+        System.out.println(removeAllZeros(" 0000000111"));
+        printSubparagraphNumber(3,"3");
+        System.out.println(removeAllZeros(""));
+        printSubparagraphNumber(3,"4");
+        System.out.println(removeAllZeros("  hg125j k5"));
+        printNewRow();
+
 
     }
 
-    /****************************************************************************************************************
-     3. Написать алгоритм RemoveAllZeros.
-     С помощью методов из видео1,  написать алгоритм, который принимает на вход строку, состоящую из цифр.
-     Если строка валидная, то метод удаляет все пробелы из строки, если таковые имеются.
-     Метод возвращает обработанную строку, в которой нет нулей.
-     Test Data:
-     “   3 5 0 4 2 0 9 7 0 6 0 4 0       0 0 0 “ →  “35429764“
-     “ 0000000111“ → “111”
-     */
+
 
     /****************************************************************************************************************
     4. Написать алгоритм RemoveAllSpaces.
