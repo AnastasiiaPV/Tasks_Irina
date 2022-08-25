@@ -150,6 +150,25 @@ public class HW10 extends Utils {
         return str.contains("Java");
     }
 
+    /****************************************************************************************************************
+     7. Напишите метод, который принимает на вход строку, и добавляет Кавычки в начале строки, точку и кавычки
+     в конце строки с помощью метода concat()
+     Test Data:
+     “One” → ““One.””
+     “    TWO  “ → ““TWO.””
+     */
+    public static String addQuotes(String str) {
+        if (str.isEmpty()) {
+            return "String is empty";
+        }
+        if (str.contains(" ")) {
+            str = str.replace(" ", "");
+        }
+
+        String newStr = "";
+        return newStr.concat("\"").concat(str).concat(".\"");
+    }
+
     public static void main(String[] args) {
         printTaskNUmber(1);
         System.out.println(checkSpaces("    QA4Everyone   "));
@@ -215,6 +234,14 @@ public class HW10 extends Utils {
                 "     Look what is best, that best I wish in thee.\n" +
                 "     This wish I have; then ten times happy me."));
         printNewRow();
+
+        printTaskNUmber(7);
+        System.out.println(addQuotes("One"));
+        printSubparagraphNumber(7, "2");
+        System.out.println(addQuotes("    TWO  "));
+        printSubparagraphNumber(7, "3");
+        System.out.println(addQuotes(""));
+        printNewRow();
     }
 }
 
@@ -224,13 +251,7 @@ public class HW10 extends Utils {
 
 
 
-    /****************************************************************************************************************
-     7. Напишите метод, который принимает на вход строку, и добавляет Кавычки в начале строки, точку и кавычки
-     в конце строки с помощью метода concat()
-     Test Data:
-     “One” → ““One.””
-     “    TWO  “ → ““TWO.””
-     */
+
 
     /****************************************************************************************************************
      8. Напишите метод, кторый принимает на вход название города и исправляет написание:
