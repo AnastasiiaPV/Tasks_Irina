@@ -66,17 +66,38 @@ public class HW10 extends Utils {
      “ 0000000111“ → “111”
      */
     public static String removeAllZeros(String str) {
-
         if (!str.isEmpty()) {
             if (str.contains(" ")) {
                 str = str.trim().replace(" ", "");
             }
+
             return str.replace("0", "");
         }
+
         return "Empty string";
     }
 
-    public static void main(String[] args) {
+    /****************************************************************************************************************
+     4. Написать алгоритм RemoveAllSpaces.
+     С помощью методов из видео1,  написать алгоритм, который принимает на вход строку. Если строка валидная,
+     то метод удаляет все пробелы из строки, если таковые имеются. Метод возвращает обработанную строку.
+     Test Data:
+     “    QA   4  Everyone   “ →  “QA4Everyone“
+     “p a     n d a   “ → “panda”
+     */
+    public static String removeAllSpaces(String str) {
+        if (str.length() != 0) {
+            if (str.contains(" ")) {
+
+                return str.trim().replace(" ", "");
+            }
+        }
+
+        return "Empty string";
+    }
+
+
+        public static void main(String[] args) {
         printTaskNUmber(1);
         System.out.println(checkSpaces("    QA4Everyone   "));
         printSubparagraphNumber(1,"2");
@@ -104,20 +125,14 @@ public class HW10 extends Utils {
         printNewRow();
 
 
+        printTaskNUmber(4);
+        System.out.println(removeAllSpaces("    QA   4  Everyone   "));
+        printSubparagraphNumber(4,"2");
+        System.out.println(removeAllSpaces("p a     n d a   "));
+        printSubparagraphNumber(4,"3");
+        System.out.println(removeAllSpaces(""));
+        printNewRow();
     }
-
-
-
-    /****************************************************************************************************************
-    4. Написать алгоритм RemoveAllSpaces.
-     С помощью методов из видео1,  написать алгоритм, который принимает на вход строку. Если строка валидная,
-     то метод удаляет все пробелы из строки, если таковые имеются. Метод возвращает обработанную строку.
-     Test Data:
-     “    QA   4  Everyone   “ →  “QA4Everyone“
-     “p a     n d a   “ → “panda”
-     */
-
-
 
 
     /****************************************************************************************************************
