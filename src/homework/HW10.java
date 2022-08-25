@@ -207,8 +207,22 @@ public class HW10 extends Utils {
      “Whippersnapper”, “p” → “ppersnapp”
      */
     public static String getAllLettersBetween(String cityName, String letter) {
-        return cityName.substring(cityName.indexOf(letter), cityName.lastIndexOf(letter)+1);
+        return cityName.substring(cityName.indexOf(letter), cityName.lastIndexOf(letter) + 1);
     }
+
+    /****************************************************************************************************************
+     10. Напишите метод, который принимает на вход слово, и возвращает true, если слово начинается
+     и заканчивается на одинаковую букву, и faulse иначе
+     Test Data:
+     “Abracadabra” → true
+     “Whippersnapper” → false
+     */
+    public static boolean isSameFirstLastLetter(String cityName) {
+        cityName = cityName.toLowerCase();
+
+        return cityName.charAt(0) ==  cityName.charAt(cityName.length()-1);
+    }
+
 
     public static void main(String[] args) {
         printTaskNUmber(1);
@@ -300,17 +314,15 @@ public class HW10 extends Utils {
         printSubparagraphNumber(9, "2");
         System.out.println(getAllLettersBetween("Whippersnapper", "p"));
         printNewRow();
+
+        printTaskNUmber(10);
+        System.out.println(isSameFirstLastLetter("Abracadabra"));
+        printSubparagraphNumber(10, "2");
+        System.out.println(isSameFirstLastLetter("Whippersnapper"));
+        printNewRow();
     }
 }
 
-
-/****************************************************************************************************************
- 10. Напишите метод, который принимает на вход слово, и возвращает true, если слово начинается
- и заканчивается на одинаковую букву, и faulse иначе
- Test Data:
- “Abracadabra” → true
- “Whippersnapper” → false
- */
 
 /****************************************************************************************************************
  Видео4: https://youtu.be/SBByYcrsXu0?t=42*/
