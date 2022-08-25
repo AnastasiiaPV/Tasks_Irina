@@ -247,6 +247,35 @@ public class HW10 extends Utils {
         return str.split(" ");
     }
 
+    /****************************************************************************************************************
+     12. Написать метод, который принимает на вход предложение, которое состоит из имени, фамилии,
+     отчества и возвращает массив строк:
+     Test Data:
+     “Александр Сергеевич Пушкин” →
+     {“Имя: Александр”, “Отчество: Сергеевич”, “Фамилия: Пушкин”}
+     */
+    public static String[] strToArr_2(String str) {
+        String[] arr = str.split(" ");
+        String[] result = new String[3];
+
+        result[0] = "\"Ім'я: ".concat(arr[0]).concat("\"");
+        result[1] = "\"По батькові: ".concat(arr[1]).concat("\"");
+        result[2] = "\"Прізвище: ".concat(arr[2]).concat("\"");
+
+        return result;
+    }
+
+    public static String[] strToArr_3(String str) {
+        String[] arr = str.split(" ");
+        String[] result = new String[]{"\"Ім'я: ", "\"По батькові: ", "\"Прізвище: "};
+
+        for (int i = 0; i < arr.length; i++) {
+            result[i] = result[i].concat(arr[i]).concat("\"");
+        }
+
+        return result;
+    }
+
 
     public static void main(String[] args) {
         printTaskNUmber(1);
@@ -350,17 +379,17 @@ public class HW10 extends Utils {
         printSubparagraphNumber(11, "2");
         System.out.println(Arrays.toString(strToArr("River on the age of the New York city")));
         printNewRow();
+
+        printSubparagraphNumber(11, "2");
+        System.out.println(Arrays.toString(strToArr_2("Потапенко Анастасія Вікторівна")));
+        printSubparagraphNumber(11, "3");
+        System.out.println(Arrays.toString(strToArr_3("Потапенко Анастасія Вікторівна")));
+        printNewRow();
     }
 }
 
 
-/****************************************************************************************************************
- 12. Написать метод, который принимает на вход предложение, которое состоит из имени, фамилии,
- отчества и возвращает массив строк:
- Test Data:
- “Александр Сергеевич Пушкин” →
- {“Имя: Александр”, “Отчество: Сергеевич”, “Фамилия: Пушкин”}
- */
+
 
 /****************************************************************************************************************
  13.Написать метод, который возвращает сумму всех букв слова
