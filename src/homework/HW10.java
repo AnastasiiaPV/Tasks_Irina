@@ -1,24 +1,52 @@
 package homework;
 
-public class HW10 {
+public class HW10 extends Utils {
+
+    /**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     * Видео1: https://youtu.be/78ZAzmNbUYQ?t=173
+     *      Методы isEmpty(), length(), trim(), replace()*/
 
     /****************************************************************************************************************
-     * Видео1: https://youtu.be/78ZAzmNbUYQ?t=173
-     *      Методы isEmpty(), length(), trim(), replace()
-     *
      *      1. Написать метод, который принимает на вход строку.
      *      Если строка не пустая (проверить методом из видео), то примените метод по удалению пробелов
      *      в начале строки и в конце строки.
      *      Догадаться, каким методом из видео можно проверить, были ли пробелы.
-     *      Если пробелы были, то метод должен вернуть сообщение: “Лишние пробелы удалены”.
-     *      Если пробелов не было, вернуть сообщение “Пробелов не было”.
-     *      Если строка пустая, вернуть сообщение “Строка пустая”.
+     *      Якщо прогалини були, то метод повинен повернути повідомлення: "Зайві прогалини видалені".
+     *       * Якщо пробілів не було, повернути повідомлення “Пробілів не було”.
+     *       * Якщо рядок порожній, повернути повідомлення “Рядок порожній”.
      *
      *      Test Data:
      *      “    QA4Everyone   “ → “Лишние пробелы удалены”
      *      “QA4Everyone“ → “Пробелов не было”
      *      “” → “Строка пустая”
      */
+    public static String checkSpaces (String str) {
+        int length = str.length();
+
+        if (str.isEmpty()) {
+            return "Рядок порожній";
+        } else {
+            str = str.trim();
+        }
+
+        int newLength = str.length();
+
+        if (length > newLength) {
+            return "Зайві пробіли видалені";
+        } else {
+            return "Пробілів не було";
+        }
+    }
+
+    public static void main(String[] args) {
+        printTaskNUmber(1);
+        System.out.println(checkSpaces("    QA4Everyone   "));
+        printSubparagraphNumber(1,"2");
+        System.out.println(checkSpaces("QA4Everyone"));
+        printSubparagraphNumber(1,"3");
+        System.out.println(checkSpaces(""));
+
+    }
 
 
 
