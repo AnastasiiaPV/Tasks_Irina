@@ -21,7 +21,7 @@ public class HW10 extends Utils {
      *      “QA4Everyone“ → “Пробелов не было”
      *      “” → “Строка пустая”
      */
-    public static String checkSpaces (String str) {
+    public static String checkSpaces(String str) {
         int length = str.length();
 
         if (str.isEmpty()) {
@@ -49,7 +49,7 @@ public class HW10 extends Utils {
      */
     public static String removeAlla(String str) {
         if (!str.isEmpty()) {
-            str = str.trim().replace("a","");
+            str = str.trim().replace("a", "");
             return str;
         }
         return "Empty string";
@@ -97,64 +97,39 @@ public class HW10 extends Utils {
     }
 
 
-        public static void main(String[] args) {
-        printTaskNUmber(1);
-        System.out.println(checkSpaces("    QA4Everyone   "));
-        printSubparagraphNumber(1,"2");
-        System.out.println(checkSpaces("QA4Everyone"));
-        printSubparagraphNumber(1,"3");
-        System.out.println(checkSpaces(""));
-        printNewRow();
-
-        printTaskNUmber(2);
-        System.out.println(removeAlla("    QA4Everyone   "));
-        printSubparagraphNumber(2,"2");
-        System.out.println(removeAlla("panda   "));
-        printSubparagraphNumber(2,"3");
-        System.out.println(removeAlla(""));
-        printNewRow();
-
-        printTaskNUmber(3);
-        System.out.println(removeAllZeros("   3 5 0 4 2 0 9 7 0 6 0 4 0       0 0 0 "));
-        printSubparagraphNumber(3,"2");
-        System.out.println(removeAllZeros(" 0000000111"));
-        printSubparagraphNumber(3,"3");
-        System.out.println(removeAllZeros(""));
-        printSubparagraphNumber(3,"4");
-        System.out.println(removeAllZeros("  hg125j k5"));
-        printNewRow();
-
-
-        printTaskNUmber(4);
-        System.out.println(removeAllSpaces("    QA   4  Everyone   "));
-        printSubparagraphNumber(4,"2");
-        System.out.println(removeAllSpaces("p a     n d a   "));
-        printSubparagraphNumber(4,"3");
-        System.out.println(removeAllSpaces(""));
-        printNewRow();
-    }
-
-
-    /****************************************************************************************************************
+    /**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      Видео2: https://www.youtube.com/watch?v=thzfsPEYXfI
-     Методы charAt(), concat(), contains(), substring()
-     toLowerCase(),  toUpperCase()
+     Методы charAt(), concat(), contains(), substring(), toLowerCase(),  toUpperCase()*/
 
+    /******************************************************************************************************************
      5. Напишите метод, который принимает на вход строку и считает, сколько букв а или А содержится в строке.
      Test Data:
      “Abracadabra” → 5
      “Homenum Revelio” → 0
      */
+    public static int checkIfPresentAa(String str) {
+        if (str.isEmpty()) {
+            return 0;
+        }
 
+        int count = 0;
 
-     /****************************************************************************************************************
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'a' || str.charAt(i) == 'A') {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /****************************************************************************************************************
      6. Напишите метод, который принимает на вход текст и проверяет, содержится ли в тексте хотя бы одно слово Java.
      Test Data:
      “As of March 2022, Java 18 is the latest version, while Java 17, 11 and 8 are the current long-term support
      (LTS) versions. Oracle released the last zero-cost public update for the legacy version Java 8 LTS in January
-      2019 for commercial use, although it will otherwise still support Java 8 with public updates for personal
-      use indefinitely. Other vendors have begun to offer zero-cost builds of OpenJDK 8 and 11 that are still
-      receiving security and other upgrades.” → true
+     2019 for commercial use, although it will otherwise still support Java 8 with public updates for personal
+     use indefinitely. Other vendors have begun to offer zero-cost builds of OpenJDK 8 and 11 that are still
+     receiving security and other upgrades.” → true
 
      “As a decrepit father takes delight
      To see his active child do deeds of youth,
@@ -170,76 +145,152 @@ public class HW10 extends Utils {
      And by a part of all thy glory live.
      Look what is best, that best I wish in thee.
      This wish I have; then ten times happy me.” → false
-    */
+     */
+    public static boolean checkIfJavaPresent(String str) {
+        return str.contains("Java");
+    }
+
+    public static void main(String[] args) {
+        printTaskNUmber(1);
+        System.out.println(checkSpaces("    QA4Everyone   "));
+        printSubparagraphNumber(1, "2");
+        System.out.println(checkSpaces("QA4Everyone"));
+        printSubparagraphNumber(1, "3");
+        System.out.println(checkSpaces(""));
+        printNewRow();
+
+        printTaskNUmber(2);
+        System.out.println(removeAlla("    QA4Everyone   "));
+        printSubparagraphNumber(2, "2");
+        System.out.println(removeAlla("panda   "));
+        printSubparagraphNumber(2, "3");
+        System.out.println(removeAlla(""));
+        printNewRow();
+
+        printTaskNUmber(3);
+        System.out.println(removeAllZeros("   3 5 0 4 2 0 9 7 0 6 0 4 0       0 0 0 "));
+        printSubparagraphNumber(3, "2");
+        System.out.println(removeAllZeros(" 0000000111"));
+        printSubparagraphNumber(3, "3");
+        System.out.println(removeAllZeros(""));
+        printSubparagraphNumber(3, "4");
+        System.out.println(removeAllZeros("  hg125j k5"));
+        printNewRow();
+
+        printTaskNUmber(4);
+        System.out.println(removeAllSpaces("    QA   4  Everyone   "));
+        printSubparagraphNumber(4, "2");
+        System.out.println(removeAllSpaces("p a     n d a   "));
+        printSubparagraphNumber(4, "3");
+        System.out.println(removeAllSpaces(""));
+        printNewRow();
+
+        printTaskNUmber(5);
+        System.out.println(checkIfPresentAa("Abracadabra"));
+        printSubparagraphNumber(5, "2");
+        System.out.println(checkIfPresentAa("Homenum Revelio"));
+        printSubparagraphNumber(5, "3");
+        System.out.println(checkIfPresentAa(""));
+        printNewRow();
+
+        printTaskNUmber(6);
+        System.out.println(checkIfJavaPresent("As of March 2022, Java 18 is the latest version, while Java 17, 11 and 8 are the current long-term support\n" +
+                "     (LTS) versions. Oracle released the last zero-cost public update for the legacy version Java 8 LTS in January\n" +
+                "     2019 for commercial use, although it will otherwise still support Java 8 with public updates for personal\n" +
+                "     use indefinitely. Other vendors have begun to offer zero-cost builds of OpenJDK 8 and 11 that are still\n" +
+                "     receiving security and other upgrades."));
+        printSubparagraphNumber(6, "2");
+        System.out.println(checkIfJavaPresent("As a decrepit father takes delight\n" +
+                "     To see his active child do deeds of youth,\n" +
+                "     So I, made lame by fortune’s dearest spite,\n" +
+                "     Take all my comfort of thy worth and truth.\n" +
+                "     For whether beauty, birth, or wealth, or wit,\n" +
+                "     Or any of these all, or all, or more,\n" +
+                "     Entitled in thy parts do crownèd sit,\n" +
+                "     I make my love engrafted to this store.\n" +
+                "     So then I am not lame, poor, nor despised,\n" +
+                "     Whilst that this shadow doth such substance give\n" +
+                "     That I in thy abundance am sufficed,\n" +
+                "     And by a part of all thy glory live.\n" +
+                "     Look what is best, that best I wish in thee.\n" +
+                "     This wish I have; then ten times happy me."));
+        printNewRow();
+    }
+}
+
+
+
+
+
+
 
     /****************************************************************************************************************
-    7. Напишите метод, который принимает на вход строку, и добавляет Кавычки в начале строки, точку и кавычки
+     7. Напишите метод, который принимает на вход строку, и добавляет Кавычки в начале строки, точку и кавычки
      в конце строки с помощью метода concat()
      Test Data:
      “One” → ““One.””
      “    TWO  “ → ““TWO.””
      */
 
-     /****************************************************************************************************************
+    /****************************************************************************************************************
      8. Напишите метод, кторый принимает на вход название города и исправляет написание:
      Test Data:
      “ташкент” → “Ташкент”
      “ЧикаГО” → “Чикаго”
-      */
+     */
 
-     /****************************************************************************************************************
+    /****************************************************************************************************************
      9. Видео3: https://www.youtube.com/watch?v=6_RDHZfygGo
      indexOf(), lastIndexOf()
      Напишите метод, который принимает на вход строку и букву-параметр, и возвращает все, что находится между
-      первой и последней буквой-параметром:
+     первой и последней буквой-параметром:
      Test Data:
      “Abracadabra”, “b” → “bracadab”
      “Whippersnapper”, “p” → “ppersnapp”
-      */
+     */
 
-     /****************************************************************************************************************
+    /****************************************************************************************************************
      10. Напишите метод, который принимает на вход слово, и возвращает true, если слово начинается
-      и заканчивается на одинаковую букву, и faulse иначе
+     и заканчивается на одинаковую букву, и faulse иначе
      Test Data:
      “Abracadabra” → true
      “Whippersnapper” → false
-      */
+     */
 
-      /****************************************************************************************************************
-      Видео4: https://youtu.be/SBByYcrsXu0?t=42*/
-      /****************************************************************************************************************
-        split()*/
-      /****************************************************************************************************************
+    /****************************************************************************************************************
+     Видео4: https://youtu.be/SBByYcrsXu0?t=42*/
+    /****************************************************************************************************************
+     split()*/
+    /****************************************************************************************************************
 
-      11. Напишите метод, который принимает на вход предложение и возвращает слова из этого предложения
-       в виде массива слов
+     11. Напишите метод, который принимает на вход предложение и возвращает слова из этого предложения
+     в виде массива слов
      Test Data:
      “QA for Everyone” → {“QA”, “for”, “Everyone”}
      “Александр Сергеевич Пушкин” → {“Александр”, “Сергеевич”, “Пушкин”}
-       */
+     */
 
-     /****************************************************************************************************************
-      12. Написать метод, который принимает на вход предложение, которое состоит из имени, фамилии,
-      отчества и возвращает массив строк:
+    /****************************************************************************************************************
+     12. Написать метод, который принимает на вход предложение, которое состоит из имени, фамилии,
+     отчества и возвращает массив строк:
      Test Data:
      “Александр Сергеевич Пушкин” →
      {“Имя: Александр”, “Отчество: Сергеевич”, “Фамилия: Пушкин”}
-      */
+     */
 
-     /****************************************************************************************************************
+    /****************************************************************************************************************
      13.Написать метод, который возвращает сумму всех букв слова
 
      “abc” → 294
      “ABC” → 198
      “123” → 0 (это не буквы)\*/
 
-     /****************************************************************************************************************
+    /****************************************************************************************************************
      14. Написать метод,  который принимает на вход 2 буквы и возвращает true, если первая буква встречается
-      раньше второй, иначе метод возвращает false
+     раньше второй, иначе метод возвращает false
      method(“a”, “m”) → true
      method(“m”, “l”) → false
-      */
+     */
 
 
 
-}
