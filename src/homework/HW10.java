@@ -282,24 +282,8 @@ public class HW10 extends Utils {
      “abc” → 294
      “ABC” → 198
      “123” → 0 (это не буквы)\*/
+
     public static int getSumAllLetters(String str) {
-        if (str.isEmpty()) {
-            return 0;
-        }
-        int sum = 0;
-
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == '0' || str.charAt(i) == '1' || str.charAt(i) == '2' || str.charAt(i) == '3'
-                    || str.charAt(i) == '4' || str.charAt(i) == '5' || str.charAt(i) == '6' || str.charAt(i) == '7'
-                    || str.charAt(i) == '8' || str.charAt(i) == '9') {
-            } else {
-               sum += str.charAt(i);
-            }
-        }
-        return sum;
-    }
-
-    public static int getSumAllLetters_2(String str) {
         if (str.isEmpty()) {
             return 0;
         }
@@ -311,6 +295,26 @@ public class HW10 extends Utils {
             }
         }
         return sum;
+    }
+
+    /****************************************************************************************************************
+     14. Написать метод,  который принимает на вход 2 буквы и возвращает true, если первая буква встречается
+     раньше второй, иначе метод возвращает false
+     method(“a”, “m”) → true
+     method(“m”, “l”) → false
+     */
+    public static boolean getSumAllLetters(char letter1, char letter2) {
+        return letter1 < letter2;
+    }
+
+    public static boolean getSumAllLetters(String letter1, String letter2) {
+        char[] first = letter1.toCharArray();
+        char[] second = letter2.toCharArray();
+
+        if (first[0] < second[0]) {
+            return true;
+        }
+        return false;
     }
 
 
@@ -424,27 +428,24 @@ public class HW10 extends Utils {
         printNewRow();
 
 
-//        printTaskNUmber(13);
-//        System.out.println(getSumAllLetters("abc"));
-//        System.out.println(getSumAllLetters("ABC"));
-//        System.out.println(getSumAllLetters("123"));
-//        printNewRow();
         printTaskNUmber(13);
-        System.out.println(getSumAllLetters_2("abc"));
-        System.out.println(getSumAllLetters_2("ABC"));
-        System.out.println(getSumAllLetters_2("123"));
-        System.out.println(getSumAllLetters_2("a1 23 ;bc"));
+        System.out.println(getSumAllLetters("abc"));
+        System.out.println(getSumAllLetters("ABC"));
+        System.out.println(getSumAllLetters("123"));
+        System.out.println(getSumAllLetters("a1 23 ;bc"));
         printNewRow();
+
+        printTaskNUmber(14);
+        System.out.println(getSumAllLetters('a', 'm'));
+        System.out.println(getSumAllLetters('l', 'a'));
+        printTaskNUmber(14);
+        System.out.println(getSumAllLetters("a", "m"));
+        System.out.println(getSumAllLetters("l", "a"));
     }
 }
 
 
-/****************************************************************************************************************
- 14. Написать метод,  который принимает на вход 2 буквы и возвращает true, если первая буква встречается
- раньше второй, иначе метод возвращает false
- method(“a”, “m”) → true
- method(“m”, “l”) → false
- */
+
 
 
 
